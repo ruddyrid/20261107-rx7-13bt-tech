@@ -4,6 +4,10 @@ A single-page technical reference for the 13B turbo twin-rotor used in the 1986â
 
 **Live site:** https://ruddyrid.github.io/20261107-rx7-13bt-tech/
 
+**Temporary public preview:** https://ruddyrid.github.io/20261107-rx7-13bt-tech/
+
+**Planned Teals Unltd. URL:** https://tech.tealsunltd.com/ (after DNS setup)
+
 ## What it covers
 
 - **Series 4 vs Series 5** specifications: 8.5:1 vs 9.0:1 compression, 5.5 vs 7.5 psi stock boost, 182 vs 200 hp, turbo and oil-metering changes.
@@ -36,7 +40,16 @@ python3 -m http.server 8000
 
 ## Deployment
 
-GitHub Pages serves the `main` branch from the repository root. Push to `main` and the site rebuilds automatically.
+GitHub Pages serves the `main` branch from the repository root. Push to `main` and the site rebuilds automatically. The current build uses the repository's public Pages URL until the custom domain is configured.
+
+To activate the custom domain:
+
+1. In the DNS provider for `tealsunltd.com`, add a `CNAME` record for `tech` pointing to `ruddyrid.github.io`.
+2. Add a root-level `CNAME` file containing `tech.tealsunltd.com`.
+3. In the repository's **Settings â†’ Pages**, set the custom domain to `tech.tealsunltd.com` and enable HTTPS after DNS verification.
+4. Update the canonical URL and sitemap to the custom domain, then add a Big Cartel navigation link to `https://tech.tealsunltd.com/`.
+
+Until then, the canonical URL and sitemap point to the public GitHub Pages preview.
 
 ## Sources
 

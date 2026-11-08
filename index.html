@@ -3,20 +3,73 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mazda 13B Turbo — Series 4 &amp; 5 RX-7 Specs, Blueprint, Torque &amp; Rebuild</title>
-<meta name="description" content="Technical reference for the Mazda 13B turbo rotary in the FC RX-7: Series 4 and Series 5 specifications, boost and compression, blueprint geometry, torque values, and a rebuild sequence.">
+<title>Mazda 13B-T Turbo Specs &amp; Rebuild Guide | Teals Unltd.</title>
+<meta name="description" content="Factory-referenced Mazda 13B-T guide for the 1986–1991 FC RX-7: Series 4 and 5 specs, boost, compression, torque values, rotor geometry, and rebuild steps.">
+<meta name="author" content="Teals Unltd.">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#0d0d0d">
+<link rel="canonical" href="https://ruddyrid.github.io/20261107-rx7-13bt-tech/">
+<link rel="icon" href="https://assets.bigcartel.com/account_favicons/263313/Teals+UnLtd_small.png?auto=format&amp;fit=max&amp;h=32&amp;w=32" type="image/png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Teals Unltd.">
+<meta property="og:title" content="Mazda 13B-T Turbo Specs &amp; Rebuild Guide">
+<meta property="og:description" content="A factory-referenced technical guide to the 1986–1991 Mazda FC RX-7 13B-T: Series 4 and 5 specifications, torque values, geometry, and rebuild steps.">
+<meta property="og:url" content="https://ruddyrid.github.io/20261107-rx7-13bt-tech/">
+<meta property="og:image" content="https://assets.bigcartel.com/account_images/4074120/Teals+UnLtd+0D0D0D+Back.png?auto=format&amp;fit=max&amp;h=1200&amp;w=1200">
+<meta property="og:image:alt" content="Teals Unltd. Mazda rotary parts and technical reference">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Mazda 13B-T Turbo Specs &amp; Rebuild Guide | Teals Unltd.">
+<meta name="twitter:description" content="Series 4 and 5 FC RX-7 13B-T specifications, torque values, rotor geometry, and rebuild steps.">
+<meta name="twitter:image" content="https://assets.bigcartel.com/account_images/4074120/Teals+UnLtd+0D0D0D+Back.png?auto=format&amp;fit=max&amp;h=1200&amp;w=1200">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&amp;family=Lato:wght@400;700&amp;family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Mazda 13B-T Turbo Specs and Rebuild Guide for the FC RX-7",
+  "description": "Factory-referenced technical guide to the 1986–1991 Mazda FC RX-7 13B-T, including Series 4 and Series 5 specifications, torque values, rotor geometry, and rebuild steps.",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://ruddyrid.github.io/20261107-rx7-13bt-tech/"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "Teals Unltd.",
+    "url": "https://www.tealsunltd.com/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Teals Unltd.",
+    "url": "https://www.tealsunltd.com/"
+  },
+  "image": "https://assets.bigcartel.com/account_images/4074120/Teals+UnLtd+0D0D0D+Back.png?auto=format&fit=max&h=1200&w=1200",
+  "inLanguage": "en-US",
+  "keywords": [
+    "Mazda 13B-T",
+    "FC RX-7 Turbo II",
+    "Series 4 13B turbo specs",
+    "Series 5 13B turbo specs",
+    "13B rotary rebuild",
+    "13B torque specifications"
+  ],
+  "about": [
+    "Mazda RX-7 FC3S",
+    "Mazda 13B-T rotary engine",
+    "Series 4 and Series 5 Turbo II"
+  ]
+}
+</script>
 <style>
   :root{
-    --bg:#0a0705; --bg-2:#100a07;
-    --panel:#17100b; --panel-2:#1d150e;
-    --line:#2e2118; --line-2:#45311f;
-    --text:#f6ede2; --muted:#bda994; --dim:#927b65;
-    --cyan:#f7b955; --blue:#e2582a; --amber:#ffd166; --red:#ef5350; --green:#7bd88f;
-    --font-display:'Barlow Condensed','Arial Narrow',Impact,sans-serif;
-    --font-body:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+    --bg:#0d0d0d; --bg-2:#1f1f1f;
+    --panel:#1f1f1f; --panel-2:#252525;
+    --line:#2b2b2b; --line-2:#414141;
+    --text:#e5e5e5; --muted:#b8b8b8; --dim:#858585;
+    --cyan:#57a0ff; --blue:#96399e; --amber:#9bc5ff; --red:#ef5350; --green:#7bd88f;
+    --font-display:'Poppins',Arial,sans-serif;
+    --font-body:'Lato',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
     --font-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Consolas,monospace;
     --r:14px; --shadow:0 24px 60px -30px #000;
   }
@@ -26,34 +79,34 @@
     margin:0;color:var(--text);font-family:var(--font-body);font-size:15px;line-height:1.6;
     -webkit-font-smoothing:antialiased;overflow-x:hidden;
     background:
-      radial-gradient(1000px 620px at 12% -12%,rgba(247,185,85,.10),transparent 62%),
-      radial-gradient(900px 520px at 92% -4%,rgba(226,88,42,.13),transparent 60%),
+      radial-gradient(1000px 620px at 12% -12%,rgba(87,160,255,.10),transparent 62%),
+      radial-gradient(900px 520px at 92% -4%,rgba(150,57,158,.13),transparent 60%),
       linear-gradient(180deg,var(--bg),var(--bg-2) 70%,var(--bg));
   }
   body::before{
     content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
-    background-image:linear-gradient(rgba(190,140,95,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(190,140,95,.055) 1px,transparent 1px);
+    background-image:linear-gradient(rgba(255,255,255,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.055) 1px,transparent 1px);
     background-size:48px 48px;
     -webkit-mask-image:radial-gradient(circle at 50% 18%,#000 0%,transparent 78%);
     mask-image:radial-gradient(circle at 50% 18%,#000 0%,transparent 78%);
   }
-  .skip{position:absolute;left:-999px;top:0;z-index:200;background:var(--cyan);color:#1a0f07;padding:10px 16px;font-weight:700}
+  .skip{position:absolute;left:-999px;top:0;z-index:200;background:var(--cyan);color:#1b1b1b;padding:10px 16px;font-weight:700}
   .skip:focus{left:12px;top:12px}
   a{color:var(--cyan);text-decoration:none}
   a:hover{text-decoration:underline}
-  .nav-link:focus-visible,.icon-btn:focus-visible,.fbtn:focus-visible,.rt:focus-visible,.reset:focus-visible,.jump:focus-visible,.brand:focus-visible,.sources a:focus-visible,.hotspot:focus-visible{outline:2px solid var(--cyan);outline-offset:2px;border-radius:6px}
+  .nav-link:focus-visible,.icon-btn:focus-visible,.fbtn:focus-visible,.rt:focus-visible,.reset:focus-visible,.jump:focus-visible,.brand:focus-visible,.store-link:focus-visible,.shop-button:focus-visible,.store-note:focus-visible,.sources a:focus-visible,.hotspot:focus-visible{outline:2px solid var(--cyan);outline-offset:2px;border-radius:6px}
   button{font:inherit;color:inherit}
   .mono{font-family:var(--font-mono)}
   .wrap{max-width:1240px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
   .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 
   /* top bar */
-  .scrollbar{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--blue),var(--cyan));z-index:120;box-shadow:0 0 12px rgba(247,185,85,.6)}
-  .topbar{position:sticky;top:0;z-index:100;background:rgba(6,8,13,.86);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+  .scrollbar{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--blue),var(--cyan));z-index:120;box-shadow:0 0 12px rgba(87,160,255,.6)}
+  .topbar{position:sticky;top:0;z-index:100;background:rgba(13,13,13,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
   .nav-inner{max-width:1240px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;gap:22px}
   .brand{display:flex;align-items:center;gap:10px;flex-shrink:0;text-decoration:none;color:var(--text)}
   .brand:hover{text-decoration:none}
-  .brand-mark{width:34px;height:34px;border:1px solid rgba(247,185,85,.45);border-radius:8px;display:grid;place-items:center;background:linear-gradient(160deg,rgba(247,185,85,.14),rgba(226,88,42,.06));box-shadow:inset 0 0 18px rgba(247,185,85,.12)}
+  .brand-mark{width:34px;height:34px;border:1px solid rgba(87,160,255,.45);border-radius:8px;display:grid;place-items:center;background:linear-gradient(160deg,rgba(87,160,255,.14),rgba(150,57,158,.06));box-shadow:inset 0 0 18px rgba(87,160,255,.12)}
   .brand-mark span{font:700 12px var(--font-display);letter-spacing:.06em;color:var(--cyan)}
   .brand-text b{display:block;font:700 17px/1 var(--font-display);letter-spacing:.12em;text-transform:uppercase}
   .brand-text small{display:block;font:500 9px var(--font-mono);letter-spacing:.2em;color:var(--dim);margin-top:3px}
@@ -64,12 +117,14 @@
   .nav-link.active{color:var(--cyan)}
   .nav-link.active::after{content:"";position:absolute;left:11px;right:11px;bottom:2px;height:1px;background:var(--cyan);box-shadow:0 0 8px var(--cyan)}
   .nav-actions{display:flex;align-items:center;gap:8px;flex-shrink:0}
+  .store-link{display:inline-flex;align-items:center;border:1px solid rgba(87,160,255,.38);border-radius:8px;padding:7px 10px;color:var(--cyan);font:600 10px var(--font-mono);letter-spacing:.08em;white-space:nowrap}
+  .store-link:hover{background:rgba(87,160,255,.1);border-color:var(--cyan);color:var(--text);text-decoration:none}
   .seg{display:inline-flex;border:1px solid var(--line-2);border-radius:8px;overflow:hidden;background:rgba(255,255,255,.02)}
   .seg button{border:0;background:transparent;padding:7px 10px;font:600 10px var(--font-mono);letter-spacing:.1em;color:var(--dim);cursor:pointer}
-  .seg button.on{background:rgba(247,185,85,.14);color:var(--cyan)}
+  .seg button.on{background:rgba(87,160,255,.14);color:var(--cyan)}
   .seg button:focus-visible{outline:2px solid var(--cyan);outline-offset:-2px}
   .icon-btn{border:1px solid var(--line-2);background:rgba(255,255,255,.02);border-radius:8px;padding:7px 11px;font:600 10px var(--font-mono);letter-spacing:.1em;color:var(--muted);cursor:pointer;display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
-  .icon-btn:hover{color:var(--cyan);border-color:rgba(247,185,85,.4)}
+  .icon-btn:hover{color:var(--cyan);border-color:rgba(87,160,255,.4)}
   .icon-btn svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:1.8}
   .jump{display:none;border:1px solid var(--line-2);background:var(--panel);color:var(--text);border-radius:8px;padding:7px 9px;font:600 10px var(--font-mono);letter-spacing:.08em}
 
@@ -78,29 +133,34 @@
   .eyebrow{display:inline-flex;align-items:center;gap:10px;font:600 10px var(--font-mono);letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:20px}
   .eyebrow i{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 14px var(--cyan);animation:pulse 2.6s infinite}
   @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
-  h1{font:800 clamp(54px,8.2vw,104px)/.86 var(--font-display);text-transform:uppercase;letter-spacing:.005em;margin:0 0 20px}
-  h1 .grad{background:linear-gradient(100deg,var(--cyan),var(--amber) 42%,var(--blue) 78%,#b33a1e);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 24px rgba(247,185,85,.20))}
-  .lede{max-width:620px;font-size:16.5px;color:#d9c9b8;margin:0 0 18px}
+  h1{font:700 clamp(54px,8.2vw,104px)/.96 var(--font-display);text-transform:uppercase;letter-spacing:.005em;margin:0 0 20px}
+  h1 .grad{background:linear-gradient(100deg,var(--cyan),var(--amber) 42%,var(--blue) 78%,#62236a);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 24px rgba(87,160,255,.20))}
+  .lede{max-width:620px;font-size:16.5px;color:#d0d0d0;margin:0 0 18px}
+  .hero-cta{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:0 0 22px}
+  .shop-button{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:10px 16px;border-radius:6px;background:var(--cyan);color:#101010;font:700 12px var(--font-body);letter-spacing:.02em}
+  .shop-button:hover{background:#96399e;color:#fff;text-decoration:none}
+  .store-note{font-size:12px;color:var(--muted)}
+  .store-note:hover{color:var(--cyan)}
   .hero-meta{display:flex;flex-wrap:wrap;gap:8px 18px;font:500 10.5px var(--font-mono);letter-spacing:.06em;color:var(--dim);margin-bottom:30px}
   .hero-meta span{display:inline-flex;align-items:center;gap:7px}
   .hero-meta span::before{content:"";width:4px;height:4px;border-radius:50%;background:var(--line-2)}
   .selector-label{font:600 9.5px var(--font-mono);letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin-bottom:9px}
   .chips{display:flex;flex-wrap:wrap;gap:8px}
   .chip{position:relative;border:1px solid var(--line-2);background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.01));border-radius:10px;padding:9px 13px 8px;cursor:pointer;text-align:left;transition:border-color .2s,background .2s,transform .2s}
-  .chip:hover{border-color:rgba(247,185,85,.45);transform:translateY(-1px)}
+  .chip:hover{border-color:rgba(87,160,255,.45);transform:translateY(-1px)}
   .chip .ci{display:block;font:700 19px/1 var(--font-display);letter-spacing:.03em}
   .chip .yr{display:block;font:500 8.5px var(--font-mono);letter-spacing:.08em;color:var(--dim);margin-top:4px}
-  .chip.on{border-color:var(--cyan);background:linear-gradient(180deg,rgba(247,185,85,.16),rgba(247,185,85,.04));box-shadow:0 0 0 1px rgba(247,185,85,.18),0 10px 30px -18px var(--cyan)}
+  .chip.on{border-color:var(--cyan);background:linear-gradient(180deg,rgba(87,160,255,.16),rgba(87,160,255,.04));box-shadow:0 0 0 1px rgba(87,160,255,.18),0 10px 30px -18px var(--cyan)}
   .chip.on .ci{color:var(--cyan)}
   .chip.on .yr{color:var(--muted)}
   .chip:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
 
   /* gauge */
   .gauge-card{position:relative;border:1px solid var(--line);border-radius:22px;background:linear-gradient(180deg,rgba(17,25,39,.92),rgba(9,13,20,.96));padding:20px 20px 16px;box-shadow:var(--shadow),inset 0 1px 0 rgba(255,255,255,.04);overflow:hidden}
-  .gauge-card::before{content:"";position:absolute;inset:0;background:radial-gradient(420px 240px at 50% 16%,rgba(247,185,85,.12),transparent 70%);pointer-events:none}
-  .gauge-card::after{content:"";position:absolute;left:16px;right:16px;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(247,185,85,.5),transparent)}
+  .gauge-card::before{content:"";position:absolute;inset:0;background:radial-gradient(420px 240px at 50% 16%,rgba(87,160,255,.12),transparent 70%);pointer-events:none}
+  .gauge-card::after{content:"";position:absolute;left:16px;right:16px;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(87,160,255,.5),transparent)}
   .gauge-top{display:flex;justify-content:space-between;align-items:center;position:relative;z-index:1;font:600 9px var(--font-mono);letter-spacing:.2em;text-transform:uppercase;color:var(--dim)}
-  .badge{display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(245,165,36,.35);background:rgba(245,165,36,.08);color:var(--amber);padding:4px 8px;border-radius:999px;font:600 8.5px var(--font-mono);letter-spacing:.14em}
+  .badge{display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(87,160,255,.35);background:rgba(87,160,255,.08);color:var(--amber);padding:4px 8px;border-radius:999px;font:600 8.5px var(--font-mono);letter-spacing:.14em}
   .badge::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--amber)}
   .gauge-svg{display:block;width:100%;max-width:430px;margin:2px auto -6px;position:relative;z-index:1}
   #needle{transform-origin:190px 190px;transform-box:view-box;transition:transform .9s cubic-bezier(.16,1,.3,1)}
@@ -128,12 +188,12 @@
   h2{font:700 clamp(30px,4.4vw,46px)/.98 var(--font-display);text-transform:uppercase;letter-spacing:.01em;margin:0}
   .sec-sub{max-width:740px;color:var(--muted);font-size:14.5px;margin:9px 0 0}
   .sec-head .aside{font:500 10px var(--font-mono);color:var(--dim);text-align:right;line-height:1.9;white-space:nowrap}
-  .panel{background:linear-gradient(180deg,rgba(17,25,39,.78),rgba(10,15,23,.9));border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)}
+  .panel{background:linear-gradient(180deg,rgba(17,25,39,.78),rgba(31,31,31,.9));border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)}
   .panel-pad{padding:20px}
 
   /* timeline */
   .timeline{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(210px,1fr);gap:12px;overflow-x:auto;padding:4px 4px 14px;scroll-snap-type:x mandatory}
-  .era{scroll-snap-align:start;position:relative;border:1px solid var(--line);border-radius:var(--r);padding:16px 15px 15px;min-height:184px;background:linear-gradient(180deg,rgba(17,25,39,.72),rgba(10,15,23,.9));box-shadow:var(--shadow)}
+  .era{scroll-snap-align:start;position:relative;border:1px solid var(--line);border-radius:var(--r);padding:16px 15px 15px;min-height:184px;background:linear-gradient(180deg,rgba(17,25,39,.72),rgba(31,31,31,.9));box-shadow:var(--shadow)}
   .era::before{content:"";position:absolute;left:15px;top:0;width:34px;height:2px;background:var(--cyan);opacity:.8}
   .era.minor{opacity:.72;border-style:dashed}
   .era .year{font:700 30px/1 var(--font-display);letter-spacing:.02em}
@@ -147,17 +207,17 @@
   .spec-table{min-width:940px}
   caption{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
   th,td{padding:12px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
-  thead th{position:sticky;top:0;z-index:2;background:#17100b;font:600 9.5px var(--font-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+  thead th{position:sticky;top:0;z-index:2;background:#1f1f1f;font:600 9.5px var(--font-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
   thead th:first-child{z-index:3}
-  tbody th{position:sticky;left:0;z-index:1;background:#17100b;font:500 10px var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);white-space:nowrap;min-width:150px}
+  tbody th{position:sticky;left:0;z-index:1;background:#1f1f1f;font:500 10px var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);white-space:nowrap;min-width:150px}
   tbody td{font:500 12px var(--font-mono);color:var(--text);white-space:nowrap}
   tbody tr:hover td{background:rgba(255,255,255,.018)}
   tbody tr:hover th{color:var(--text)}
-  th.is-active{color:var(--cyan)!important;background:rgba(247,185,85,.07)!important}
-  td.is-active{background:rgba(247,185,85,.055)!important;color:#fff3d6}
+  th.is-active{color:var(--cyan)!important;background:rgba(87,160,255,.07)!important}
+  td.is-active{background:rgba(87,160,255,.055)!important;color:#e6f1ff}
   .table-note{font:500 9.5px var(--font-mono);color:var(--dim);margin-top:9px;line-height:1.7}
   .table-note b{color:var(--muted);font-weight:600}
-  .tag{display:inline-block;font:600 8.5px var(--font-mono);letter-spacing:.1em;padding:2px 6px;border-radius:4px;background:rgba(247,185,85,.1);color:var(--cyan);border:1px solid rgba(247,185,85,.2);margin-left:6px;vertical-align:middle}
+  .tag{display:inline-block;font:600 8.5px var(--font-mono);letter-spacing:.1em;padding:2px 6px;border-radius:4px;background:rgba(87,160,255,.1);color:var(--cyan);border:1px solid rgba(87,160,255,.2);margin-left:6px;vertical-align:middle}
 
   /* power */
   .two-col{display:grid;grid-template-columns:1fr 1.12fr;gap:14px;align-items:start}
@@ -173,15 +233,15 @@
   .bars-head h3{font:600 15px var(--font-display);letter-spacing:.06em;text-transform:uppercase;margin:0}
   .rating-tabs{display:inline-flex;border:1px solid var(--line-2);border-radius:8px;overflow:hidden}
   .rating-tabs button{border:0;background:transparent;padding:6px 9px;font:600 8.5px var(--font-mono);letter-spacing:.1em;color:var(--dim);cursor:pointer;text-transform:uppercase}
-  .rating-tabs button.on{background:rgba(247,185,85,.14);color:var(--cyan)}
-  .bar-row{display:grid;grid-template-columns:168px 1fr 104px;gap:12px;align-items:center;padding:8px 0;border-bottom:1px solid rgba(28,39,56,.65)}
+  .rating-tabs button.on{background:rgba(87,160,255,.14);color:var(--cyan)}
+  .bar-row{display:grid;grid-template-columns:168px 1fr 104px;gap:12px;align-items:center;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.65)}
   .bar-row:last-child{border-bottom:0}
   .bar-label{font-size:11.5px;color:var(--text);line-height:1.25}
   .bar-label small{display:block;font:500 8.5px var(--font-mono);color:var(--dim);margin-top:2px;letter-spacing:.04em}
   .bar-tracks{display:grid;gap:4px}
-  .bar-track{height:6px;background:#24170f;border-radius:99px;overflow:hidden}
-  .bar-fill{height:100%;border-radius:99px;width:var(--w);background:linear-gradient(90deg,var(--blue),var(--cyan));box-shadow:0 0 12px rgba(247,185,85,.3)}
-  .bar-fill.tq{background:linear-gradient(90deg,#b45309,var(--amber));box-shadow:0 0 12px rgba(245,165,36,.25)}
+  .bar-track{height:6px;background:#303030;border-radius:99px;overflow:hidden}
+  .bar-fill{height:100%;border-radius:99px;width:var(--w);background:linear-gradient(90deg,var(--blue),var(--cyan));box-shadow:0 0 12px rgba(87,160,255,.3)}
+  .bar-fill.tq{background:linear-gradient(90deg,#64286f,var(--amber));box-shadow:0 0 12px rgba(87,160,255,.25)}
   .bar-vals{text-align:right;font:600 9.5px var(--font-mono);color:var(--muted);line-height:1.7}
   .bar-vals b{color:var(--cyan);font-weight:600}
   .bar-vals i{color:var(--amber);font-style:normal}
@@ -193,22 +253,22 @@
   /* blueprint */
   .bp-grid{display:grid;grid-template-columns:1.18fr .82fr;gap:14px;align-items:start}
   .drawing{padding:8px 8px 4px;position:relative;overflow:hidden}
-  .drawing .corner{position:absolute;width:14px;height:14px;border-color:rgba(247,185,85,.4);border-style:solid;pointer-events:none}
+  .drawing .corner{position:absolute;width:14px;height:14px;border-color:rgba(87,160,255,.4);border-style:solid;pointer-events:none}
   .drawing .c1{left:10px;top:10px;border-width:1px 0 0 1px}
   .drawing .c2{right:10px;top:10px;border-width:1px 1px 0 0}
   .drawing .c3{left:10px;bottom:10px;border-width:0 0 1px 1px}
   .drawing .c4{right:10px;bottom:10px;border-width:0 1px 1px 0}
   .bp-svg{display:block;width:100%;height:auto}
   .hotspot{cursor:pointer;outline:none}
-  .hotspot circle{fill:#17100b;stroke:var(--cyan);stroke-width:1.4;transition:fill .2s}
+  .hotspot circle{fill:#1f1f1f;stroke:var(--cyan);stroke-width:1.4;transition:fill .2s}
   .hotspot text{fill:var(--cyan);font:600 9px var(--font-mono);pointer-events:none;transition:fill .2s}
   .hotspot:hover circle,.hotspot:focus circle,.hotspot.active circle{fill:var(--cyan)}
-  .hotspot:hover text,.hotspot:focus text,.hotspot.active text{fill:#1a0f07}
+  .hotspot:hover text,.hotspot:focus text,.hotspot.active text{fill:#1b1b1b}
   .bp-detail{margin-top:4px;border-top:1px solid var(--line);padding:14px 12px 6px}
   .bp-detail .k{font:600 8.5px var(--font-mono);letter-spacing:.18em;text-transform:uppercase;color:var(--cyan)}
   .bp-detail h3{font:700 21px/1.1 var(--font-display);letter-spacing:.03em;text-transform:uppercase;margin:4px 0 6px}
   .bp-detail p{font-size:12.5px;color:var(--muted);margin:0 0 8px;min-height:54px}
-  .bp-detail .spec{display:inline-block;font:600 10px var(--font-mono);color:var(--amber);background:rgba(245,165,36,.07);border:1px solid rgba(245,165,36,.2);padding:4px 8px;border-radius:5px}
+  .bp-detail .spec{display:inline-block;font:600 10px var(--font-mono);color:var(--amber);background:rgba(87,160,255,.07);border:1px solid rgba(87,160,255,.2);padding:4px 8px;border-radius:5px}
   .mini{padding:14px 15px;margin-bottom:12px}
   .mini:last-child{margin-bottom:0}
   .mini-head{display:flex;justify-content:space-between;align-items:baseline;font:600 8.5px var(--font-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin-bottom:10px}
@@ -216,9 +276,9 @@
   .cmp-row{display:grid;grid-template-columns:44px 1fr 58px;gap:9px;align-items:center;margin-bottom:7px}
   .cmp-row span{font:600 9px var(--font-mono);color:var(--muted)}
   .cmp-row b{font:600 9.5px var(--font-mono);color:var(--text);text-align:right}
-  .cmp-track{height:7px;background:#24170f;border-radius:99px;overflow:hidden}
+  .cmp-track{height:7px;background:#303030;border-radius:99px;overflow:hidden}
   .cmp-track i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--blue),var(--cyan))}
-  .cmp-track i.amber{background:linear-gradient(90deg,#b45309,var(--amber))}
+  .cmp-track i.amber{background:linear-gradient(90deg,#64286f,var(--amber))}
   .mini-note{font:500 9px var(--font-mono);color:var(--dim);margin:7px 0 0;line-height:1.6}
   .journal-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
   .journal{display:flex;align-items:center;gap:9px;border:1px solid var(--line);border-radius:8px;padding:7px 8px;background:rgba(255,255,255,.015)}
@@ -230,57 +290,57 @@
   .toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:12px}
   .filter{display:inline-flex;gap:5px;flex-wrap:wrap}
   .fbtn{border:1px solid var(--line-2);background:rgba(255,255,255,.02);color:var(--muted);border-radius:7px;padding:6px 10px;font:600 8.5px var(--font-mono);letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
-  .fbtn:hover{border-color:rgba(247,185,85,.35);color:var(--text)}
-  .fbtn.on{background:rgba(247,185,85,.13);border-color:rgba(247,185,85,.4);color:var(--cyan)}
+  .fbtn:hover{border-color:rgba(87,160,255,.35);color:var(--text)}
+  .fbtn.on{background:rgba(87,160,255,.13);border-color:rgba(87,160,255,.4);color:var(--cyan)}
   .search{position:relative;margin-left:auto}
   .search input{width:210px;background:rgba(255,255,255,.025);border:1px solid var(--line-2);border-radius:7px;padding:7px 10px 7px 30px;color:var(--text);font:500 11px var(--font-mono);outline:none}
-  .search input:focus{border-color:rgba(247,185,85,.5);box-shadow:0 0 0 2px rgba(247,185,85,.12)}
+  .search input:focus{border-color:rgba(87,160,255,.5);box-shadow:0 0 0 2px rgba(87,160,255,.12)}
   .search svg{position:absolute;left:9px;top:50%;transform:translateY(-50%);width:13px;height:13px;stroke:var(--dim);fill:none;stroke-width:2}
   .torque-table{min-width:900px}
   .torque-table td:nth-child(2),.torque-table td:nth-child(3),.torque-table td:nth-child(4){font-variant-numeric:tabular-nums}
   .torque-table td:last-child{white-space:normal;font-family:var(--font-body);font-size:11.5px;color:var(--dim);min-width:190px;line-height:1.45}
   .tq-btn{border:1px solid transparent;background:transparent;color:var(--text);font:600 11.5px var(--font-mono);padding:3px 5px;border-radius:5px;cursor:copy;transition:background .15s,border-color .15s}
-  .tq-btn:hover{background:rgba(247,185,85,.1);border-color:rgba(247,185,85,.25);color:var(--cyan)}
+  .tq-btn:hover{background:rgba(87,160,255,.1);border-color:rgba(87,160,255,.25);color:var(--cyan)}
   .tq-btn:focus-visible{outline:2px solid var(--cyan);outline-offset:1px}
   .tq-btn.wide{color:var(--amber)}
-  .tq-btn.wide:hover{background:rgba(245,165,36,.08);border-color:rgba(245,165,36,.3);color:var(--amber)}
-  .torque-table tr[data-diff="1"] td{background:rgba(245,165,36,.028)}
-  .torque-table tr[data-diff="1"]:hover td{background:rgba(245,165,36,.05)}
+  .tq-btn.wide:hover{background:rgba(87,160,255,.08);border-color:rgba(87,160,255,.3);color:var(--amber)}
+  .torque-table tr[data-diff="1"] td{background:rgba(87,160,255,.028)}
+  .torque-table tr[data-diff="1"]:hover td{background:rgba(87,160,255,.05)}
   .torque-table tr.hide{display:none}
   .warn-box{display:flex;gap:12px;border:1px solid rgba(240,93,94,.28);background:rgba(240,93,94,.055);border-radius:10px;padding:12px 14px;margin-bottom:14px}
   .warn-box .ico{color:var(--red);font:700 14px var(--font-mono);line-height:1.3}
-  .warn-box p{margin:0;font-size:11.5px;color:#e8b9a8;line-height:1.6}
-  .warn-box b{color:#ffd6c9}
+  .warn-box p{margin:0;font-size:11.5px;color:#d8c9e8;line-height:1.6}
+  .warn-box b{color:#e7d8ee}
 
   /* assembly */
   .progress-card{display:flex;align-items:center;gap:16px;padding:13px 16px;margin-bottom:14px}
   .progress-card .lbl{font:600 8.5px var(--font-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--dim);white-space:nowrap}
-  .progress-track{flex:1;height:6px;background:#24170f;border-radius:99px;overflow:hidden}
-  .progress-fill{height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--blue),var(--cyan));box-shadow:0 0 12px rgba(247,185,85,.4);transition:width .35s}
+  .progress-track{flex:1;height:6px;background:#303030;border-radius:99px;overflow:hidden}
+  .progress-fill{height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--blue),var(--cyan));box-shadow:0 0 12px rgba(87,160,255,.4);transition:width .35s}
   .progress-count{font:600 10px var(--font-mono);color:var(--cyan);white-space:nowrap}
   .reset{border:0;background:transparent;color:var(--dim);font:500 9px var(--font-mono);letter-spacing:.08em;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
   .reset:hover{color:var(--muted)}
-  .stage{border:1px solid var(--line);border-radius:12px;background:linear-gradient(180deg,rgba(17,25,39,.62),rgba(10,15,23,.85));margin-bottom:9px;overflow:hidden;transition:border-color .2s}
-  .stage[open]{border-color:var(--line-2);background:linear-gradient(180deg,rgba(17,25,39,.82),rgba(10,15,23,.92))}
+  .stage{border:1px solid var(--line);border-radius:12px;background:linear-gradient(180deg,rgba(17,25,39,.62),rgba(31,31,31,.85));margin-bottom:9px;overflow:hidden;transition:border-color .2s}
+  .stage[open]{border-color:var(--line-2);background:linear-gradient(180deg,rgba(17,25,39,.82),rgba(31,31,31,.92))}
   .stage summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:40px 1fr auto 20px;gap:13px;align-items:center;padding:14px 17px}
   .stage summary::-webkit-details-marker{display:none}
   .stage summary:focus-visible{outline:2px solid var(--cyan);outline-offset:-2px}
-  .stage .num{width:32px;height:32px;border-radius:8px;border:1px solid var(--line-2);display:grid;place-items:center;font:700 13px var(--font-display);color:var(--cyan);background:rgba(247,185,85,.05)}
+  .stage .num{width:32px;height:32px;border-radius:8px;border:1px solid var(--line-2);display:grid;place-items:center;font:700 13px var(--font-display);color:var(--cyan);background:rgba(87,160,255,.05)}
   .stage .title{font:600 14.5px var(--font-body);letter-spacing:.01em}
   .stage .meta{font:500 8.5px var(--font-mono);color:var(--dim);letter-spacing:.1em;text-transform:uppercase;margin-top:2px}
   .stage .check{width:17px;height:17px;accent-color:var(--cyan);cursor:pointer}
   .stage .chev{width:15px;height:15px;stroke:var(--dim);fill:none;stroke-width:2;transition:transform .25s}
   .stage[open] .chev{transform:rotate(180deg);stroke:var(--cyan)}
-  .stage-body{padding:0 18px 18px 70px;border-top:1px solid rgba(28,39,56,.6);margin-top:0;padding-top:14px}
+  .stage-body{padding:0 18px 18px 70px;border-top:1px solid rgba(255,255,255,.6);margin-top:0;padding-top:14px}
   .stage-body ol{margin:0;padding-left:18px}
-  .stage-body li{font-size:12.5px;color:#d6c5b3;margin-bottom:7px;line-height:1.55}
+  .stage-body li{font-size:12.5px;color:#d0d0d0;margin-bottom:7px;line-height:1.55}
   .stage-body li::marker{color:var(--cyan);font-family:var(--font-mono);font-size:10px}
   .specs{display:flex;flex-wrap:wrap;gap:7px;margin:13px 0 0}
-  .spec{font:600 9.5px var(--font-mono);color:var(--cyan);background:rgba(247,185,85,.07);border:1px solid rgba(247,185,85,.18);padding:4px 8px;border-radius:5px}
+  .spec{font:600 9.5px var(--font-mono);color:var(--cyan);background:rgba(87,160,255,.07);border:1px solid rgba(87,160,255,.18);padding:4px 8px;border-radius:5px}
   .why{border-left:2px solid var(--amber);padding:6px 0 6px 11px;color:var(--muted);font-size:11.5px;margin:13px 0 0;line-height:1.6}
   .why b{color:var(--amber);font-weight:600}
   .seq-wrap{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
-  .seq{border:1px solid var(--line);border-radius:9px;padding:10px 10px 7px;background:rgba(4,8,14,.5)}
+  .seq{border:1px solid var(--line);border-radius:9px;padding:10px 10px 7px;background:rgba(13,13,13,.5)}
   .seq svg{display:block;width:100%;height:auto}
   .seq .cap{font:500 8.5px var(--font-mono);color:var(--dim);letter-spacing:.05em;margin-top:4px;line-height:1.5}
 
@@ -288,7 +348,7 @@
   .ref-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:14px;align-items:start}
   .fo-card{padding:16px}
   .fo-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  .fo{border:1px solid var(--line);border-radius:9px;padding:9px;background:rgba(4,8,14,.45)}
+  .fo{border:1px solid var(--line);border-radius:9px;padding:9px;background:rgba(13,13,13,.45)}
   .fo svg{display:block;width:100%;height:auto}
   .fo h4{font:600 11px var(--font-display);letter-spacing:.08em;text-transform:uppercase;margin:2px 0 0;color:var(--text)}
   .fo .order{font:600 8.5px var(--font-mono);color:var(--cyan);letter-spacing:.02em;margin-top:2px;word-spacing:2px}
@@ -302,11 +362,11 @@
 
   /* sources */
   .sources{display:grid;grid-template-columns:1fr 1fr;gap:8px 22px;padding:20px}
-  .sources a{display:block;font-size:12px;color:var(--muted);padding:7px 0;border-bottom:1px solid rgba(28,39,56,.6);line-height:1.45}
+  .sources a{display:block;font-size:12px;color:var(--muted);padding:7px 0;border-bottom:1px solid rgba(255,255,255,.6);line-height:1.45}
   .sources a:hover{color:var(--cyan);text-decoration:none}
   .sources a b{display:block;color:var(--text);font-weight:500;font-size:12.5px;margin-bottom:1px}
-  .disclaimer{border:1px solid rgba(245,165,36,.25);background:rgba(245,165,36,.05);border-radius:var(--r);padding:16px 18px;margin-top:14px}
-  .disclaimer p{margin:0;font-size:11.5px;color:#d8c49c;line-height:1.65}
+  .disclaimer{border:1px solid rgba(87,160,255,.25);background:rgba(87,160,255,.05);border-radius:var(--r);padding:16px 18px;margin-top:14px}
+  .disclaimer p{margin:0;font-size:11.5px;color:#b8b8b8;line-height:1.65}
   .disclaimer b{color:var(--amber)}
 
   footer{border-top:1px solid var(--line);margin-top:70px;padding:26px 0 40px;position:relative;z-index:1}
@@ -314,7 +374,7 @@
   .foot-inner b{color:var(--muted);font-weight:600}
 
   /* toast */
-  .toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);background:#17100b;border:1px solid rgba(247,185,85,.4);color:var(--cyan);padding:9px 15px;border-radius:8px;font:600 10px var(--font-mono);letter-spacing:.06em;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:150;box-shadow:0 20px 50px -20px #000}
+  .toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);background:#1f1f1f;border:1px solid rgba(87,160,255,.4);color:var(--cyan);padding:9px 15px;border-radius:8px;font:600 10px var(--font-mono);letter-spacing:.06em;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:150;box-shadow:0 20px 50px -20px #000}
   .toast.show{opacity:1;transform:translate(-50%,0)}
 
   /* print card */
@@ -323,17 +383,17 @@
     @page{size:letter portrait;margin:12mm}
     body{background:#fff;color:#111;font-size:11px}
     body::before,.scrollbar,.topbar,.skip,.hero,.kpis,.sec,.toast,footer:not(.pc-foot),#main{display:none!important}
-    .print-card{display:block!important;color:#111;font-family:'Inter',Arial,sans-serif}
+    .print-card{display:block!important;color:#111;font-family:'Lato',Arial,sans-serif}
     .pc-head{display:flex;justify-content:space-between;gap:18px;border-bottom:2px solid #111;padding-bottom:8px;margin-bottom:10px}
     .pc-kicker{font:600 8px 'JetBrains Mono',monospace;letter-spacing:.18em;text-transform:uppercase;color:#555}
-    .pc-head h1{font:700 24px/1 'Barlow Condensed',Arial,sans-serif;text-transform:uppercase;margin:3px 0 2px}
+    .pc-head h1{font:700 24px/1 'Poppins',Arial,sans-serif;text-transform:uppercase;margin:3px 0 2px}
     .pc-head p{font-size:9px;color:#555;margin:0}
     .pc-fo{text-align:right;white-space:nowrap}
     .pc-fo span{display:block;font:600 7px 'JetBrains Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:#555}
     .pc-fo b{display:block;font:700 17px 'JetBrains Mono',monospace;margin:2px 0}
     .pc-fo small{font-size:7.5px;color:#555}
     .pc-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:16px}
-    .pc-block h2{font:700 11px 'Barlow Condensed',Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;border-bottom:1px solid #bbb;padding-bottom:2px;margin:0 0 5px}
+    .pc-block h2{font:700 11px 'Poppins',Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;border-bottom:1px solid #bbb;padding-bottom:2px;margin:0 0 5px}
     .pc-block table{border-collapse:collapse;width:100%}
     .pc-block th,.pc-block td{padding:3.5px 4px;border-bottom:1px solid #ddd;text-align:left;font-size:9px;white-space:nowrap}
     .pc-block th{font-weight:600;color:#333;width:34%}
@@ -353,6 +413,7 @@
   }
   @media (max-width:900px){
     .nav-links{display:none}
+    .store-link{display:none}
     .jump{display:block}
     .kpis{grid-template-columns:1fr 1fr}
     .sec-head{flex-direction:column;align-items:flex-start;gap:12px}
@@ -403,7 +464,7 @@
   .trouble-table td:first-child{font-family:var(--font-mono);font-size:10.5px;color:var(--amber);white-space:nowrap;min-width:150px}
   .trouble-table td:nth-child(2){color:var(--muted)}
   .stack-wrap{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
-  .stack{border:1px solid var(--line);border-radius:9px;padding:10px 10px 7px;background:rgba(4,8,14,.5)}
+  .stack{border:1px solid var(--line);border-radius:9px;padding:10px 10px 7px;background:rgba(13,13,13,.5)}
   .stack svg{display:block;width:100%;height:auto}
   .stack .cap{font:500 8.5px var(--font-mono);color:var(--dim);letter-spacing:.05em;margin-top:4px;line-height:1.5}
   .inline-note{font:500 9.5px var(--font-mono);color:var(--dim);line-height:1.7;margin-top:10px}
@@ -421,9 +482,9 @@
 
 <header class="topbar">
   <div class="nav-inner">
-    <a class="brand" href="#top" aria-label="Mazda 13B turbo technical reference, back to top">
+    <a class="brand" href="#top" aria-label="Teals Unltd. 13B-T technical reference, back to top">
       <span class="brand-mark" aria-hidden="true"><span>13B</span></span>
-      <span class="brand-text"><b>13B // Tech</b><small>FC Rotary Reference</small></span>
+      <span class="brand-text"><b>Teals Unltd.</b><small>13B-T TECH LIBRARY</small></span>
     </a>
     <nav class="nav-links" aria-label="Sections">
       <a class="nav-link" href="#family">Family</a>
@@ -435,6 +496,7 @@
       <a class="nav-link" href="#reference">Reference</a>
     </nav>
     <div class="nav-actions">
+      <a class="store-link" href="https://www.tealsunltd.com/category/powertrain-engine">Shop Teals Unltd.</a>
       <select class="jump" id="jump" aria-label="Jump to section">
         <option value="#family">Family</option>
         <option value="#specs">Specs</option>
@@ -461,7 +523,11 @@
     <div>
       <div class="eyebrow"><i></i>FC3S · 1986–1991 · 13B-T</div>
       <h1>Mazda<br>13B <span class="grad">Turbo</span></h1>
-      <p class="lede">The twin-rotor that made the FC RX-7 a giant-killer. Series 4 and Series 5 specs, the boost and compression changes that separate them, blueprint geometry, torque values, and a rebuild sequence — organized for the garage, not the forum.</p>
+      <p class="lede">The Mazda 13B-T turbo rotary engine powered the 1986–1991 FC RX-7 Turbo II. Compare Series 4 and Series 5 factory specifications, then reference boost, compression, torque values, rotor geometry, and rebuild steps — organized for the garage.</p>
+      <div class="hero-cta">
+        <a class="shop-button" href="https://www.tealsunltd.com/category/powertrain-engine">Shop RX-7 rotary parts</a>
+        <a class="store-note" href="https://www.tealsunltd.com/">Visit the Teals Unltd. store</a>
+      </div>
       <div class="hero-meta">
         <span>2-rotor Wankel · 654 cc × 2</span>
         <span>Single turbo · 8.5:1 / 9.0:1</span>
@@ -485,19 +551,19 @@
         <desc id="gaugeDesc">Needle shows the selected 13B turbo's US factory rating against a 240 horsepower scale.</desc>
         <defs>
           <linearGradient id="gaugeGrad" x1="0" y1="1" x2="1" y2="0">
-            <stop offset="0" stop-color="#b33a1e"/><stop offset=".52" stop-color="#e2582a"/><stop offset="1" stop-color="#f7b955"/>
+            <stop offset="0" stop-color="#62236a"/><stop offset=".52" stop-color="#96399e"/><stop offset="1" stop-color="#57a0ff"/>
           </linearGradient>
           <filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
         </defs>
-        <path d="M77.4 255 A130 130 0 1 1 302.6 255" fill="none" stroke="#2a1c12" stroke-width="14" stroke-linecap="round"/>
+        <path d="M77.4 255 A130 130 0 1 1 302.6 255" fill="none" stroke="#2b2b2b" stroke-width="14" stroke-linecap="round"/>
         <path id="gaugeArc" d="M77.4 255 A130 130 0 1 1 302.6 255" fill="none" stroke="url(#gaugeGrad)" stroke-width="14" stroke-linecap="round" pathLength="100" stroke-dasharray="0 100" filter="url(#glow)"/>
         <g id="gaugeTicks"></g>
-        <line id="needle" x1="190" y1="190" x2="190" y2="74" stroke="#f6ede2" stroke-width="2.2" stroke-linecap="round"/>
-        <circle cx="190" cy="190" r="9" fill="#17100b" stroke="#f7b955" stroke-width="2"/>
-        <circle cx="190" cy="190" r="3" fill="#f7b955"/>
-        <text id="gaugeHp" x="190" y="236" text-anchor="middle" fill="#f6ede2" font-family="'Barlow Condensed',sans-serif" font-size="58" font-weight="700">182</text>
-        <text id="gaugeUnit" x="190" y="256" text-anchor="middle" fill="#927b65" font-family="'JetBrains Mono',monospace" font-size="9" letter-spacing="3">BHP</text>
-        <text id="gaugeRpm" x="190" y="276" text-anchor="middle" fill="#bda994" font-family="'JetBrains Mono',monospace" font-size="9">@ 6,500 RPM</text>
+        <line id="needle" x1="190" y1="190" x2="190" y2="74" stroke="#e5e5e5" stroke-width="2.2" stroke-linecap="round"/>
+        <circle cx="190" cy="190" r="9" fill="#1f1f1f" stroke="#57a0ff" stroke-width="2"/>
+        <circle cx="190" cy="190" r="3" fill="#57a0ff"/>
+        <text id="gaugeHp" x="190" y="236" text-anchor="middle" fill="#e5e5e5" font-family="'Poppins',sans-serif" font-size="58" font-weight="700">182</text>
+        <text id="gaugeUnit" x="190" y="256" text-anchor="middle" fill="#858585" font-family="'JetBrains Mono',monospace" font-size="9" letter-spacing="3">BHP</text>
+        <text id="gaugeRpm" x="190" y="276" text-anchor="middle" fill="#b8b8b8" font-family="'JetBrains Mono',monospace" font-size="9">@ 6,500 RPM</text>
       </svg>
       <div class="gauge-foot">
         <div><div class="k">Torque</div><div class="v amber" id="gaugeTq">183 lb-ft</div></div>
@@ -611,7 +677,7 @@
           <div class="bar-label">Peak power<small>hp @ 6,500 rpm</small></div>
           <div class="bar-tracks">
             <div class="bar-track"><div class="bar-fill" style="--w:75.8%"></div></div>
-            <div class="bar-track"><div class="bar-fill" style="--w:83.3%;background:linear-gradient(90deg,#8f2d17,#e2582a)"></div></div>
+            <div class="bar-track"><div class="bar-fill" style="--w:83.3%;background:linear-gradient(90deg,#62236a,#96399e)"></div></div>
           </div>
           <div class="bar-vals"><b>182</b><br><i>200</i></div>
         </div>
@@ -619,7 +685,7 @@
           <div class="bar-label">Peak torque<small>lb-ft @ 3,500 rpm</small></div>
           <div class="bar-tracks">
             <div class="bar-track"><div class="bar-fill tq" style="--w:83.2%"></div></div>
-            <div class="bar-track"><div class="bar-fill tq" style="--w:89.1%;background:linear-gradient(90deg,#8f2d17,#ff8a4c)"></div></div>
+            <div class="bar-track"><div class="bar-fill tq" style="--w:89.1%;background:linear-gradient(90deg,#62236a,#96399e)"></div></div>
           </div>
           <div class="bar-vals"><b>183</b><br><i>196</i></div>
         </div>
@@ -627,7 +693,7 @@
           <div class="bar-label">Factory boost<small>psi, wastegate setting</small></div>
           <div class="bar-tracks">
             <div class="bar-track"><div class="bar-fill" style="--w:55%"></div></div>
-            <div class="bar-track"><div class="bar-fill" style="--w:75%;background:linear-gradient(90deg,#8f2d17,#e2582a)"></div></div>
+            <div class="bar-track"><div class="bar-fill" style="--w:75%;background:linear-gradient(90deg,#62236a,#96399e)"></div></div>
           </div>
           <div class="bar-vals"><b>5.5</b><br><i>7.5</i></div>
         </div>
@@ -635,11 +701,11 @@
           <div class="bar-label">Compression<small>static ratio</small></div>
           <div class="bar-tracks">
             <div class="bar-track"><div class="bar-fill" style="--w:85%"></div></div>
-            <div class="bar-track"><div class="bar-fill" style="--w:90%;background:linear-gradient(90deg,#8f2d17,#e2582a)"></div></div>
+            <div class="bar-track"><div class="bar-fill" style="--w:90%;background:linear-gradient(90deg,#62236a,#96399e)"></div></div>
           </div>
           <div class="bar-vals"><b>8.5</b><br><i>9.0</i></div>
         </div>
-        <div class="legend"><span><i style="background:linear-gradient(90deg,#e2582a,#f7b955)"></i>Series 4</span><span><i style="background:linear-gradient(90deg,#8f2d17,#e2582a)"></i>Series 5</span></div>
+        <div class="legend"><span><i style="background:linear-gradient(90deg,#96399e,#57a0ff)"></i>Series 4</span><span><i style="background:linear-gradient(90deg,#62236a,#96399e)"></i>Series 5</span></div>
         <p class="caveat">Bars are scaled to 240 hp / 220 lb-ft / 10 psi / 10:1 so the series differences are visible. They are not a dyno plot.</p>
       </div>
     </div>
@@ -650,10 +716,10 @@
       </div>
       <svg class="chart-svg" id="powerChart" viewBox="0 0 760 300" role="img" aria-label="Representative power and torque curves for Series 4 and Series 5 13B turbo engines"></svg>
       <div class="chart-legend">
-        <span><i style="background:#f7b955"></i>S4 power</span>
-        <span><i style="background:#e2582a"></i>S5 power</span>
-        <span><i style="background:#ffd166"></i>S4 torque</span>
-        <span><i style="background:#b33a1e"></i>S5 torque</span>
+        <span><i style="background:#57a0ff"></i>S4 power</span>
+        <span><i style="background:#96399e"></i>S5 power</span>
+        <span><i style="background:#a5ccff"></i>S4 torque</span>
+        <span><i style="background:#62236a"></i>S5 torque</span>
       </div>
     </div>
     <p class="table-note"><b>Shape, not gospel.</b> These curves are representative of a healthy stock engine on a chassis dyno. Real numbers move with intake temperature, fuel, altitude, and the condition of the turbo and seals. Use them to understand the spread between series, not to calibrate a tune.</p>
@@ -676,39 +742,39 @@
           <desc id="bpDesc">A two-lobe rotor housing containing a three-flank rotor, with numbered hotspots for the housing, apex seal, side seal, corner seal, eccentric shaft, stationary gear, tension bolt and rotor bearing.</desc>
           <defs>
             <radialGradient id="rotorGrad" cx="42%" cy="38%" r="70%">
-              <stop offset="0" stop-color="#2c1c12"/><stop offset="1" stop-color="#160e09"/>
+              <stop offset="0" stop-color="#2b2b2b"/><stop offset="1" stop-color="#0d0d0d"/>
             </radialGradient>
             <linearGradient id="housingGrad" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stop-color="#24170f"/><stop offset="1" stop-color="#120b07"/>
+              <stop offset="0" stop-color="#303030"/><stop offset="1" stop-color="#0d0d0d"/>
             </linearGradient>
           </defs>
-          <path id="housingPath" fill="url(#housingGrad)" stroke="#5c3a23" stroke-width="3"/>
-          <path id="housingSeal" fill="none" stroke="rgba(247,185,85,.22)" stroke-width="12" stroke-linejoin="round"/>
+          <path id="housingPath" fill="url(#housingGrad)" stroke="#5b5b5b" stroke-width="3"/>
+          <path id="housingSeal" fill="none" stroke="rgba(87,160,255,.22)" stroke-width="12" stroke-linejoin="round"/>
           <g id="stationaryGear" opacity=".7">
-            <circle cx="260" cy="210" r="55" fill="none" stroke="#927b65" stroke-width="1.2" stroke-dasharray="3 4"/>
-            <circle cx="260" cy="210" r="47" fill="none" stroke="#5c3a23" stroke-width="1"/>
+            <circle cx="260" cy="210" r="55" fill="none" stroke="#858585" stroke-width="1.2" stroke-dasharray="3 4"/>
+            <circle cx="260" cy="210" r="47" fill="none" stroke="#5b5b5b" stroke-width="1"/>
           </g>
-          <g id="tensionBolts" fill="#24170f" stroke="#927b65" stroke-width="1.4">
+          <g id="tensionBolts" fill="#303030" stroke="#858585" stroke-width="1.4">
             <circle cx="260" cy="34" r="5.5"/><circle cx="412.4" cy="122" r="5.5"/><circle cx="412.4" cy="298" r="5.5"/>
             <circle cx="260" cy="386" r="5.5"/><circle cx="107.6" cy="298" r="5.5"/><circle cx="107.6" cy="122" r="5.5"/>
           </g>
-          <polygon points="260,112 344.9,259 175.1,259" fill="url(#rotorGrad)" stroke="#f7b955" stroke-width="10" stroke-linejoin="round"/>
-          <polygon points="260,124 334.9,253 185.1,253" fill="none" stroke="rgba(247,185,85,.28)" stroke-width="1.4" stroke-linejoin="round"/>
-          <line x1="252" y1="122" x2="336" y2="262" stroke="#ffd166" stroke-width="2.2" stroke-dasharray="7 4"/>
-          <line x1="268" y1="122" x2="184" y2="262" stroke="#ffd166" stroke-width="2.2" stroke-dasharray="7 4"/>
-          <line x1="190" y1="250" x2="330" y2="250" stroke="#ffd166" stroke-width="2.2" stroke-dasharray="7 4"/>
-          <g fill="#ffd166">
+          <polygon points="260,112 344.9,259 175.1,259" fill="url(#rotorGrad)" stroke="#57a0ff" stroke-width="10" stroke-linejoin="round"/>
+          <polygon points="260,124 334.9,253 185.1,253" fill="none" stroke="rgba(87,160,255,.28)" stroke-width="1.4" stroke-linejoin="round"/>
+          <line x1="252" y1="122" x2="336" y2="262" stroke="#a5ccff" stroke-width="2.2" stroke-dasharray="7 4"/>
+          <line x1="268" y1="122" x2="184" y2="262" stroke="#a5ccff" stroke-width="2.2" stroke-dasharray="7 4"/>
+          <line x1="190" y1="250" x2="330" y2="250" stroke="#a5ccff" stroke-width="2.2" stroke-dasharray="7 4"/>
+          <g fill="#a5ccff">
             <circle cx="250" cy="121" r="3"/><circle cx="270" cy="121" r="3"/>
             <circle cx="336" cy="250" r="3"/><circle cx="338" cy="266" r="3"/>
             <circle cx="184" cy="250" r="3"/><circle cx="182" cy="266" r="3"/>
           </g>
-          <g fill="#f7b955" stroke="#7a4a1e" stroke-width="1">
+          <g fill="#57a0ff" stroke="#70307a" stroke-width="1">
             <circle cx="260" cy="112" r="5.5"/><circle cx="344.9" cy="259" r="5.5"/><circle cx="175.1" cy="259" r="5.5"/>
           </g>
-          <circle cx="260" cy="210" r="24" fill="#24160e" stroke="#e2582a" stroke-width="2"/>
-          <circle cx="260" cy="210" r="18" fill="none" stroke="#f7b955" stroke-width="1.2" stroke-dasharray="3 3"/>
-          <circle cx="260" cy="198" r="11" fill="#e2582a" opacity=".75"/>
-          <circle cx="260" cy="210" r="4" fill="#f6ede2"/>
+          <circle cx="260" cy="210" r="24" fill="#303030" stroke="#96399e" stroke-width="2"/>
+          <circle cx="260" cy="210" r="18" fill="none" stroke="#57a0ff" stroke-width="1.2" stroke-dasharray="3 3"/>
+          <circle cx="260" cy="198" r="11" fill="#96399e" opacity=".75"/>
+          <circle cx="260" cy="210" r="4" fill="#e5e5e5"/>
           <g class="hotspot" data-part="housing" tabindex="0" role="button" aria-label="Rotor housing"><circle cx="260" cy="58" r="13"/><text x="260" y="61.5" text-anchor="middle">1</text></g>
           <g class="hotspot" data-part="apex" tabindex="0" role="button" aria-label="Apex seal"><circle cx="306" cy="98" r="13"/><text x="306" y="101.5" text-anchor="middle">2</text></g>
           <g class="hotspot" data-part="side" tabindex="0" role="button" aria-label="Side seal"><circle cx="398" cy="238" r="13"/><text x="398" y="241.5" text-anchor="middle">3</text></g>
@@ -717,8 +783,8 @@
           <g class="hotspot" data-part="stationary" tabindex="0" role="button" aria-label="Stationary gear"><circle cx="196" cy="160" r="13"/><text x="196" y="163.5" text-anchor="middle">6</text></g>
           <g class="hotspot" data-part="tension" tabindex="0" role="button" aria-label="Tension bolt"><circle cx="432" cy="122" r="13"/><text x="432" y="125.5" text-anchor="middle">7</text></g>
           <g class="hotspot" data-part="bearing" tabindex="0" role="button" aria-label="Rotor bearing"><circle cx="220" cy="246" r="13"/><text x="220" y="249.5" text-anchor="middle">8</text></g>
-          <text x="18" y="400" fill="#927b65" font-family="'JetBrains Mono',monospace" font-size="8" letter-spacing="1.5">SCHEMATIC — NOT TO SCALE</text>
-          <text x="502" y="400" fill="#927b65" font-family="'JetBrains Mono',monospace" font-size="8" letter-spacing="1.5" text-anchor="end">13B · 654 cc/ROTOR</text>
+          <text x="18" y="400" fill="#858585" font-family="'JetBrains Mono',monospace" font-size="8" letter-spacing="1.5">SCHEMATIC — NOT TO SCALE</text>
+          <text x="502" y="400" fill="#858585" font-family="'JetBrains Mono',monospace" font-size="8" letter-spacing="1.5" text-anchor="end">13B · 654 cc/ROTOR</text>
         </svg>
         <div class="bp-detail" id="bpDetail">
           <div class="k" id="bpKicker">Component 01</div>
@@ -1001,35 +1067,35 @@
     <div class="stack-wrap">
       <div class="stack">
         <svg viewBox="0 0 300 200" role="img" aria-label="Tension bolt crisscross pattern for six bolts">
-          <text x="150" y="16" text-anchor="middle" fill="#927b65" font-family="'JetBrains Mono',monospace" font-size="8" letter-spacing="1.5">TENSION BOLTS — 6 TOTAL</text>
-          <line x1="150" y1="40" x2="150" y2="160" stroke="#5c3a23" stroke-width="1" stroke-dasharray="4 4"/>
-          <line x1="202" y1="70" x2="98" y2="130" stroke="#5c3a23" stroke-width="1" stroke-dasharray="4 4"/>
-          <line x1="202" y1="130" x2="98" y2="70" stroke="#5c3a23" stroke-width="1" stroke-dasharray="4 4"/>
+          <text x="150" y="16" text-anchor="middle" fill="#858585" font-family="'JetBrains Mono',monospace" font-size="8" letter-spacing="1.5">TENSION BOLTS — 6 TOTAL</text>
+          <line x1="150" y1="40" x2="150" y2="160" stroke="#5b5b5b" stroke-width="1" stroke-dasharray="4 4"/>
+          <line x1="202" y1="70" x2="98" y2="130" stroke="#5b5b5b" stroke-width="1" stroke-dasharray="4 4"/>
+          <line x1="202" y1="130" x2="98" y2="70" stroke="#5b5b5b" stroke-width="1" stroke-dasharray="4 4"/>
           <g font-family="'JetBrains Mono',monospace" font-size="10" text-anchor="middle">
-            <circle cx="150" cy="40" r="13" fill="#17100b" stroke="#f7b955" stroke-width="1.5"/><text x="150" y="44" fill="#f7b955">1</text>
-            <circle cx="202" cy="70" r="13" fill="#17100b" stroke="#f7b955" stroke-width="1.5"/><text x="202" y="74" fill="#f7b955">2</text>
-            <circle cx="202" cy="130" r="13" fill="#17100b" stroke="#f7b955" stroke-width="1.5"/><text x="202" y="134" fill="#f7b955">3</text>
-            <circle cx="150" cy="160" r="13" fill="#17100b" stroke="#f7b955" stroke-width="1.5"/><text x="150" y="164" fill="#f7b955">4</text>
-            <circle cx="98" cy="130" r="13" fill="#17100b" stroke="#f7b955" stroke-width="1.5"/><text x="98" y="134" fill="#f7b955">5</text>
-            <circle cx="98" cy="70" r="13" fill="#17100b" stroke="#f7b955" stroke-width="1.5"/><text x="98" y="74" fill="#f7b955">6</text>
+            <circle cx="150" cy="40" r="13" fill="#1f1f1f" stroke="#57a0ff" stroke-width="1.5"/><text x="150" y="44" fill="#57a0ff">1</text>
+            <circle cx="202" cy="70" r="13" fill="#1f1f1f" stroke="#57a0ff" stroke-width="1.5"/><text x="202" y="74" fill="#57a0ff">2</text>
+            <circle cx="202" cy="130" r="13" fill="#1f1f1f" stroke="#57a0ff" stroke-width="1.5"/><text x="202" y="134" fill="#57a0ff">3</text>
+            <circle cx="150" cy="160" r="13" fill="#1f1f1f" stroke="#57a0ff" stroke-width="1.5"/><text x="150" y="164" fill="#57a0ff">4</text>
+            <circle cx="98" cy="130" r="13" fill="#1f1f1f" stroke="#57a0ff" stroke-width="1.5"/><text x="98" y="134" fill="#57a0ff">5</text>
+            <circle cx="98" cy="70" r="13" fill="#1f1f1f" stroke="#57a0ff" stroke-width="1.5"/><text x="98" y="74" fill="#57a0ff">6</text>
           </g>
-          <text x="150" y="190" text-anchor="middle" fill="#bda994" font-family="'JetBrains Mono',monospace" font-size="8">1↔4 · 2↔5 · 3↔6 · three passes</text>
+          <text x="150" y="190" text-anchor="middle" fill="#b8b8b8" font-family="'JetBrains Mono',monospace" font-size="8">1↔4 · 2↔5 · 3↔6 · three passes</text>
         </svg>
         <div class="cap">Tension bolt pattern. Alternate opposite pairs and bring the stack down evenly — confirm the factory sequence in the FSM.</div>
       </div>
       <div class="stack">
         <svg viewBox="0 0 300 200" role="img" aria-label="Exploded stack order for a 13B rotary engine">
-          <text x="150" y="14" text-anchor="middle" fill="#927b65" font-family="'JetBrains Mono',monospace" font-size="8" letter-spacing="1.5">STACK ORDER — FRONT TO REAR</text>
+          <text x="150" y="14" text-anchor="middle" fill="#858585" font-family="'JetBrains Mono',monospace" font-size="8" letter-spacing="1.5">STACK ORDER — FRONT TO REAR</text>
           <g font-family="'JetBrains Mono',monospace" font-size="8">
-            <rect x="28" y="24" width="112" height="18" rx="3" fill="#24170f" stroke="#5c3a23"/><text x="84" y="36" text-anchor="middle" fill="#bda994">FRONT COVER</text>
-            <rect x="28" y="50" width="112" height="18" rx="3" fill="#1d150e" stroke="#5c3a23"/><text x="84" y="62" text-anchor="middle" fill="#bda994">FRONT SIDE PLATE</text>
-            <rect x="28" y="76" width="112" height="22" rx="3" fill="#2c1c12" stroke="#f7b955"/><text x="84" y="90" text-anchor="middle" fill="#f7b955">ROTOR HOUSING + ROTOR</text>
-            <rect x="28" y="106" width="112" height="22" rx="3" fill="#2c1c12" stroke="#f7b955"/><text x="84" y="120" text-anchor="middle" fill="#f7b955">ROTOR HOUSING + ROTOR</text>
-            <rect x="28" y="136" width="112" height="18" rx="3" fill="#1d150e" stroke="#5c3a23"/><text x="84" y="148" text-anchor="middle" fill="#bda994">REAR SIDE PLATE</text>
-            <rect x="28" y="162" width="112" height="18" rx="3" fill="#24170f" stroke="#5c3a23"/><text x="84" y="174" text-anchor="middle" fill="#bda994">REAR COVER</text>
-            <text x="156" y="90" fill="#927b65">← front</text>
-            <text x="156" y="120" fill="#927b65">rear →</text>
-            <text x="156" y="148" fill="#927b65">dowels</text>
+            <rect x="28" y="24" width="112" height="18" rx="3" fill="#303030" stroke="#5b5b5b"/><text x="84" y="36" text-anchor="middle" fill="#b8b8b8">FRONT COVER</text>
+            <rect x="28" y="50" width="112" height="18" rx="3" fill="#252525" stroke="#5b5b5b"/><text x="84" y="62" text-anchor="middle" fill="#b8b8b8">FRONT SIDE PLATE</text>
+            <rect x="28" y="76" width="112" height="22" rx="3" fill="#2b2b2b" stroke="#57a0ff"/><text x="84" y="90" text-anchor="middle" fill="#57a0ff">ROTOR HOUSING + ROTOR</text>
+            <rect x="28" y="106" width="112" height="22" rx="3" fill="#2b2b2b" stroke="#57a0ff"/><text x="84" y="120" text-anchor="middle" fill="#57a0ff">ROTOR HOUSING + ROTOR</text>
+            <rect x="28" y="136" width="112" height="18" rx="3" fill="#252525" stroke="#5b5b5b"/><text x="84" y="148" text-anchor="middle" fill="#b8b8b8">REAR SIDE PLATE</text>
+            <rect x="28" y="162" width="112" height="18" rx="3" fill="#303030" stroke="#5b5b5b"/><text x="84" y="174" text-anchor="middle" fill="#b8b8b8">REAR COVER</text>
+            <text x="156" y="90" fill="#858585">← front</text>
+            <text x="156" y="120" fill="#858585">rear →</text>
+            <text x="156" y="148" fill="#858585">dowels</text>
           </g>
         </svg>
         <div class="cap">Dry-stack first. Sealant goes on the side housings only where the FSM specifies, then the tension bolts clamp the whole sandwich.</div>
@@ -1050,30 +1116,30 @@
       <div class="panel fo-card">
         <div class="mini-head"><span>Ignition &amp; firing</span><b>2 rotors · 4 plugs</b></div>
         <svg viewBox="0 0 420 250" role="img" aria-label="13B leading and trailing spark plug layout for two rotors" style="display:block;width:100%;height:auto">
-          <text x="210" y="14" text-anchor="middle" fill="#927b65" font-family="'JetBrains Mono',monospace" font-size="8" letter-spacing="1.5">TRAILING (TOP) · LEADING (BOTTOM)</text>
-          <g stroke="#5c3a23" stroke-width="1.2" stroke-dasharray="4 4">
+          <text x="210" y="14" text-anchor="middle" fill="#858585" font-family="'JetBrains Mono',monospace" font-size="8" letter-spacing="1.5">TRAILING (TOP) · LEADING (BOTTOM)</text>
+          <g stroke="#5b5b5b" stroke-width="1.2" stroke-dasharray="4 4">
             <line x1="110" y1="48" x2="110" y2="70"/><line x1="110" y1="180" x2="110" y2="202"/>
             <line x1="310" y1="48" x2="310" y2="70"/><line x1="310" y1="180" x2="310" y2="202"/>
           </g>
-          <circle cx="110" cy="125" r="60" fill="#17100b" stroke="#5c3a23" stroke-width="1.5"/>
-          <polygon points="110,85 145,145 75,145" fill="none" stroke="#f7b955" stroke-width="2" stroke-linejoin="round"/>
-          <text x="110" y="130" text-anchor="middle" fill="#bda994" font-family="'JetBrains Mono',monospace" font-size="10">R1</text>
-          <circle cx="310" cy="125" r="60" fill="#17100b" stroke="#5c3a23" stroke-width="1.5"/>
-          <polygon points="310,85 345,145 275,145" fill="none" stroke="#f7b955" stroke-width="2" stroke-linejoin="round"/>
-          <text x="310" y="130" text-anchor="middle" fill="#bda994" font-family="'JetBrains Mono',monospace" font-size="10">R2</text>
+          <circle cx="110" cy="125" r="60" fill="#1f1f1f" stroke="#5b5b5b" stroke-width="1.5"/>
+          <polygon points="110,85 145,145 75,145" fill="none" stroke="#57a0ff" stroke-width="2" stroke-linejoin="round"/>
+          <text x="110" y="130" text-anchor="middle" fill="#b8b8b8" font-family="'JetBrains Mono',monospace" font-size="10">R1</text>
+          <circle cx="310" cy="125" r="60" fill="#1f1f1f" stroke="#5b5b5b" stroke-width="1.5"/>
+          <polygon points="310,85 345,145 275,145" fill="none" stroke="#57a0ff" stroke-width="2" stroke-linejoin="round"/>
+          <text x="310" y="130" text-anchor="middle" fill="#b8b8b8" font-family="'JetBrains Mono',monospace" font-size="10">R2</text>
           <g font-family="'JetBrains Mono',monospace" font-size="9" text-anchor="middle">
-            <circle cx="110" cy="40" r="9" fill="#2c1c12" stroke="#ffd166" stroke-width="1.5"/><text x="110" y="43" fill="#ffd166">T</text>
-            <circle cx="110" cy="210" r="9" fill="#2c1c12" stroke="#f7b955" stroke-width="1.5"/><text x="110" y="213" fill="#f7b955">L</text>
-            <circle cx="310" cy="40" r="9" fill="#2c1c12" stroke="#ffd166" stroke-width="1.5"/><text x="310" y="43" fill="#ffd166">T</text>
-            <circle cx="310" cy="210" r="9" fill="#2c1c12" stroke="#f7b955" stroke-width="1.5"/><text x="310" y="213" fill="#f7b955">L</text>
+            <circle cx="110" cy="40" r="9" fill="#2b2b2b" stroke="#a5ccff" stroke-width="1.5"/><text x="110" y="43" fill="#a5ccff">T</text>
+            <circle cx="110" cy="210" r="9" fill="#2b2b2b" stroke="#57a0ff" stroke-width="1.5"/><text x="110" y="213" fill="#57a0ff">L</text>
+            <circle cx="310" cy="40" r="9" fill="#2b2b2b" stroke="#a5ccff" stroke-width="1.5"/><text x="310" y="43" fill="#a5ccff">T</text>
+            <circle cx="310" cy="210" r="9" fill="#2b2b2b" stroke="#57a0ff" stroke-width="1.5"/><text x="310" y="213" fill="#57a0ff">L</text>
           </g>
-          <g stroke="#f7b955" stroke-width="1.4" fill="none">
+          <g stroke="#57a0ff" stroke-width="1.4" fill="none">
             <path d="M180 125h45" marker-end="url(#arrowGold)"/>
           </g>
-          <defs><marker id="arrowGold" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0 0l7 3.5L0 7z" fill="#f7b955"/></marker></defs>
-          <text x="202" y="118" text-anchor="middle" fill="#f7b955" font-family="'JetBrains Mono',monospace" font-size="8">1 → 2</text>
-          <text x="110" y="238" text-anchor="middle" fill="#927b65" font-family="'JetBrains Mono',monospace" font-size="8">FRONT</text>
-          <text x="310" y="238" text-anchor="middle" fill="#927b65" font-family="'JetBrains Mono',monospace" font-size="8">REAR</text>
+          <defs><marker id="arrowGold" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0 0l7 3.5L0 7z" fill="#57a0ff"/></marker></defs>
+          <text x="202" y="118" text-anchor="middle" fill="#57a0ff" font-family="'JetBrains Mono',monospace" font-size="8">1 → 2</text>
+          <text x="110" y="238" text-anchor="middle" fill="#858585" font-family="'JetBrains Mono',monospace" font-size="8">FRONT</text>
+          <text x="310" y="238" text-anchor="middle" fill="#858585" font-family="'JetBrains Mono',monospace" font-size="8">REAR</text>
         </svg>
         <table class="quick-table">
           <caption>13B turbo ignition reference</caption>
@@ -1240,8 +1306,8 @@
 
 <footer>
   <div class="wrap foot-inner">
-    <span><b>13B // Tech</b> — a static reference page. No tracking, no build step.</span>
-    <span>Nominal stock dimensions · verify against your model year and factory manual</span>
+    <span><b>Teals Unltd. 13B-T Tech Library</b> — Mazda RX-7 rotary parts and factory-referenced technical information.</span>
+    <span><a href="https://www.tealsunltd.com/">Shop Teals Unltd.</a> · Verify specs against your model year and factory manual.</span>
   </div>
 </footer>
 
@@ -1334,8 +1400,8 @@ function buildGaugeTicks() {
     const tx = 190 + Math.sin(rad) * 104;
     const ty = 190 - Math.cos(rad) * 104 + 3;
     const val = Math.round((max / 6) * i);
-    out += '<line x1="' + x1.toFixed(1) + '" y1="' + y1.toFixed(1) + '" x2="' + x2.toFixed(1) + '" y2="' + y2.toFixed(1) + '" stroke="#5c3a23" stroke-width="1.4"/>';
-    out += '<text x="' + tx.toFixed(1) + '" y="' + ty.toFixed(1) + '" text-anchor="middle" fill="#927b65" font-family="\'JetBrains Mono\',monospace" font-size="8">' + val + '</text>';
+    out += '<line x1="' + x1.toFixed(1) + '" y1="' + y1.toFixed(1) + '" x2="' + x2.toFixed(1) + '" y2="' + y2.toFixed(1) + '" stroke="#5b5b5b" stroke-width="1.4"/>';
+    out += '<text x="' + tx.toFixed(1) + '" y="' + ty.toFixed(1) + '" text-anchor="middle" fill="#858585" font-family="\'JetBrains Mono\',monospace" font-size="8">' + val + '</text>';
   }
   g.innerHTML = out;
 }
@@ -1481,25 +1547,25 @@ function buildChart() {
   const y = (v) => B - (v / 220) * (B - T);
   let out = '';
   for (let v = 0; v <= 200; v += 50) {
-    out += '<line x1="' + L + '" y1="' + y(v) + '" x2="' + R + '" y2="' + y(v) + '" stroke="#2e2118" stroke-width="1"/>';
-    out += '<text x="' + (L - 10) + '" y="' + (y(v) + 3) + '" text-anchor="end" fill="#927b65" font-family="\'JetBrains Mono\',monospace" font-size="8">' + v + '</text>';
+    out += '<line x1="' + L + '" y1="' + y(v) + '" x2="' + R + '" y2="' + y(v) + '" stroke="#2b2b2b" stroke-width="1"/>';
+    out += '<text x="' + (L - 10) + '" y="' + (y(v) + 3) + '" text-anchor="end" fill="#858585" font-family="\'JetBrains Mono\',monospace" font-size="8">' + v + '</text>';
   }
   for (let rpm = 2000; rpm <= 7000; rpm += 1000) {
-    out += '<line x1="' + x(rpm) + '" y1="' + T + '" x2="' + x(rpm) + '" y2="' + B + '" stroke="#2e2118" stroke-width="1"/>';
-    out += '<text x="' + x(rpm) + '" y="' + (B + 16) + '" text-anchor="middle" fill="#927b65" font-family="\'JetBrains Mono\',monospace" font-size="8">' + (rpm / 1000) + 'k</text>';
+    out += '<line x1="' + x(rpm) + '" y1="' + T + '" x2="' + x(rpm) + '" y2="' + B + '" stroke="#2b2b2b" stroke-width="1"/>';
+    out += '<text x="' + x(rpm) + '" y="' + (B + 16) + '" text-anchor="middle" fill="#858585" font-family="\'JetBrains Mono\',monospace" font-size="8">' + (rpm / 1000) + 'k</text>';
   }
-  out += '<text x="' + L + '" y="' + (B + 30) + '" fill="#927b65" font-family="\'JetBrains Mono\',monospace" font-size="8" letter-spacing="1.5">RPM</text>';
-  out += '<text x="14" y="' + (T + 10) + '" fill="#927b65" font-family="\'JetBrains Mono\',monospace" font-size="8" letter-spacing="1.5" transform="rotate(-90 14 ' + (T + 10) + ')">HP / LB-FT</text>';
+  out += '<text x="' + L + '" y="' + (B + 30) + '" fill="#858585" font-family="\'JetBrains Mono\',monospace" font-size="8" letter-spacing="1.5">RPM</text>';
+  out += '<text x="14" y="' + (T + 10) + '" fill="#858585" font-family="\'JetBrains Mono\',monospace" font-size="8" letter-spacing="1.5" transform="rotate(-90 14 ' + (T + 10) + ')">HP / LB-FT</text>';
   function poly(data, color, w, dash) {
     const pts = data.map(([rpm, v]) => x(rpm).toFixed(1) + ',' + y(v).toFixed(1)).join(' ');
     return '<polyline points="' + pts + '" fill="none" stroke="' + color + '" stroke-width="' + w + '" stroke-linejoin="round" stroke-linecap="round"' + (dash ? ' stroke-dasharray="' + dash + '"' : '') + '/>';
   }
-  out += poly(CURVES.s4.hp, '#f7b955', 2.4);
-  out += poly(CURVES.s5.hp, '#e2582a', 2.4);
-  out += poly(CURVES.s4.tq, '#ffd166', 1.7, '6 4');
-  out += poly(CURVES.s5.tq, '#b33a1e', 1.7, '6 4');
-  out += '<circle cx="' + x(6500) + '" cy="' + y(200) + '" r="3.5" fill="#e2582a"/>';
-  out += '<circle cx="' + x(6500) + '" cy="' + y(182) + '" r="3.5" fill="#f7b955"/>';
+  out += poly(CURVES.s4.hp, '#57a0ff', 2.4);
+  out += poly(CURVES.s5.hp, '#96399e', 2.4);
+  out += poly(CURVES.s4.tq, '#a5ccff', 1.7, '6 4');
+  out += poly(CURVES.s5.tq, '#62236a', 1.7, '6 4');
+  out += '<circle cx="' + x(6500) + '" cy="' + y(200) + '" r="3.5" fill="#96399e"/>';
+  out += '<circle cx="' + x(6500) + '" cy="' + y(182) + '" r="3.5" fill="#57a0ff"/>';
   svg.innerHTML = out;
 }
 

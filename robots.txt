@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ruddyrid.github.io/20261107-rx7-13bt-tech/sitemap.xml
