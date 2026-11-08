@@ -1,0 +1,1612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mazda 13B Turbo — Series 4 &amp; 5 RX-7 Specs, Blueprint, Torque &amp; Rebuild</title>
+<meta name="description" content="Technical reference for the Mazda 13B turbo rotary in the FC RX-7: Series 4 and Series 5 specifications, boost and compression, blueprint geometry, torque values, and a rebuild sequence.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0705; --bg-2:#100a07;
+    --panel:#17100b; --panel-2:#1d150e;
+    --line:#2e2118; --line-2:#45311f;
+    --text:#f6ede2; --muted:#bda994; --dim:#927b65;
+    --cyan:#f7b955; --blue:#e2582a; --amber:#ffd166; --red:#ef5350; --green:#7bd88f;
+    --font-display:'Barlow Condensed','Arial Narrow',Impact,sans-serif;
+    --font-body:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+    --font-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Consolas,monospace;
+    --r:14px; --shadow:0 24px 60px -30px #000;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:88px}
+  body{
+    margin:0;color:var(--text);font-family:var(--font-body);font-size:15px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+    background:
+      radial-gradient(1000px 620px at 12% -12%,rgba(247,185,85,.10),transparent 62%),
+      radial-gradient(900px 520px at 92% -4%,rgba(226,88,42,.13),transparent 60%),
+      linear-gradient(180deg,var(--bg),var(--bg-2) 70%,var(--bg));
+  }
+  body::before{
+    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background-image:linear-gradient(rgba(190,140,95,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(190,140,95,.055) 1px,transparent 1px);
+    background-size:48px 48px;
+    -webkit-mask-image:radial-gradient(circle at 50% 18%,#000 0%,transparent 78%);
+    mask-image:radial-gradient(circle at 50% 18%,#000 0%,transparent 78%);
+  }
+  .skip{position:absolute;left:-999px;top:0;z-index:200;background:var(--cyan);color:#1a0f07;padding:10px 16px;font-weight:700}
+  .skip:focus{left:12px;top:12px}
+  a{color:var(--cyan);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .nav-link:focus-visible,.icon-btn:focus-visible,.fbtn:focus-visible,.rt:focus-visible,.reset:focus-visible,.jump:focus-visible,.brand:focus-visible,.sources a:focus-visible,.hotspot:focus-visible{outline:2px solid var(--cyan);outline-offset:2px;border-radius:6px}
+  button{font:inherit;color:inherit}
+  .mono{font-family:var(--font-mono)}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+  /* top bar */
+  .scrollbar{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--blue),var(--cyan));z-index:120;box-shadow:0 0 12px rgba(247,185,85,.6)}
+  .topbar{position:sticky;top:0;z-index:100;background:rgba(6,8,13,.86);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+  .nav-inner{max-width:1240px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;gap:22px}
+  .brand{display:flex;align-items:center;gap:10px;flex-shrink:0;text-decoration:none;color:var(--text)}
+  .brand:hover{text-decoration:none}
+  .brand-mark{width:34px;height:34px;border:1px solid rgba(247,185,85,.45);border-radius:8px;display:grid;place-items:center;background:linear-gradient(160deg,rgba(247,185,85,.14),rgba(226,88,42,.06));box-shadow:inset 0 0 18px rgba(247,185,85,.12)}
+  .brand-mark span{font:700 12px var(--font-display);letter-spacing:.06em;color:var(--cyan)}
+  .brand-text b{display:block;font:700 17px/1 var(--font-display);letter-spacing:.12em;text-transform:uppercase}
+  .brand-text small{display:block;font:500 9px var(--font-mono);letter-spacing:.2em;color:var(--dim);margin-top:3px}
+  .nav-links{display:flex;align-items:center;gap:2px;overflow-x:auto;scrollbar-width:none;margin-left:auto}
+  .nav-links::-webkit-scrollbar{display:none}
+  .nav-link{position:relative;padding:8px 11px;font:600 10px var(--font-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);border-radius:6px;white-space:nowrap}
+  .nav-link:hover{color:var(--text);text-decoration:none;background:rgba(255,255,255,.035)}
+  .nav-link.active{color:var(--cyan)}
+  .nav-link.active::after{content:"";position:absolute;left:11px;right:11px;bottom:2px;height:1px;background:var(--cyan);box-shadow:0 0 8px var(--cyan)}
+  .nav-actions{display:flex;align-items:center;gap:8px;flex-shrink:0}
+  .seg{display:inline-flex;border:1px solid var(--line-2);border-radius:8px;overflow:hidden;background:rgba(255,255,255,.02)}
+  .seg button{border:0;background:transparent;padding:7px 10px;font:600 10px var(--font-mono);letter-spacing:.1em;color:var(--dim);cursor:pointer}
+  .seg button.on{background:rgba(247,185,85,.14);color:var(--cyan)}
+  .seg button:focus-visible{outline:2px solid var(--cyan);outline-offset:-2px}
+  .icon-btn{border:1px solid var(--line-2);background:rgba(255,255,255,.02);border-radius:8px;padding:7px 11px;font:600 10px var(--font-mono);letter-spacing:.1em;color:var(--muted);cursor:pointer;display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
+  .icon-btn:hover{color:var(--cyan);border-color:rgba(247,185,85,.4)}
+  .icon-btn svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:1.8}
+  .jump{display:none;border:1px solid var(--line-2);background:var(--panel);color:var(--text);border-radius:8px;padding:7px 9px;font:600 10px var(--font-mono);letter-spacing:.08em}
+
+  /* hero */
+  .hero{padding:70px 0 18px;display:grid;grid-template-columns:1.08fr .92fr;gap:48px;align-items:center}
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font:600 10px var(--font-mono);letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:20px}
+  .eyebrow i{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 14px var(--cyan);animation:pulse 2.6s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+  h1{font:800 clamp(54px,8.2vw,104px)/.86 var(--font-display);text-transform:uppercase;letter-spacing:.005em;margin:0 0 20px}
+  h1 .grad{background:linear-gradient(100deg,var(--cyan),var(--amber) 42%,var(--blue) 78%,#b33a1e);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 24px rgba(247,185,85,.20))}
+  .lede{max-width:620px;font-size:16.5px;color:#d9c9b8;margin:0 0 18px}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:8px 18px;font:500 10.5px var(--font-mono);letter-spacing:.06em;color:var(--dim);margin-bottom:30px}
+  .hero-meta span{display:inline-flex;align-items:center;gap:7px}
+  .hero-meta span::before{content:"";width:4px;height:4px;border-radius:50%;background:var(--line-2)}
+  .selector-label{font:600 9.5px var(--font-mono);letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin-bottom:9px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{position:relative;border:1px solid var(--line-2);background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.01));border-radius:10px;padding:9px 13px 8px;cursor:pointer;text-align:left;transition:border-color .2s,background .2s,transform .2s}
+  .chip:hover{border-color:rgba(247,185,85,.45);transform:translateY(-1px)}
+  .chip .ci{display:block;font:700 19px/1 var(--font-display);letter-spacing:.03em}
+  .chip .yr{display:block;font:500 8.5px var(--font-mono);letter-spacing:.08em;color:var(--dim);margin-top:4px}
+  .chip.on{border-color:var(--cyan);background:linear-gradient(180deg,rgba(247,185,85,.16),rgba(247,185,85,.04));box-shadow:0 0 0 1px rgba(247,185,85,.18),0 10px 30px -18px var(--cyan)}
+  .chip.on .ci{color:var(--cyan)}
+  .chip.on .yr{color:var(--muted)}
+  .chip:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+
+  /* gauge */
+  .gauge-card{position:relative;border:1px solid var(--line);border-radius:22px;background:linear-gradient(180deg,rgba(17,25,39,.92),rgba(9,13,20,.96));padding:20px 20px 16px;box-shadow:var(--shadow),inset 0 1px 0 rgba(255,255,255,.04);overflow:hidden}
+  .gauge-card::before{content:"";position:absolute;inset:0;background:radial-gradient(420px 240px at 50% 16%,rgba(247,185,85,.12),transparent 70%);pointer-events:none}
+  .gauge-card::after{content:"";position:absolute;left:16px;right:16px;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(247,185,85,.5),transparent)}
+  .gauge-top{display:flex;justify-content:space-between;align-items:center;position:relative;z-index:1;font:600 9px var(--font-mono);letter-spacing:.2em;text-transform:uppercase;color:var(--dim)}
+  .badge{display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(245,165,36,.35);background:rgba(245,165,36,.08);color:var(--amber);padding:4px 8px;border-radius:999px;font:600 8.5px var(--font-mono);letter-spacing:.14em}
+  .badge::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--amber)}
+  .gauge-svg{display:block;width:100%;max-width:430px;margin:2px auto -6px;position:relative;z-index:1}
+  #needle{transform-origin:190px 190px;transform-box:view-box;transition:transform .9s cubic-bezier(.16,1,.3,1)}
+  #gaugeArc{transition:stroke-dasharray .9s cubic-bezier(.16,1,.3,1)}
+  .gauge-foot{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;border-top:1px solid var(--line);padding-top:12px;position:relative;z-index:1}
+  .gauge-foot div{text-align:center}
+  .gauge-foot .k{font:600 8px var(--font-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+  .gauge-foot .v{font:600 13px var(--font-mono);color:var(--text);margin-top:3px}
+  .gauge-foot .v.amber{color:var(--amber)}
+
+  /* kpis */
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:34px 0 0}
+  .kpi{position:relative;background:linear-gradient(180deg,rgba(17,25,39,.8),rgba(11,16,25,.9));border:1px solid var(--line);border-radius:var(--r);padding:15px 16px 13px;box-shadow:var(--shadow);overflow:hidden}
+  .kpi::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:var(--k,var(--cyan));opacity:.85}
+  .kpi .label{font:600 8.5px var(--font-mono);letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
+  .kpi .val{font:700 27px/1 var(--font-display);letter-spacing:.02em;margin:8px 0 3px;font-variant-numeric:tabular-nums}
+  .kpi .sub{font:500 9.5px var(--font-mono);color:var(--dim);letter-spacing:.04em}
+  #kpiFiring{font-size:22px}
+
+  /* sections */
+  .sec{padding:76px 0 0;position:relative;z-index:1}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:28px;margin-bottom:22px;border-top:1px solid var(--line);padding-top:26px}
+  .kicker{display:flex;align-items:center;gap:10px;font:600 9.5px var(--font-mono);letter-spacing:.22em;text-transform:uppercase;color:var(--cyan);margin-bottom:9px}
+  .kicker::before{content:"";width:22px;height:1px;background:var(--cyan);box-shadow:0 0 8px var(--cyan)}
+  h2{font:700 clamp(30px,4.4vw,46px)/.98 var(--font-display);text-transform:uppercase;letter-spacing:.01em;margin:0}
+  .sec-sub{max-width:740px;color:var(--muted);font-size:14.5px;margin:9px 0 0}
+  .sec-head .aside{font:500 10px var(--font-mono);color:var(--dim);text-align:right;line-height:1.9;white-space:nowrap}
+  .panel{background:linear-gradient(180deg,rgba(17,25,39,.78),rgba(10,15,23,.9));border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)}
+  .panel-pad{padding:20px}
+
+  /* timeline */
+  .timeline{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(210px,1fr);gap:12px;overflow-x:auto;padding:4px 4px 14px;scroll-snap-type:x mandatory}
+  .era{scroll-snap-align:start;position:relative;border:1px solid var(--line);border-radius:var(--r);padding:16px 15px 15px;min-height:184px;background:linear-gradient(180deg,rgba(17,25,39,.72),rgba(10,15,23,.9));box-shadow:var(--shadow)}
+  .era::before{content:"";position:absolute;left:15px;top:0;width:34px;height:2px;background:var(--cyan);opacity:.8}
+  .era.minor{opacity:.72;border-style:dashed}
+  .era .year{font:700 30px/1 var(--font-display);letter-spacing:.02em}
+  .era .ci{font:600 10px var(--font-mono);letter-spacing:.14em;color:var(--cyan);text-transform:uppercase;margin-top:3px}
+  .era p{font-size:12px;color:var(--muted);line-height:1.55;margin:11px 0 0}
+  .era .hp{font:600 9.5px var(--font-mono);color:var(--amber);margin-top:10px;letter-spacing:.04em}
+
+  /* tables */
+  .table-wrap{overflow:auto;border:1px solid var(--line);border-radius:var(--r);background:rgba(8,12,19,.65);box-shadow:var(--shadow)}
+  table{border-collapse:collapse;width:100%}
+  .spec-table{min-width:940px}
+  caption{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  th,td{padding:12px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+  thead th{position:sticky;top:0;z-index:2;background:#17100b;font:600 9.5px var(--font-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+  thead th:first-child{z-index:3}
+  tbody th{position:sticky;left:0;z-index:1;background:#17100b;font:500 10px var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);white-space:nowrap;min-width:150px}
+  tbody td{font:500 12px var(--font-mono);color:var(--text);white-space:nowrap}
+  tbody tr:hover td{background:rgba(255,255,255,.018)}
+  tbody tr:hover th{color:var(--text)}
+  th.is-active{color:var(--cyan)!important;background:rgba(247,185,85,.07)!important}
+  td.is-active{background:rgba(247,185,85,.055)!important;color:#fff3d6}
+  .table-note{font:500 9.5px var(--font-mono);color:var(--dim);margin-top:9px;line-height:1.7}
+  .table-note b{color:var(--muted);font-weight:600}
+  .tag{display:inline-block;font:600 8.5px var(--font-mono);letter-spacing:.1em;padding:2px 6px;border-radius:4px;background:rgba(247,185,85,.1);color:var(--cyan);border:1px solid rgba(247,185,85,.2);margin-left:6px;vertical-align:middle}
+
+  /* power */
+  .two-col{display:grid;grid-template-columns:1fr 1.12fr;gap:14px;align-items:start}
+  .two-col>*,.bp-grid>*,.ref-grid>*{min-width:0}
+  .explain p{font-size:13.5px;color:var(--muted);margin:0 0 12px}
+  .explain p strong{color:var(--text);font-weight:600}
+  .stat-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:16px 0 0}
+  .stat{border:1px solid var(--line);border-radius:9px;padding:11px 12px;background:rgba(255,255,255,.018)}
+  .stat .k{font:600 8.5px var(--font-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+  .stat .v{font:600 14px var(--font-display);letter-spacing:.04em;margin-top:3px}
+  .stat .v.cyan{color:var(--cyan)} .stat .v.amber{color:var(--amber)}
+  .bars-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:6px}
+  .bars-head h3{font:600 15px var(--font-display);letter-spacing:.06em;text-transform:uppercase;margin:0}
+  .rating-tabs{display:inline-flex;border:1px solid var(--line-2);border-radius:8px;overflow:hidden}
+  .rating-tabs button{border:0;background:transparent;padding:6px 9px;font:600 8.5px var(--font-mono);letter-spacing:.1em;color:var(--dim);cursor:pointer;text-transform:uppercase}
+  .rating-tabs button.on{background:rgba(247,185,85,.14);color:var(--cyan)}
+  .bar-row{display:grid;grid-template-columns:168px 1fr 104px;gap:12px;align-items:center;padding:8px 0;border-bottom:1px solid rgba(28,39,56,.65)}
+  .bar-row:last-child{border-bottom:0}
+  .bar-label{font-size:11.5px;color:var(--text);line-height:1.25}
+  .bar-label small{display:block;font:500 8.5px var(--font-mono);color:var(--dim);margin-top:2px;letter-spacing:.04em}
+  .bar-tracks{display:grid;gap:4px}
+  .bar-track{height:6px;background:#24170f;border-radius:99px;overflow:hidden}
+  .bar-fill{height:100%;border-radius:99px;width:var(--w);background:linear-gradient(90deg,var(--blue),var(--cyan));box-shadow:0 0 12px rgba(247,185,85,.3)}
+  .bar-fill.tq{background:linear-gradient(90deg,#b45309,var(--amber));box-shadow:0 0 12px rgba(245,165,36,.25)}
+  .bar-vals{text-align:right;font:600 9.5px var(--font-mono);color:var(--muted);line-height:1.7}
+  .bar-vals b{color:var(--cyan);font-weight:600}
+  .bar-vals i{color:var(--amber);font-style:normal}
+  .legend{display:flex;gap:14px;font:500 8.5px var(--font-mono);color:var(--dim);letter-spacing:.08em;text-transform:uppercase;margin-top:10px}
+  .legend span{display:inline-flex;align-items:center;gap:5px}
+  .legend i{width:14px;height:3px;border-radius:2px;display:inline-block}
+  .caveat{font:500 9.5px var(--font-mono);color:var(--dim);line-height:1.7;margin-top:12px;border-left:1px solid var(--line-2);padding-left:10px}
+
+  /* blueprint */
+  .bp-grid{display:grid;grid-template-columns:1.18fr .82fr;gap:14px;align-items:start}
+  .drawing{padding:8px 8px 4px;position:relative;overflow:hidden}
+  .drawing .corner{position:absolute;width:14px;height:14px;border-color:rgba(247,185,85,.4);border-style:solid;pointer-events:none}
+  .drawing .c1{left:10px;top:10px;border-width:1px 0 0 1px}
+  .drawing .c2{right:10px;top:10px;border-width:1px 1px 0 0}
+  .drawing .c3{left:10px;bottom:10px;border-width:0 0 1px 1px}
+  .drawing .c4{right:10px;bottom:10px;border-width:0 1px 1px 0}
+  .bp-svg{display:block;width:100%;height:auto}
+  .hotspot{cursor:pointer;outline:none}
+  .hotspot circle{fill:#17100b;stroke:var(--cyan);stroke-width:1.4;transition:fill .2s}
+  .hotspot text{fill:var(--cyan);font:600 9px var(--font-mono);pointer-events:none;transition:fill .2s}
+  .hotspot:hover circle,.hotspot:focus circle,.hotspot.active circle{fill:var(--cyan)}
+  .hotspot:hover text,.hotspot:focus text,.hotspot.active text{fill:#1a0f07}
+  .bp-detail{margin-top:4px;border-top:1px solid var(--line);padding:14px 12px 6px}
+  .bp-detail .k{font:600 8.5px var(--font-mono);letter-spacing:.18em;text-transform:uppercase;color:var(--cyan)}
+  .bp-detail h3{font:700 21px/1.1 var(--font-display);letter-spacing:.03em;text-transform:uppercase;margin:4px 0 6px}
+  .bp-detail p{font-size:12.5px;color:var(--muted);margin:0 0 8px;min-height:54px}
+  .bp-detail .spec{display:inline-block;font:600 10px var(--font-mono);color:var(--amber);background:rgba(245,165,36,.07);border:1px solid rgba(245,165,36,.2);padding:4px 8px;border-radius:5px}
+  .mini{padding:14px 15px;margin-bottom:12px}
+  .mini:last-child{margin-bottom:0}
+  .mini-head{display:flex;justify-content:space-between;align-items:baseline;font:600 8.5px var(--font-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin-bottom:10px}
+  .mini-head b{color:var(--text);font-weight:600;letter-spacing:.1em}
+  .cmp-row{display:grid;grid-template-columns:44px 1fr 58px;gap:9px;align-items:center;margin-bottom:7px}
+  .cmp-row span{font:600 9px var(--font-mono);color:var(--muted)}
+  .cmp-row b{font:600 9.5px var(--font-mono);color:var(--text);text-align:right}
+  .cmp-track{height:7px;background:#24170f;border-radius:99px;overflow:hidden}
+  .cmp-track i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--blue),var(--cyan))}
+  .cmp-track i.amber{background:linear-gradient(90deg,#b45309,var(--amber))}
+  .mini-note{font:500 9px var(--font-mono);color:var(--dim);margin:7px 0 0;line-height:1.6}
+  .journal-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .journal{display:flex;align-items:center;gap:9px;border:1px solid var(--line);border-radius:8px;padding:7px 8px;background:rgba(255,255,255,.015)}
+  .journal svg{width:52px;height:52px;flex-shrink:0}
+  .journal .t{font:600 8px var(--font-mono);color:var(--dim);letter-spacing:.06em;line-height:1.4}
+  .journal .t b{display:block;font:600 11px var(--font-mono);color:var(--text);letter-spacing:0}
+
+  /* torque */
+  .toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:12px}
+  .filter{display:inline-flex;gap:5px;flex-wrap:wrap}
+  .fbtn{border:1px solid var(--line-2);background:rgba(255,255,255,.02);color:var(--muted);border-radius:7px;padding:6px 10px;font:600 8.5px var(--font-mono);letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+  .fbtn:hover{border-color:rgba(247,185,85,.35);color:var(--text)}
+  .fbtn.on{background:rgba(247,185,85,.13);border-color:rgba(247,185,85,.4);color:var(--cyan)}
+  .search{position:relative;margin-left:auto}
+  .search input{width:210px;background:rgba(255,255,255,.025);border:1px solid var(--line-2);border-radius:7px;padding:7px 10px 7px 30px;color:var(--text);font:500 11px var(--font-mono);outline:none}
+  .search input:focus{border-color:rgba(247,185,85,.5);box-shadow:0 0 0 2px rgba(247,185,85,.12)}
+  .search svg{position:absolute;left:9px;top:50%;transform:translateY(-50%);width:13px;height:13px;stroke:var(--dim);fill:none;stroke-width:2}
+  .torque-table{min-width:900px}
+  .torque-table td:nth-child(2),.torque-table td:nth-child(3),.torque-table td:nth-child(4){font-variant-numeric:tabular-nums}
+  .torque-table td:last-child{white-space:normal;font-family:var(--font-body);font-size:11.5px;color:var(--dim);min-width:190px;line-height:1.45}
+  .tq-btn{border:1px solid transparent;background:transparent;color:var(--text);font:600 11.5px var(--font-mono);padding:3px 5px;border-radius:5px;cursor:copy;transition:background .15s,border-color .15s}
+  .tq-btn:hover{background:rgba(247,185,85,.1);border-color:rgba(247,185,85,.25);color:var(--cyan)}
+  .tq-btn:focus-visible{outline:2px solid var(--cyan);outline-offset:1px}
+  .tq-btn.wide{color:var(--amber)}
+  .tq-btn.wide:hover{background:rgba(245,165,36,.08);border-color:rgba(245,165,36,.3);color:var(--amber)}
+  .torque-table tr[data-diff="1"] td{background:rgba(245,165,36,.028)}
+  .torque-table tr[data-diff="1"]:hover td{background:rgba(245,165,36,.05)}
+  .torque-table tr.hide{display:none}
+  .warn-box{display:flex;gap:12px;border:1px solid rgba(240,93,94,.28);background:rgba(240,93,94,.055);border-radius:10px;padding:12px 14px;margin-bottom:14px}
+  .warn-box .ico{color:var(--red);font:700 14px var(--font-mono);line-height:1.3}
+  .warn-box p{margin:0;font-size:11.5px;color:#e8b9a8;line-height:1.6}
+  .warn-box b{color:#ffd6c9}
+
+  /* assembly */
+  .progress-card{display:flex;align-items:center;gap:16px;padding:13px 16px;margin-bottom:14px}
+  .progress-card .lbl{font:600 8.5px var(--font-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--dim);white-space:nowrap}
+  .progress-track{flex:1;height:6px;background:#24170f;border-radius:99px;overflow:hidden}
+  .progress-fill{height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--blue),var(--cyan));box-shadow:0 0 12px rgba(247,185,85,.4);transition:width .35s}
+  .progress-count{font:600 10px var(--font-mono);color:var(--cyan);white-space:nowrap}
+  .reset{border:0;background:transparent;color:var(--dim);font:500 9px var(--font-mono);letter-spacing:.08em;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+  .reset:hover{color:var(--muted)}
+  .stage{border:1px solid var(--line);border-radius:12px;background:linear-gradient(180deg,rgba(17,25,39,.62),rgba(10,15,23,.85));margin-bottom:9px;overflow:hidden;transition:border-color .2s}
+  .stage[open]{border-color:var(--line-2);background:linear-gradient(180deg,rgba(17,25,39,.82),rgba(10,15,23,.92))}
+  .stage summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:40px 1fr auto 20px;gap:13px;align-items:center;padding:14px 17px}
+  .stage summary::-webkit-details-marker{display:none}
+  .stage summary:focus-visible{outline:2px solid var(--cyan);outline-offset:-2px}
+  .stage .num{width:32px;height:32px;border-radius:8px;border:1px solid var(--line-2);display:grid;place-items:center;font:700 13px var(--font-display);color:var(--cyan);background:rgba(247,185,85,.05)}
+  .stage .title{font:600 14.5px var(--font-body);letter-spacing:.01em}
+  .stage .meta{font:500 8.5px var(--font-mono);color:var(--dim);letter-spacing:.1em;text-transform:uppercase;margin-top:2px}
+  .stage .check{width:17px;height:17px;accent-color:var(--cyan);cursor:pointer}
+  .stage .chev{width:15px;height:15px;stroke:var(--dim);fill:none;stroke-width:2;transition:transform .25s}
+  .stage[open] .chev{transform:rotate(180deg);stroke:var(--cyan)}
+  .stage-body{padding:0 18px 18px 70px;border-top:1px solid rgba(28,39,56,.6);margin-top:0;padding-top:14px}
+  .stage-body ol{margin:0;padding-left:18px}
+  .stage-body li{font-size:12.5px;color:#d6c5b3;margin-bottom:7px;line-height:1.55}
+  .stage-body li::marker{color:var(--cyan);font-family:var(--font-mono);font-size:10px}
+  .specs{display:flex;flex-wrap:wrap;gap:7px;margin:13px 0 0}
+  .spec{font:600 9.5px var(--font-mono);color:var(--cyan);background:rgba(247,185,85,.07);border:1px solid rgba(247,185,85,.18);padding:4px 8px;border-radius:5px}
+  .why{border-left:2px solid var(--amber);padding:6px 0 6px 11px;color:var(--muted);font-size:11.5px;margin:13px 0 0;line-height:1.6}
+  .why b{color:var(--amber);font-weight:600}
+  .seq-wrap{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+  .seq{border:1px solid var(--line);border-radius:9px;padding:10px 10px 7px;background:rgba(4,8,14,.5)}
+  .seq svg{display:block;width:100%;height:auto}
+  .seq .cap{font:500 8.5px var(--font-mono);color:var(--dim);letter-spacing:.05em;margin-top:4px;line-height:1.5}
+
+  /* reference */
+  .ref-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:14px;align-items:start}
+  .fo-card{padding:16px}
+  .fo-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .fo{border:1px solid var(--line);border-radius:9px;padding:9px;background:rgba(4,8,14,.45)}
+  .fo svg{display:block;width:100%;height:auto}
+  .fo h4{font:600 11px var(--font-display);letter-spacing:.08em;text-transform:uppercase;margin:2px 0 0;color:var(--text)}
+  .fo .order{font:600 8.5px var(--font-mono);color:var(--cyan);letter-spacing:.02em;margin-top:2px;word-spacing:2px}
+  .fo .note{font:500 8px var(--font-mono);color:var(--dim);margin-top:2px}
+  .quick-table{min-width:0;width:100%;table-layout:fixed}
+  .quick-table th,.quick-table td{padding:8px 10px;font-size:10.5px}
+  .quick-table th{position:static;background:transparent;width:46%}
+  .quick-table tbody th{position:static;background:transparent;min-width:0}
+  .quick-table td{white-space:normal;word-break:break-word}
+  .quick-table td:last-child{font-family:var(--font-mono);color:var(--cyan);white-space:normal}
+
+  /* sources */
+  .sources{display:grid;grid-template-columns:1fr 1fr;gap:8px 22px;padding:20px}
+  .sources a{display:block;font-size:12px;color:var(--muted);padding:7px 0;border-bottom:1px solid rgba(28,39,56,.6);line-height:1.45}
+  .sources a:hover{color:var(--cyan);text-decoration:none}
+  .sources a b{display:block;color:var(--text);font-weight:500;font-size:12.5px;margin-bottom:1px}
+  .disclaimer{border:1px solid rgba(245,165,36,.25);background:rgba(245,165,36,.05);border-radius:var(--r);padding:16px 18px;margin-top:14px}
+  .disclaimer p{margin:0;font-size:11.5px;color:#d8c49c;line-height:1.65}
+  .disclaimer b{color:var(--amber)}
+
+  footer{border-top:1px solid var(--line);margin-top:70px;padding:26px 0 40px;position:relative;z-index:1}
+  .foot-inner{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font:500 9.5px var(--font-mono);color:var(--dim);letter-spacing:.06em}
+  .foot-inner b{color:var(--muted);font-weight:600}
+
+  /* toast */
+  .toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);background:#17100b;border:1px solid rgba(247,185,85,.4);color:var(--cyan);padding:9px 15px;border-radius:8px;font:600 10px var(--font-mono);letter-spacing:.06em;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:150;box-shadow:0 20px 50px -20px #000}
+  .toast.show{opacity:1;transform:translate(-50%,0)}
+
+  /* print card */
+  .print-card{display:none}
+  @media print{
+    @page{size:letter portrait;margin:12mm}
+    body{background:#fff;color:#111;font-size:11px}
+    body::before,.scrollbar,.topbar,.skip,.hero,.kpis,.sec,.toast,footer:not(.pc-foot),#main{display:none!important}
+    .print-card{display:block!important;color:#111;font-family:'Inter',Arial,sans-serif}
+    .pc-head{display:flex;justify-content:space-between;gap:18px;border-bottom:2px solid #111;padding-bottom:8px;margin-bottom:10px}
+    .pc-kicker{font:600 8px 'JetBrains Mono',monospace;letter-spacing:.18em;text-transform:uppercase;color:#555}
+    .pc-head h1{font:700 24px/1 'Barlow Condensed',Arial,sans-serif;text-transform:uppercase;margin:3px 0 2px}
+    .pc-head p{font-size:9px;color:#555;margin:0}
+    .pc-fo{text-align:right;white-space:nowrap}
+    .pc-fo span{display:block;font:600 7px 'JetBrains Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:#555}
+    .pc-fo b{display:block;font:700 17px 'JetBrains Mono',monospace;margin:2px 0}
+    .pc-fo small{font-size:7.5px;color:#555}
+    .pc-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:16px}
+    .pc-block h2{font:700 11px 'Barlow Condensed',Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;border-bottom:1px solid #bbb;padding-bottom:2px;margin:0 0 5px}
+    .pc-block table{border-collapse:collapse;width:100%}
+    .pc-block th,.pc-block td{padding:3.5px 4px;border-bottom:1px solid #ddd;text-align:left;font-size:9px;white-space:nowrap}
+    .pc-block th{font-weight:600;color:#333;width:34%}
+    .pc-block td{font-family:'JetBrains Mono',monospace;font-size:9px;color:#000;width:16%}
+    .pc-seq{font-size:8.5px;line-height:1.55;margin:4px 0;color:#222}
+    .pc-foot{display:flex;justify-content:space-between;gap:12px;border-top:2px solid #111;margin-top:12px;padding-top:6px;font:600 7.5px 'JetBrains Mono',monospace;color:#444}
+    .pc-foot span:first-child{max-width:78%}
+  }
+
+  @media (max-width:1080px){
+    .hero{grid-template-columns:1fr;gap:34px}
+    .gauge-card{max-width:460px;margin:0 auto;width:100%}
+    .two-col,.bp-grid,.ref-grid{grid-template-columns:1fr}
+    .bp-side{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start}
+    .bp-side .mini{margin-bottom:0}
+    .sources{grid-template-columns:1fr}
+  }
+  @media (max-width:900px){
+    .nav-links{display:none}
+    .jump{display:block}
+    .kpis{grid-template-columns:1fr 1fr}
+    .sec-head{flex-direction:column;align-items:flex-start;gap:12px}
+    .sec-head .aside{text-align:left}
+  }
+  @media (max-width:680px){
+    .wrap,.nav-inner{padding-left:16px;padding-right:16px}
+    .nav-inner{gap:10px}
+    .brand-text{display:none}
+    .jump{max-width:92px}
+    h1{font-size:46px}
+    .eyebrow{letter-spacing:.18em}
+    .topbar .icon-btn span{display:none}
+    .hero{padding-top:44px}
+    .kpis{grid-template-columns:1fr 1fr;gap:9px}
+    .kpi .val{font-size:23px}
+    #kpiFiring{font-size:18px}
+    .bar-row{grid-template-columns:112px 1fr;gap:8px}
+    .bar-vals{grid-column:2;text-align:left;display:flex;gap:10px}
+    .seq-wrap{grid-template-columns:1fr}
+    .fo-grid{grid-template-columns:1fr}
+    .stage summary{grid-template-columns:32px 1fr 18px;gap:10px;padding:12px 13px}
+    .stage .check{grid-column:2;grid-row:2;margin-top:4px}
+    .stage .chev{grid-column:3;grid-row:1}
+    .stage-body{padding-left:16px;padding-right:13px}
+    .stage .meta{display:none}
+    .search{margin-left:0;width:100%}
+    .search input{width:100%}
+    .bp-side{grid-template-columns:1fr}
+    .sources{padding:15px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation:none!important;transition:none!important}
+    html{scroll-behavior:auto}
+  }
+  /* rx7-specific additions */
+  .chart-panel{padding:14px 14px 10px}
+  .chart-svg{display:block;width:100%;height:auto}
+  .chart-legend{display:flex;flex-wrap:wrap;gap:14px;font:500 8.5px var(--font-mono);color:var(--dim);letter-spacing:.08em;text-transform:uppercase;margin:8px 2px 0}
+  .chart-legend span{display:inline-flex;align-items:center;gap:6px}
+  .chart-legend i{width:16px;height:3px;border-radius:2px;display:inline-block}
+  .part-list{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:10px}
+  .part-item{border:1px solid var(--line);border-radius:8px;padding:7px 9px;background:rgba(255,255,255,.015)}
+  .part-item .n{font:600 7.5px var(--font-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+  .part-item .v{font:600 12px var(--font-mono);color:var(--text);margin-top:1px}
+  .trouble-table{min-width:860px}
+  .trouble-table td{white-space:normal;font-family:var(--font-body);font-size:12px;line-height:1.5;min-width:190px}
+  .trouble-table td:first-child{font-family:var(--font-mono);font-size:10.5px;color:var(--amber);white-space:nowrap;min-width:150px}
+  .trouble-table td:nth-child(2){color:var(--muted)}
+  .stack-wrap{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+  .stack{border:1px solid var(--line);border-radius:9px;padding:10px 10px 7px;background:rgba(4,8,14,.5)}
+  .stack svg{display:block;width:100%;height:auto}
+  .stack .cap{font:500 8.5px var(--font-mono);color:var(--dim);letter-spacing:.05em;margin-top:4px;line-height:1.5}
+  .inline-note{font:500 9.5px var(--font-mono);color:var(--dim);line-height:1.7;margin-top:10px}
+  .inline-note b{color:var(--muted);font-weight:600}
+  .swatch{display:inline-block;width:8px;height:8px;border-radius:2px;vertical-align:middle;margin-right:4px}
+  @media (max-width:680px){
+    .part-list{grid-template-columns:1fr}
+    .stack-wrap{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="scrollbar" id="scrollbar"></div>
+
+<header class="topbar">
+  <div class="nav-inner">
+    <a class="brand" href="#top" aria-label="Mazda 13B turbo technical reference, back to top">
+      <span class="brand-mark" aria-hidden="true"><span>13B</span></span>
+      <span class="brand-text"><b>13B // Tech</b><small>FC Rotary Reference</small></span>
+    </a>
+    <nav class="nav-links" aria-label="Sections">
+      <a class="nav-link" href="#family">Family</a>
+      <a class="nav-link" href="#specs">Specs</a>
+      <a class="nav-link" href="#power">Power</a>
+      <a class="nav-link" href="#blueprint">Blueprint</a>
+      <a class="nav-link" href="#torque">Torque</a>
+      <a class="nav-link" href="#assembly">Rebuild</a>
+      <a class="nav-link" href="#reference">Reference</a>
+    </nav>
+    <div class="nav-actions">
+      <select class="jump" id="jump" aria-label="Jump to section">
+        <option value="#family">Family</option>
+        <option value="#specs">Specs</option>
+        <option value="#power">Power</option>
+        <option value="#blueprint">Blueprint</option>
+        <option value="#torque">Torque</option>
+        <option value="#assembly">Rebuild</option>
+        <option value="#reference">Reference</option>
+      </select>
+      <div class="seg" role="group" aria-label="Units">
+        <button type="button" class="unit-btn on" data-units="sae" aria-pressed="true">SAE</button>
+        <button type="button" class="unit-btn" data-units="metric" aria-pressed="false">Metric</button>
+      </div>
+      <button type="button" class="icon-btn" id="printBtn" title="Print the pit card">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9V3h12v6M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        <span>Pit card</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="wrap hero" id="top">
+    <div>
+      <div class="eyebrow"><i></i>FC3S · 1986–1991 · 13B-T</div>
+      <h1>Mazda<br>13B <span class="grad">Turbo</span></h1>
+      <p class="lede">The twin-rotor that made the FC RX-7 a giant-killer. Series 4 and Series 5 specs, the boost and compression changes that separate them, blueprint geometry, torque values, and a rebuild sequence — organized for the garage, not the forum.</p>
+      <div class="hero-meta">
+        <span>2-rotor Wankel · 654 cc × 2</span>
+        <span>Single turbo · 8.5:1 / 9.0:1</span>
+        <span>RX-7 FC3S Turbo II</span>
+      </div>
+      <div class="selector-label">Select series</div>
+      <div class="chips" role="group" aria-label="Select a 13B turbo series">
+        <button type="button" class="chip on" data-engine="s4" aria-pressed="true"><span class="ci">Series 4</span><span class="yr">1986–88 · 182 hp</span></button>
+        <button type="button" class="chip" data-engine="s5" aria-pressed="false"><span class="ci">Series 5</span><span class="yr">1989–91 · 200 hp</span></button>
+      </div>
+      <p class="sr-only" id="engineStatus" aria-live="polite"></p>
+    </div>
+
+    <div class="gauge-card" aria-label="Factory power rating for the selected series">
+      <div class="gauge-top">
+        <span>Factory rating</span>
+        <span class="badge" id="ratingBadge">SAE NET</span>
+      </div>
+      <svg class="gauge-svg" viewBox="0 0 380 300" role="img" aria-labelledby="gaugeTitle gaugeDesc">
+        <title id="gaugeTitle">Factory brake horsepower gauge</title>
+        <desc id="gaugeDesc">Needle shows the selected 13B turbo's US factory rating against a 240 horsepower scale.</desc>
+        <defs>
+          <linearGradient id="gaugeGrad" x1="0" y1="1" x2="1" y2="0">
+            <stop offset="0" stop-color="#b33a1e"/><stop offset=".52" stop-color="#e2582a"/><stop offset="1" stop-color="#f7b955"/>
+          </linearGradient>
+          <filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <path d="M77.4 255 A130 130 0 1 1 302.6 255" fill="none" stroke="#2a1c12" stroke-width="14" stroke-linecap="round"/>
+        <path id="gaugeArc" d="M77.4 255 A130 130 0 1 1 302.6 255" fill="none" stroke="url(#gaugeGrad)" stroke-width="14" stroke-linecap="round" pathLength="100" stroke-dasharray="0 100" filter="url(#glow)"/>
+        <g id="gaugeTicks"></g>
+        <line id="needle" x1="190" y1="190" x2="190" y2="74" stroke="#f6ede2" stroke-width="2.2" stroke-linecap="round"/>
+        <circle cx="190" cy="190" r="9" fill="#17100b" stroke="#f7b955" stroke-width="2"/>
+        <circle cx="190" cy="190" r="3" fill="#f7b955"/>
+        <text id="gaugeHp" x="190" y="236" text-anchor="middle" fill="#f6ede2" font-family="'Barlow Condensed',sans-serif" font-size="58" font-weight="700">182</text>
+        <text id="gaugeUnit" x="190" y="256" text-anchor="middle" fill="#927b65" font-family="'JetBrains Mono',monospace" font-size="9" letter-spacing="3">BHP</text>
+        <text id="gaugeRpm" x="190" y="276" text-anchor="middle" fill="#bda994" font-family="'JetBrains Mono',monospace" font-size="9">@ 6,500 RPM</text>
+      </svg>
+      <div class="gauge-foot">
+        <div><div class="k">Torque</div><div class="v amber" id="gaugeTq">183 lb-ft</div></div>
+        <div><div class="k">Boost</div><div class="v" id="gaugeBoost">5.5 psi</div></div>
+        <div><div class="k">Compression</div><div class="v" id="gaugeComp">8.5:1</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" aria-label="Selected series quick stats">
+    <div class="kpis">
+      <div class="kpi" style="--k:var(--cyan)"><div class="label">Displacement</div><div class="val" id="kpiDisp">1,308 cc</div><div class="sub" id="kpiDispSub">654 cc × 2 rotors</div></div>
+      <div class="kpi" style="--k:var(--blue)"><div class="label">Rotor width</div><div class="val" id="kpiWidth">80 mm</div><div class="sub" id="kpiWidthSub">3.15 in</div></div>
+      <div class="kpi" style="--k:var(--amber)"><div class="label">Compression</div><div class="val" id="kpiComp">8.5:1</div><div class="sub" id="kpiCompSub">Series 4 rotors</div></div>
+      <div class="kpi" style="--k:var(--green)"><div class="label">Stock boost</div><div class="val" id="kpiBoost">5.5 psi</div><div class="sub" id="kpiBoostSub">0.38 bar · wastegate</div></div>
+    </div>
+  </section>
+
+  <section class="wrap sec" id="family">
+    <div class="sec-head">
+      <div>
+        <div class="kicker">01 / Family</div>
+        <h2>Two series, one eccentric heart</h2>
+        <p class="sec-sub">The FC Turbo II ran the 13B-T from 1986 to 1991. Series 5 is not a different engine — it is a systematic update: more compression, more boost, a simpler turbo, and electronic oil metering. The long-block architecture stayed the same.</p>
+      </div>
+      <div class="aside">1986 → 1991<br>FC3S Turbo II</div>
+    </div>
+    <div class="timeline" role="list" aria-label="13B turbo FC timeline">
+      <article class="era" role="listitem"><div class="year">1985</div><div class="ci">FC launch</div><p>The second-generation RX-7 arrives for 1986. The Turbo II joins the range with a twin-scroll Hitachi turbo and 8.5:1 rotors.</p><div class="hp">182 hp · 5.5 psi</div></article>
+      <article class="era" role="listitem"><div class="year">1986</div><div class="ci">Series 4</div><p>Mechanical rod-type oil metering, single throttle position sensor, straight intercooler feed pipe, toggle-style trail igniter.</p><div class="hp">13B-T · 8.5:1</div></article>
+      <article class="era" role="listitem"><div class="year">1989</div><div class="ci">Series 5</div><p>Facelift brings 9.0:1 rotors, 7.5 psi, a larger single-scroll turbo, stepper-motor OMP, and dual TPS.</p><div class="hp">200 hp · 7.5 psi</div></article>
+      <article class="era minor" role="listitem"><div class="year">1990</div><div class="ci">Infini IV</div><p>Limited-run JDM Series 5 with a higher rating and chassis tweaks. The high-water mark of FC development.</p><div class="hp">215 PS · JDM</div></article>
+      <article class="era" role="listitem"><div class="year">1991</div><div class="ci">FC ends</div><p>The FD3S arrives with the 13B-REW twin-turbo. The FC's single-turbo 13B remains the simpler, tougher swap engine.</p><div class="hp">13B-REW · 255 hp</div></article>
+    </div>
+    <p class="table-note"><b>Read the series, not just the year.</b> US ratings are SAE net. JDM Series 4 was rated 185 PS and Series 5 205 PS; the Infini IV was 215 PS. Boost figures are factory wastegate settings and move with altitude, intake temperature, and ECU calibration.</p>
+  </section>
+
+  <section class="wrap sec" id="specs">
+    <div class="sec-head">
+      <div>
+        <div class="kicker">02 / Specifications</div>
+        <h2>Series 4 vs Series 5</h2>
+        <p class="sec-sub">Same 1,308 cc twin-rotor long block, different calibration and hardware. The big jumps are compression (8.5 to 9.0), boost (5.5 to 7.5 psi), and the switch from a twin-scroll to a larger single-scroll turbo.</p>
+      </div>
+      <div class="aside">US SAE net<br>JDM figures in notes</div>
+    </div>
+    <div class="table-wrap">
+      <table class="spec-table">
+        <caption>Mazda 13B turbo Series 4 and Series 5 specifications</caption>
+        <thead>
+          <tr>
+            <th scope="col">Specification</th>
+            <th scope="col" data-col="s4">Series 4 · 1986–88</th>
+            <th scope="col" data-col="s5">Series 5 · 1989–91</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Engine code</th><td>13B-T (13BT)</td><td>13B-T (13BT)</td></tr>
+          <tr><th scope="row">Type</th><td>2-rotor Wankel, single turbo</td><td>2-rotor Wankel, single turbo</td></tr>
+          <tr><th scope="row">Displacement</th><td>1,308 cc (654 × 2)</td><td>1,308 cc (654 × 2)</td></tr>
+          <tr><th scope="row">Rotor width</th><td>80 mm (3.15 in)</td><td>80 mm (3.15 in)</td></tr>
+          <tr><th scope="row">Generating radius</th><td>105 mm</td><td>105 mm</td></tr>
+          <tr><th scope="row">Eccentricity</th><td>15 mm</td><td>15 mm</td></tr>
+          <tr><th scope="row">Compression ratio</th><td>8.5:1</td><td>9.0:1</td></tr>
+          <tr><th scope="row">Max factory boost</th><td>5.5 psi (0.38 bar)</td><td>7.5 psi (0.52 bar)</td></tr>
+          <tr><th scope="row">Power (US)</th><td>182 hp (135 kW) @ 6,500</td><td>200 hp (149 kW) @ 6,500</td></tr>
+          <tr><th scope="row">Torque (US)</th><td>183 lb-ft (248 Nm) @ 3,500</td><td>196 lb-ft (266 Nm) @ 3,500</td></tr>
+          <tr><th scope="row">Specific output</th><td>139 hp/L</td><td>153 hp/L</td></tr>
+          <tr><th scope="row">Redline / fuel cut</th><td>7,000 / ~7,200 rpm</td><td>7,000 / ~7,200 rpm</td></tr>
+          <tr><th scope="row">Turbocharger</th><td>Hitachi HT-18, twin-scroll</td><td>Hitachi HT-18, larger single-scroll</td></tr>
+          <tr><th scope="row">Boost control</th><td>Twin-scroll diaphragm + wastegate</td><td>Wastegate</td></tr>
+          <tr><th scope="row">Intercooler</th><td>Top-mount, straight feed pipe</td><td>Top-mount, tapered feed pipe</td></tr>
+          <tr><th scope="row">Oil metering</th><td>Mechanical rod-type OMP</td><td>Electric stepper-motor OMP</td></tr>
+          <tr><th scope="row">Throttle sensing</th><td>Single TPS</td><td>Dual TPS</td></tr>
+          <tr><th scope="row">Ignition</th><td>Waste spark, toggle trail igniter</td><td>Waste spark, toggle trail igniter</td></tr>
+          <tr><th scope="row">Fuel system</th><td>Port injection, 4 injectors</td><td>Port injection, 4 injectors</td></tr>
+          <tr><th scope="row">Transmission</th><td>5-speed manual</td><td>5-speed manual</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="table-note"><b>JDM:</b> Series 4 185 PS, Series 5 205 PS, Infini IV 215 PS. <b>Boost:</b> factory wastegate settings; a healthy stock S4 typically logs 5–6 psi and an S5 7–8 psi. <b>Fuel cut:</b> the factory ECU cuts fuel near 7,200 rpm; do not treat it as a rev limiter for a built engine.</p>
+  </section>
+
+  <section class="wrap sec" id="power">
+    <div class="sec-head">
+      <div>
+        <div class="kicker">03 / Power</div>
+        <h2>Where the 200 hp comes from</h2>
+        <p class="sec-sub">A rotary makes torque from airflow and rpm, not from displacement. The 13B-T's power curve is flat and broad, but the limit is detonation — not the turbo's ability to make boost.</p>
+      </div>
+      <div class="aside">182 → 200 hp<br>+10% power, +36% boost</div>
+    </div>
+    <div class="two-col">
+      <div class="panel panel-pad explain">
+        <p><strong>Series 4: the twin-scroll years.</strong> The 8.5:1 rotors and 5.5 psi wastegate make a small, responsive turbo that builds boost early. The twin-scroll housing separates the exhaust pulses from the two rotors, which sharpens spool at the cost of a more complex control diaphragm and plumbing.</p>
+        <p><strong>Series 5: compression and a bigger turbo.</strong> Mazda raised compression to 9.0:1 and boost to 7.5 psi, then simplified the turbo to a larger single-scroll unit. The result is more midrange and top-end, but less detonation margin on pump fuel and a stronger dependence on the stock knock control and intercooler.</p>
+        <p><strong>The rotary caveat.</strong> Peak power is airflow-limited, but the failure mode is almost always detonation or heat, not a lack of boost. Stock ECU fuel cut, intake temperature, fuel octane, and oil metering matter more than the wastegate setting. A boost controller on a stock ECU is not a power upgrade — it is a way to find the weakest seal.</p>
+        <div class="stat-row">
+          <div class="stat"><div class="k">Specific output</div><div class="v cyan">139 → 153 hp/L</div></div>
+          <div class="stat"><div class="k">Boost increase</div><div class="v amber">5.5 → 7.5 psi</div></div>
+          <div class="stat"><div class="k">Compression</div><div class="v">8.5 → 9.0:1</div></div>
+          <div class="stat"><div class="k">Torque</div><div class="v">183 → 196 lb-ft</div></div>
+        </div>
+      </div>
+      <div class="panel panel-pad">
+        <div class="bars-head">
+          <h3>Series comparison</h3>
+          <div class="rating-tabs" aria-label="Rating source"><button type="button" class="on">US SAE</button></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Peak power<small>hp @ 6,500 rpm</small></div>
+          <div class="bar-tracks">
+            <div class="bar-track"><div class="bar-fill" style="--w:75.8%"></div></div>
+            <div class="bar-track"><div class="bar-fill" style="--w:83.3%;background:linear-gradient(90deg,#8f2d17,#e2582a)"></div></div>
+          </div>
+          <div class="bar-vals"><b>182</b><br><i>200</i></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Peak torque<small>lb-ft @ 3,500 rpm</small></div>
+          <div class="bar-tracks">
+            <div class="bar-track"><div class="bar-fill tq" style="--w:83.2%"></div></div>
+            <div class="bar-track"><div class="bar-fill tq" style="--w:89.1%;background:linear-gradient(90deg,#8f2d17,#ff8a4c)"></div></div>
+          </div>
+          <div class="bar-vals"><b>183</b><br><i>196</i></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Factory boost<small>psi, wastegate setting</small></div>
+          <div class="bar-tracks">
+            <div class="bar-track"><div class="bar-fill" style="--w:55%"></div></div>
+            <div class="bar-track"><div class="bar-fill" style="--w:75%;background:linear-gradient(90deg,#8f2d17,#e2582a)"></div></div>
+          </div>
+          <div class="bar-vals"><b>5.5</b><br><i>7.5</i></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Compression<small>static ratio</small></div>
+          <div class="bar-tracks">
+            <div class="bar-track"><div class="bar-fill" style="--w:85%"></div></div>
+            <div class="bar-track"><div class="bar-fill" style="--w:90%;background:linear-gradient(90deg,#8f2d17,#e2582a)"></div></div>
+          </div>
+          <div class="bar-vals"><b>8.5</b><br><i>9.0</i></div>
+        </div>
+        <div class="legend"><span><i style="background:linear-gradient(90deg,#e2582a,#f7b955)"></i>Series 4</span><span><i style="background:linear-gradient(90deg,#8f2d17,#e2582a)"></i>Series 5</span></div>
+        <p class="caveat">Bars are scaled to 240 hp / 220 lb-ft / 10 psi / 10:1 so the series differences are visible. They are not a dyno plot.</p>
+      </div>
+    </div>
+    <div class="panel chart-panel" style="margin-top:14px">
+      <div class="bars-head">
+        <h3>Representative power curve</h3>
+        <span class="mono" style="font-size:9px;color:var(--dim);letter-spacing:.08em">RPM vs HP / LB-FT</span>
+      </div>
+      <svg class="chart-svg" id="powerChart" viewBox="0 0 760 300" role="img" aria-label="Representative power and torque curves for Series 4 and Series 5 13B turbo engines"></svg>
+      <div class="chart-legend">
+        <span><i style="background:#f7b955"></i>S4 power</span>
+        <span><i style="background:#e2582a"></i>S5 power</span>
+        <span><i style="background:#ffd166"></i>S4 torque</span>
+        <span><i style="background:#b33a1e"></i>S5 torque</span>
+      </div>
+    </div>
+    <p class="table-note"><b>Shape, not gospel.</b> These curves are representative of a healthy stock engine on a chassis dyno. Real numbers move with intake temperature, fuel, altitude, and the condition of the turbo and seals. Use them to understand the spread between series, not to calibrate a tune.</p>
+  </section>
+
+  <section class="wrap sec" id="blueprint">
+    <div class="sec-head">
+      <div>
+        <div class="kicker">04 / Blueprint</div>
+        <h2>The geometry of a Wankel</h2>
+        <p class="sec-sub">A 13B is two rotors on one eccentric shaft, each chasing a two-lobe trochoid. The numbers below are the ones that matter when you are checking wear, ordering seals, or explaining why a rotary is not a piston engine.</p>
+      </div>
+      <div class="aside">Schematic · not to scale<br>R 105 · e 15 · b 80 mm</div>
+    </div>
+    <div class="bp-grid">
+      <div class="panel drawing">
+        <span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span>
+        <svg class="bp-svg" id="bpSvg" viewBox="0 0 520 420" role="img" aria-labelledby="bpTitle bpDesc">
+          <title id="bpTitle">Schematic cross-section of a 13B rotary engine</title>
+          <desc id="bpDesc">A two-lobe rotor housing containing a three-flank rotor, with numbered hotspots for the housing, apex seal, side seal, corner seal, eccentric shaft, stationary gear, tension bolt and rotor bearing.</desc>
+          <defs>
+            <radialGradient id="rotorGrad" cx="42%" cy="38%" r="70%">
+              <stop offset="0" stop-color="#2c1c12"/><stop offset="1" stop-color="#160e09"/>
+            </radialGradient>
+            <linearGradient id="housingGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#24170f"/><stop offset="1" stop-color="#120b07"/>
+            </linearGradient>
+          </defs>
+          <path id="housingPath" fill="url(#housingGrad)" stroke="#5c3a23" stroke-width="3"/>
+          <path id="housingSeal" fill="none" stroke="rgba(247,185,85,.22)" stroke-width="12" stroke-linejoin="round"/>
+          <g id="stationaryGear" opacity=".7">
+            <circle cx="260" cy="210" r="55" fill="none" stroke="#927b65" stroke-width="1.2" stroke-dasharray="3 4"/>
+            <circle cx="260" cy="210" r="47" fill="none" stroke="#5c3a23" stroke-width="1"/>
+          </g>
+          <g id="tensionBolts" fill="#24170f" stroke="#927b65" stroke-width="1.4">
+            <circle cx="260" cy="34" r="5.5"/><circle cx="412.4" cy="122" r="5.5"/><circle cx="412.4" cy="298" r="5.5"/>
+            <circle cx="260" cy="386" r="5.5"/><circle cx="107.6" cy="298" r="5.5"/><circle cx="107.6" cy="122" r="5.5"/>
+          </g>
+          <polygon points="260,112 344.9,259 175.1,259" fill="url(#rotorGrad)" stroke="#f7b955" stroke-width="10" stroke-linejoin="round"/>
+          <polygon points="260,124 334.9,253 185.1,253" fill="none" stroke="rgba(247,185,85,.28)" stroke-width="1.4" stroke-linejoin="round"/>
+          <line x1="252" y1="122" x2="336" y2="262" stroke="#ffd166" stroke-width="2.2" stroke-dasharray="7 4"/>
+          <line x1="268" y1="122" x2="184" y2="262" stroke="#ffd166" stroke-width="2.2" stroke-dasharray="7 4"/>
+          <line x1="190" y1="250" x2="330" y2="250" stroke="#ffd166" stroke-width="2.2" stroke-dasharray="7 4"/>
+          <g fill="#ffd166">
+            <circle cx="250" cy="121" r="3"/><circle cx="270" cy="121" r="3"/>
+            <circle cx="336" cy="250" r="3"/><circle cx="338" cy="266" r="3"/>
+            <circle cx="184" cy="250" r="3"/><circle cx="182" cy="266" r="3"/>
+          </g>
+          <g fill="#f7b955" stroke="#7a4a1e" stroke-width="1">
+            <circle cx="260" cy="112" r="5.5"/><circle cx="344.9" cy="259" r="5.5"/><circle cx="175.1" cy="259" r="5.5"/>
+          </g>
+          <circle cx="260" cy="210" r="24" fill="#24160e" stroke="#e2582a" stroke-width="2"/>
+          <circle cx="260" cy="210" r="18" fill="none" stroke="#f7b955" stroke-width="1.2" stroke-dasharray="3 3"/>
+          <circle cx="260" cy="198" r="11" fill="#e2582a" opacity=".75"/>
+          <circle cx="260" cy="210" r="4" fill="#f6ede2"/>
+          <g class="hotspot" data-part="housing" tabindex="0" role="button" aria-label="Rotor housing"><circle cx="260" cy="58" r="13"/><text x="260" y="61.5" text-anchor="middle">1</text></g>
+          <g class="hotspot" data-part="apex" tabindex="0" role="button" aria-label="Apex seal"><circle cx="306" cy="98" r="13"/><text x="306" y="101.5" text-anchor="middle">2</text></g>
+          <g class="hotspot" data-part="side" tabindex="0" role="button" aria-label="Side seal"><circle cx="398" cy="238" r="13"/><text x="398" y="241.5" text-anchor="middle">3</text></g>
+          <g class="hotspot" data-part="corner" tabindex="0" role="button" aria-label="Corner seal"><circle cx="366" cy="292" r="13"/><text x="366" y="295.5" text-anchor="middle">4</text></g>
+          <g class="hotspot" data-part="eccentric" tabindex="0" role="button" aria-label="Eccentric shaft"><circle cx="306" cy="210" r="13"/><text x="306" y="213.5" text-anchor="middle">5</text></g>
+          <g class="hotspot" data-part="stationary" tabindex="0" role="button" aria-label="Stationary gear"><circle cx="196" cy="160" r="13"/><text x="196" y="163.5" text-anchor="middle">6</text></g>
+          <g class="hotspot" data-part="tension" tabindex="0" role="button" aria-label="Tension bolt"><circle cx="432" cy="122" r="13"/><text x="432" y="125.5" text-anchor="middle">7</text></g>
+          <g class="hotspot" data-part="bearing" tabindex="0" role="button" aria-label="Rotor bearing"><circle cx="220" cy="246" r="13"/><text x="220" y="249.5" text-anchor="middle">8</text></g>
+          <text x="18" y="400" fill="#927b65" font-family="'JetBrains Mono',monospace" font-size="8" letter-spacing="1.5">SCHEMATIC — NOT TO SCALE</text>
+          <text x="502" y="400" fill="#927b65" font-family="'JetBrains Mono',monospace" font-size="8" letter-spacing="1.5" text-anchor="end">13B · 654 cc/ROTOR</text>
+        </svg>
+        <div class="bp-detail" id="bpDetail">
+          <div class="k" id="bpKicker">Component 01</div>
+          <h3 id="bpName">Rotor housing</h3>
+          <p id="bpText">The trochoid surface that the apex seals sweep. The chrome-carbide face is not bored or honed; if it is flaking, chattered, or worn past spec, the housing is scrap.</p>
+          <span class="spec" id="bpSpec">R 105 mm · e 15 mm · b 80 mm</span>
+        </div>
+      </div>
+      <div class="bp-side">
+        <div class="panel mini">
+          <div class="mini-head"><span>Rotor geometry</span><b>13B</b></div>
+          <div class="cmp-row"><span>R</span><div class="cmp-track"><i style="width:100%"></i></div><b>105 mm</b></div>
+          <div class="cmp-row"><span>e</span><div class="cmp-track"><i style="width:14.3%"></i></div><b>15 mm</b></div>
+          <div class="cmp-row"><span>b</span><div class="cmp-track"><i style="width:76.2%"></i></div><b>80 mm</b></div>
+          <div class="cmp-row"><span>cc</span><div class="cmp-track"><i class="amber" style="width:100%"></i></div><b>654 / rotor</b></div>
+          <p class="mini-note">V = 3√3 · e · R · b = 654 cc per rotor. Two rotors give the 13B its 1,308 cc.</p>
+        </div>
+        <div class="panel mini">
+          <div class="mini-head"><span>Seal package</span><b>Per rotor</b></div>
+          <div class="part-list">
+            <div class="part-item"><div class="n">Apex seals</div><div class="v">3</div></div>
+            <div class="part-item"><div class="n">Corner seals</div><div class="v">6</div></div>
+            <div class="part-item"><div class="n">Side seals</div><div class="v">6</div></div>
+            <div class="part-item"><div class="n">Apex springs</div><div class="v">3</div></div>
+            <div class="part-item"><div class="n">Corner springs</div><div class="v">6</div></div>
+            <div class="part-item"><div class="n">Side springs</div><div class="v">6</div></div>
+            <div class="part-item"><div class="n">Oil seal rings</div><div class="v">2</div></div>
+            <div class="part-item"><div class="n">Rotor bearing</div><div class="v">1</div></div>
+          </div>
+          <p class="mini-note">Counts are for one rotor. A full 13B rebuild needs two of everything except the eccentric shaft and stationary gears.</p>
+        </div>
+        <div class="panel mini">
+          <div class="mini-head"><span>Critical clearances</span><b>Verify FSM</b></div>
+          <div class="part-list">
+            <div class="part-item"><div class="n">Apex groove</div><div class="v">0.002–0.003 in</div></div>
+            <div class="part-item"><div class="n">Side seal max</div><div class="v">0.016 in</div></div>
+            <div class="part-item"><div class="n">Rotor side</div><div class="v">0.002–0.007 in</div></div>
+            <div class="part-item"><div class="n">Shaft end play</div><div class="v">0.0016–0.0059 in</div></div>
+          </div>
+          <p class="mini-note">Nominal 13B ranges from factory and Atkins Rotary reference sheets. Model-year and housing variation matters — always confirm against the FSM before assembly.</p>
+        </div>
+      </div>
+    </div>
+    <p class="table-note"><b>How the geometry works:</b> the rotor has three flanks but the housing has two lobes. The rotor turns at one-third of the eccentric shaft speed, and each face sees one intake, compression, power, and exhaust event per eccentric shaft revolution. That is why a 1.3 L rotary behaves like a larger engine in airflow terms — and why heat and sealing dominate the build.</p>
+  </section>
+
+  <section class="wrap sec" id="torque">
+    <div class="sec-head">
+      <div>
+        <div class="kicker">05 / Torque</div>
+        <h2>Fastener values that matter</h2>
+        <p class="sec-sub">Click any value to copy it. Values are for clean, lightly oiled threads unless noted. The big three on a rotary are the tension bolts, the stationary gears, and the flywheel nut — get those wrong and the stack will not live.</p>
+      </div>
+      <div class="aside">ft-lb / Nm<br>verify against FSM</div>
+    </div>
+    <div class="warn-box">
+      <div class="ico">!</div>
+      <p><b>The flywheel/counterweight nut is the one that bites.</b> 290–360 ft-lb on a 13B is not a breaker-bar-and-prayer job. Use a proper holding tool, a new nut, and a torque wrench rated for the value. Never let the eccentric shaft take the reaction through the rotor.</p>
+    </div>
+    <div class="toolbar">
+      <div class="filter" role="group" aria-label="Filter torque values by system">
+        <button type="button" class="fbtn on" data-cat="all">All</button>
+        <button type="button" class="fbtn" data-cat="rotor">Rotor</button>
+        <button type="button" class="fbtn" data-cat="engine">Engine</button>
+        <button type="button" class="fbtn" data-cat="turbo">Turbo</button>
+        <button type="button" class="fbtn" data-cat="driveline">Driveline</button>
+        <button type="button" class="fbtn" data-cat="ignition">Ignition</button>
+      </div>
+      <div class="search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5 21 21"/></svg>
+        <input type="search" id="tqSearch" placeholder="Search fasteners…" aria-label="Search torque values">
+      </div>
+    </div>
+    <div class="table-wrap">
+      <table class="torque-table">
+        <caption>Mazda 13B turbo torque specifications</caption>
+        <thead><tr><th scope="col">Fastener</th><th scope="col" id="tqHead1">ft-lb</th><th scope="col" id="tqHead2">Nm</th><th scope="col">Notes</th></tr></thead>
+        <tbody id="tqBody">
+          <tr data-cat="rotor" data-diff="1"><td>Tension bolts (6)</td><td><button type="button" class="tq-btn" data-ft="24–28" data-nm="33–38">24–28</button></td><td>33–38</td><td>Crisscross, three passes; clean, lightly oiled threads.</td></tr>
+          <tr data-cat="rotor"><td>Stationary gear bolts</td><td><button type="button" class="tq-btn" data-ft="12–16" data-nm="16–22">12–16</button></td><td>16–22</td><td>Front and rear; check gear end play after torque.</td></tr>
+          <tr data-cat="rotor" data-diff="1"><td>Flywheel / counterweight nut</td><td><button type="button" class="tq-btn wide" data-ft="290–360" data-nm="393–488">290–360</button></td><td>393–488</td><td>New nut, holding tool; never impact the eccentric shaft.</td></tr>
+          <tr data-cat="rotor"><td>Front pulley bolt</td><td><button type="button" class="tq-btn" data-ft="87–116" data-nm="118–157">87–116</button></td><td>118–157</td><td>Hold the flywheel; check pulley runout after.</td></tr>
+          <tr data-cat="engine"><td>Front cover bolts</td><td><button type="button" class="tq-btn" data-ft="12–16" data-nm="16–22">12–16</button></td><td>16–22</td><td>Even pattern; do not pinch the front seal.</td></tr>
+          <tr data-cat="engine"><td>Oil pan bolts</td><td><button type="button" class="tq-btn" data-ft="6.6–8.6" data-nm="9–12">6.6–8.6</button></td><td>9–12</td><td>Snug evenly; do not crush the gasket.</td></tr>
+          <tr data-cat="engine"><td>Oil pump bolts</td><td><button type="button" class="tq-btn" data-ft="5–7" data-nm="7–10">5–7</button></td><td>7–10</td><td>Check pump clearance before installation.</td></tr>
+          <tr data-cat="engine"><td>Oil pump sprocket nut</td><td><button type="button" class="tq-btn" data-ft="24–33" data-nm="33–45">24–33</button></td><td>33–45</td><td>Stake or retain per FSM.</td></tr>
+          <tr data-cat="engine"><td>Rear oil pressure regulator</td><td><button type="button" class="tq-btn" data-ft="51–57" data-nm="69–77">51–57</button></td><td>69–77</td><td>New crush washer.</td></tr>
+          <tr data-cat="engine"><td>Oil metering pump bolts</td><td><button type="button" class="tq-btn" data-ft="5.8–8" data-nm="8–11">5.8–8</button></td><td>8–11</td><td>Do not overtighten the plastic body.</td></tr>
+          <tr data-cat="engine"><td>Oil strainer bolts</td><td><button type="button" class="tq-btn" data-ft="5.1–7.2" data-nm="7–10">5.1–7.2</button></td><td>7–10</td><td>Clean the pickup before refitting.</td></tr>
+          <tr data-cat="engine"><td>Water pump bolts</td><td><button type="button" class="tq-btn" data-ft="14–19" data-nm="19–26">14–19</button></td><td>19–26</td><td>New gasket; do not lever on the housing.</td></tr>
+          <tr data-cat="engine"><td>Water pump housing nuts</td><td><button type="button" class="tq-btn" data-ft="14–19" data-nm="19–26">14–19</button></td><td>19–26</td><td>Even pattern, two passes.</td></tr>
+          <tr data-cat="engine"><td>Thermostat housing bolts</td><td><button type="button" class="tq-btn" data-ft="14–19" data-nm="19–26">14–19</button></td><td>19–26</td><td>New O-ring or gasket.</td></tr>
+          <tr data-cat="engine"><td>Intake manifold bolts</td><td><button type="button" class="tq-btn" data-ft="12–16" data-nm="16–22">12–16</button></td><td>16–22</td><td>Check for vacuum leaks after.</td></tr>
+          <tr data-cat="engine"><td>Exhaust manifold bolts</td><td><button type="button" class="tq-btn" data-ft="51–57" data-nm="69–77">51–57</button></td><td>69–77</td><td>New gaskets; recheck after heat cycles.</td></tr>
+          <tr data-cat="turbo"><td>Turbo to manifold nuts</td><td><button type="button" class="tq-btn" data-ft="26–34" data-nm="35–46">26–34</button></td><td>35–46</td><td>Stage tighten; support the turbo while torquing.</td></tr>
+          <tr data-cat="turbo"><td>Downpipe nuts</td><td><button type="button" class="tq-btn" data-ft="26–34" data-nm="35–46">26–34</button></td><td>35–46</td><td>New gasket; check for leaks when hot.</td></tr>
+          <tr data-cat="turbo"><td>Intercooler pipe clamps</td><td><button type="button" class="tq-btn" data-ft="4–6" data-nm="5–8">4–6</button></td><td>5–8</td><td>Snug only; boost-leak check after.</td></tr>
+          <tr data-cat="driveline"><td>Pressure plate bolts</td><td><button type="button" class="tq-btn" data-ft="14–19" data-nm="19–26">14–19</button></td><td>19–26</td><td>Even crisscross; use a clutch alignment tool.</td></tr>
+          <tr data-cat="driveline"><td>Bellhousing bolts</td><td><button type="button" class="tq-btn" data-ft="28–38" data-nm="38–52">28–38</button></td><td>38–52</td><td>Do not pull the box in with the bolts.</td></tr>
+          <tr data-cat="driveline"><td>Driveshaft to differential</td><td><button type="button" class="tq-btn" data-ft="32–43" data-nm="43–58">32–43</button></td><td>43–58</td><td>New locknuts; check phasing.</td></tr>
+          <tr data-cat="driveline"><td>Wheel lug nuts</td><td><button type="button" class="tq-btn" data-ft="65–87" data-nm="88–118">65–87</button></td><td>88–118</td><td>Star pattern; recheck after 50 miles.</td></tr>
+          <tr data-cat="ignition" data-diff="1"><td>Spark plugs</td><td><button type="button" class="tq-btn" data-ft="11–18" data-nm="15–24">11–18</button></td><td>15–24</td><td>Aluminum housing; do not overtighten. Surface-gap plugs.</td></tr>
+          <tr data-cat="ignition"><td>Knock sensor</td><td><button type="button" class="tq-btn" data-ft="15–25" data-nm="20–34">15–25</button></td><td>20–34</td><td>Clean the mating surface; no thread sealant.</td></tr>
+          <tr data-cat="ignition"><td>CAS lock bolt</td><td><button type="button" class="tq-btn" data-ft="14–19" data-nm="19–26">14–19</button></td><td>19–26</td><td>Set base timing first, then lock.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="table-note"><b>Units:</b> values are converted at 1 lb-ft = 1.3558 Nm and rounded to the nearest whole number. <b>Threads:</b> "lightly oiled" means a drop of engine oil, not anti-seize. <b>Critical:</b> tension bolts and the flywheel nut are highlighted; read the notes before you pull the wrench.</p>
+  </section>
+
+  <section class="wrap sec" id="assembly">
+    <div class="sec-head">
+      <div>
+        <div class="kicker">06 / Rebuild</div>
+        <h2>From bare housings to first start</h2>
+        <p class="sec-sub">A 13B rebuild is a sealing job, not a machining job. The stack has to be clean, the seals have to be lubricated, and the tension bolts have to be torqued evenly. Work through the stages in order and check the box when the step is genuinely done.</p>
+      </div>
+      <div class="aside">8 stages<br>stock rebuild</div>
+    </div>
+    <div class="panel progress-card">
+      <span class="lbl">Rebuild progress</span>
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+      <span class="progress-count" id="progressCount">0 / 8</span>
+      <button type="button" class="reset" id="resetBuild">Reset</button>
+    </div>
+
+    <details class="stage" open>
+      <summary>
+        <span class="num">01</span>
+        <span><span class="title">Teardown &amp; inspection</span><span class="meta">Before you buy parts</span></span>
+        <input type="checkbox" class="check" data-step="1" aria-label="Mark stage 1 complete">
+        <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <div class="stage-body">
+        <ol>
+          <li>Compression-test the engine before it comes apart. Record all three faces of both rotors — a single low face changes the diagnosis.</li>
+          <li>Remove the turbo, intake, exhaust, front cover, and accessories. Bag and label the fasteners by assembly; the tension bolts are not interchangeable with cover bolts.</li>
+          <li>Keep the rotor housings and side plates paired and marked. Mixing worn parts across a stack is how you end up with a clearance you cannot explain.</li>
+          <li>Inspect the chrome-carbide housing faces for flaking, chatter, and apex-seal track wear. Check the side plates for seal-track grooves and coolant-seal erosion.</li>
+        </ol>
+        <div class="specs"><span class="spec">Compression 90–110 psi / face</span><span class="spec">Max spread ≈ 15 psi</span><span class="spec">Oil pressure ≥ 30 psi hot</span></div>
+        <p class="why"><b>Why it matters:</b> a rotary that failed a compression test rarely needs only seals. The housings and side plates are the expensive parts — inspect them before you order a seal kit.</p>
+      </div>
+    </details>
+
+    <details class="stage">
+      <summary>
+        <span class="num">02</span>
+        <span><span class="title">Measure &amp; decide</span><span class="meta">Reuse or replace</span></span>
+        <input type="checkbox" class="check" data-step="2" aria-label="Mark stage 2 complete">
+        <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <div class="stage-body">
+        <ol>
+          <li>Measure rotor housing width at several points and compare to the FSM limit. Measure side-housing wear and rotor side clearance with the rotor in the housing.</li>
+          <li>Check the apex-seal groove width and the side-seal groove. A worn groove will not hold a new seal at the right height.</li>
+          <li>Measure eccentric shaft end play and inspect the journals for scoring, taper, and brinelling. Check the stationary gear teeth for pitting.</li>
+          <li>Decide what is reusable before ordering. A seal kit plus gaskets is normal; a shaft, housings, or side plates are a different budget.</li>
+        </ol>
+        <div class="specs"><span class="spec">Rotor side 0.002–0.007 in</span><span class="spec">Apex groove 0.002–0.003 in</span><span class="spec">End play 0.0016–0.0059 in</span></div>
+        <p class="why"><b>Why it matters:</b> seal kits are cheap; housings are not. Measuring first is the difference between a rebuild and a parts cannon.</p>
+      </div>
+    </details>
+
+    <details class="stage">
+      <summary>
+        <span class="num">03</span>
+        <span><span class="title">Rotor assembly</span><span class="meta">Seals &amp; springs</span></span>
+        <input type="checkbox" class="check" data-step="3" aria-label="Mark stage 3 complete">
+        <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <div class="stage-body">
+        <ol>
+          <li>Clean the rotor thoroughly and blow out every seal groove. Any grit left in a groove will hold a seal off its seat.</li>
+          <li>Install the apex seals and springs, then the corner seals and springs. Fit the side seals and springs last, and fit the oil seal rings to the rotor sides.</li>
+          <li>Lubricate every seal and groove with clean engine oil or assembly lube. Check that each seal projects correctly and moves freely in its groove.</li>
+          <li>Keep the assembled rotor covered and clean while you prepare the shaft and housings.</li>
+        </ol>
+        <div class="specs"><span class="spec">Apex seal 2.0 mm</span><span class="spec">Corner projection ≥ 0.02 in</span><span class="spec">Side seal max clearance 0.016 in</span></div>
+        <p class="why"><b>Why it matters:</b> a dry seal will scuff on the first start. Lube everything, keep grit out, and do not force a seal into a groove it does not fit.</p>
+      </div>
+    </details>
+
+    <details class="stage">
+      <summary>
+        <span class="num">04</span>
+        <span><span class="title">Eccentric shaft &amp; bearings</span><span class="meta">The rotary crank</span></span>
+        <input type="checkbox" class="check" data-step="4" aria-label="Mark stage 4 complete">
+        <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <div class="stage-body">
+        <ol>
+          <li>Fit the main bearings into the stationary gears and the rotor bearing into the rotor hub. Check that the bearing shells are seated and the oil holes line up.</li>
+          <li>Inspect the eccentric shaft journals for scoring and taper. Check the eccentric lobe and the thrust surfaces.</li>
+          <li>Lubricate the journals and bearing faces, then trial-fit the shaft and rotor. The rotor should turn smoothly by hand with no tight spot.</li>
+          <li>Check end play with a dial indicator before final assembly and confirm it against the FSM.</li>
+        </ol>
+        <div class="specs"><span class="spec">No journal scoring</span><span class="spec">Rotor bearing no brinelling</span><span class="spec">End play 0.0016–0.0059 in</span></div>
+        <p class="why"><b>Why it matters:</b> the rotor bearing is the highest-load bearing in the engine. Brinelling from detonation or low oil pressure is common on a high-boost car — replace it while you are in there.</p>
+      </div>
+    </details>
+
+    <details class="stage">
+      <summary>
+        <span class="num">05</span>
+        <span><span class="title">Stack &amp; seal</span><span class="meta">Housings, plates, bolts</span></span>
+        <input type="checkbox" class="check" data-step="5" aria-label="Mark stage 5 complete">
+        <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <div class="stage-body">
+        <ol>
+          <li>Dry-stack the front side plate, rotor housing, rotor, rotor housing, and rear side plate. Confirm the order and the dowel pins before any sealant goes on.</li>
+          <li>Apply the FSM-specified sealant to the side housings only where required. More sealant is not better — excess can block an oil passage.</li>
+          <li>Lower the stack together, fit the tension bolts, and run them in by hand until they seat. Do not use the bolts to pull the stack down.</li>
+          <li>Check that the rotor still turns freely and that the housings are fully seated before final torque.</li>
+        </ol>
+        <div class="specs"><span class="spec">Sealant per FSM</span><span class="spec">Tension bolts 24–28 ft-lb</span><span class="spec">Dry-stack first</span></div>
+        <p class="why"><b>Why it matters:</b> the stack is a sandwich of seals, not a gasket. Sealant goes only where the manual says, and the bolts should clamp a seated stack — not drag it into place.</p>
+      </div>
+    </details>
+
+    <details class="stage">
+      <summary>
+        <span class="num">06</span>
+        <span><span class="title">Torque the stack</span><span class="meta">Three passes, crisscross</span></span>
+        <input type="checkbox" class="check" data-step="6" aria-label="Mark stage 6 complete">
+        <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <div class="stage-body">
+        <ol>
+          <li>Torque the six tension bolts in three equal passes, alternating opposite bolts. Bring the stack down evenly; do not finish one side before starting the other.</li>
+          <li>Final torque is 24–28 ft-lb. Confirm the exact sequence and value in the FSM for your model year.</li>
+          <li>Check that the rotor turns freely by hand and that the eccentric shaft end play is still in spec. If it tightened up, stop and find out why.</li>
+          <li>Check tension-bolt length if the FSM specifies a stretch limit. Replace any bolt that is out of range.</li>
+        </ol>
+        <div class="specs"><span class="spec">24–28 ft-lb</span><span class="spec">3 passes</span><span class="spec">End play 0.0016–0.0059 in</span></div>
+        <p class="why"><b>Why it matters:</b> the tension bolts set rotor side clearance. Uneven torque means uneven clearance, and an uneven stack is a short-lived engine.</p>
+      </div>
+    </details>
+
+    <details class="stage">
+      <summary>
+        <span class="num">07</span>
+        <span><span class="title">Front cover, oil pump, OMP</span><span class="meta">Oil system &amp; accessories</span></span>
+        <input type="checkbox" class="check" data-step="7" aria-label="Mark stage 7 complete">
+        <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <div class="stage-body">
+        <ol>
+          <li>Fit the front cover with a new seal, then the oil pump and its sprocket. Check pump clearance and prime the pump with clean oil.</li>
+          <li>Install the oil metering pump and connect the lines. On a Series 4, check the mechanical rod adjustment; on a Series 5, check the stepper motor and wiring.</li>
+          <li>Fit the front pulley and torque it while holding the flywheel. Check pulley runout before the belt goes on.</li>
+          <li>Pre-oil the engine by spinning the oil pump or cranking with the ignition disabled until pressure is seen. Do not dry-crank a fresh rotary.</li>
+        </ol>
+        <div class="specs"><span class="spec">Oil pump 5–7 ft-lb</span><span class="spec">OMP 5.8–8 ft-lb</span><span class="spec">Pulley 87–116 ft-lb</span></div>
+        <p class="why"><b>Why it matters:</b> pre-oil before the first start. A dry rotary makes metal on the first revolution, and the damage is done before the gauge moves.</p>
+      </div>
+    </details>
+
+    <details class="stage">
+      <summary>
+        <span class="num">08</span>
+        <span><span class="title">Flywheel, turbo, first start</span><span class="meta">Heat cycle &amp; checks</span></span>
+        <input type="checkbox" class="check" data-step="8" aria-label="Mark stage 8 complete">
+        <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <div class="stage-body">
+        <ol>
+          <li>Fit a new flywheel/counterweight nut and torque it to 290–360 ft-lb with a holding tool. Install the clutch and pressure plate with an alignment tool.</li>
+          <li>Fit the turbo, manifold, downpipe, and intake. Use new gaskets, support the turbo while torquing, and check every boost hose for a proper seat.</li>
+          <li>Prime the oil system, disable the ignition, and crank for pressure. Then start and idle at 750–850 rpm, watching oil pressure and for coolant or oil leaks.</li>
+          <li>Heat-cycle the engine, recheck the tension bolts and exhaust fasteners, then compression-test and boost-leak-check before any load.</li>
+        </ol>
+        <div class="specs"><span class="spec">Flywheel 290–360 ft-lb</span><span class="spec">Plugs 11–18 ft-lb</span><span class="spec">Boost 5.5 / 7.5 psi</span></div>
+        <p class="why"><b>Why it matters:</b> the first start is a leak check, not a dyno pull. Idle, verify oil pressure, heat-cycle, and only then load the engine.</p>
+      </div>
+    </details>
+
+    <div class="stack-wrap">
+      <div class="stack">
+        <svg viewBox="0 0 300 200" role="img" aria-label="Tension bolt crisscross pattern for six bolts">
+          <text x="150" y="16" text-anchor="middle" fill="#927b65" font-family="'JetBrains Mono',monospace" font-size="8" letter-spacing="1.5">TENSION BOLTS — 6 TOTAL</text>
+          <line x1="150" y1="40" x2="150" y2="160" stroke="#5c3a23" stroke-width="1" stroke-dasharray="4 4"/>
+          <line x1="202" y1="70" x2="98" y2="130" stroke="#5c3a23" stroke-width="1" stroke-dasharray="4 4"/>
+          <line x1="202" y1="130" x2="98" y2="70" stroke="#5c3a23" stroke-width="1" stroke-dasharray="4 4"/>
+          <g font-family="'JetBrains Mono',monospace" font-size="10" text-anchor="middle">
+            <circle cx="150" cy="40" r="13" fill="#17100b" stroke="#f7b955" stroke-width="1.5"/><text x="150" y="44" fill="#f7b955">1</text>
+            <circle cx="202" cy="70" r="13" fill="#17100b" stroke="#f7b955" stroke-width="1.5"/><text x="202" y="74" fill="#f7b955">2</text>
+            <circle cx="202" cy="130" r="13" fill="#17100b" stroke="#f7b955" stroke-width="1.5"/><text x="202" y="134" fill="#f7b955">3</text>
+            <circle cx="150" cy="160" r="13" fill="#17100b" stroke="#f7b955" stroke-width="1.5"/><text x="150" y="164" fill="#f7b955">4</text>
+            <circle cx="98" cy="130" r="13" fill="#17100b" stroke="#f7b955" stroke-width="1.5"/><text x="98" y="134" fill="#f7b955">5</text>
+            <circle cx="98" cy="70" r="13" fill="#17100b" stroke="#f7b955" stroke-width="1.5"/><text x="98" y="74" fill="#f7b955">6</text>
+          </g>
+          <text x="150" y="190" text-anchor="middle" fill="#bda994" font-family="'JetBrains Mono',monospace" font-size="8">1↔4 · 2↔5 · 3↔6 · three passes</text>
+        </svg>
+        <div class="cap">Tension bolt pattern. Alternate opposite pairs and bring the stack down evenly — confirm the factory sequence in the FSM.</div>
+      </div>
+      <div class="stack">
+        <svg viewBox="0 0 300 200" role="img" aria-label="Exploded stack order for a 13B rotary engine">
+          <text x="150" y="14" text-anchor="middle" fill="#927b65" font-family="'JetBrains Mono',monospace" font-size="8" letter-spacing="1.5">STACK ORDER — FRONT TO REAR</text>
+          <g font-family="'JetBrains Mono',monospace" font-size="8">
+            <rect x="28" y="24" width="112" height="18" rx="3" fill="#24170f" stroke="#5c3a23"/><text x="84" y="36" text-anchor="middle" fill="#bda994">FRONT COVER</text>
+            <rect x="28" y="50" width="112" height="18" rx="3" fill="#1d150e" stroke="#5c3a23"/><text x="84" y="62" text-anchor="middle" fill="#bda994">FRONT SIDE PLATE</text>
+            <rect x="28" y="76" width="112" height="22" rx="3" fill="#2c1c12" stroke="#f7b955"/><text x="84" y="90" text-anchor="middle" fill="#f7b955">ROTOR HOUSING + ROTOR</text>
+            <rect x="28" y="106" width="112" height="22" rx="3" fill="#2c1c12" stroke="#f7b955"/><text x="84" y="120" text-anchor="middle" fill="#f7b955">ROTOR HOUSING + ROTOR</text>
+            <rect x="28" y="136" width="112" height="18" rx="3" fill="#1d150e" stroke="#5c3a23"/><text x="84" y="148" text-anchor="middle" fill="#bda994">REAR SIDE PLATE</text>
+            <rect x="28" y="162" width="112" height="18" rx="3" fill="#24170f" stroke="#5c3a23"/><text x="84" y="174" text-anchor="middle" fill="#bda994">REAR COVER</text>
+            <text x="156" y="90" fill="#927b65">← front</text>
+            <text x="156" y="120" fill="#927b65">rear →</text>
+            <text x="156" y="148" fill="#927b65">dowels</text>
+          </g>
+        </svg>
+        <div class="cap">Dry-stack first. Sealant goes on the side housings only where the FSM specifies, then the tension bolts clamp the whole sandwich.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap sec" id="reference">
+    <div class="sec-head">
+      <div>
+        <div class="kicker">07 / Reference</div>
+        <h2>Ignition, fluids, and the rotary tells</h2>
+        <p class="sec-sub">The 13B fires two rotors through four plugs: leading and trailing on each. The leading plug starts the burn; the trailing plug finishes it. Get the plug positions, base timing, and oil metering right before you chase a boost problem.</p>
+      </div>
+      <div class="aside">FC3S · 13B-T<br>stock reference</div>
+    </div>
+    <div class="ref-grid">
+      <div class="panel fo-card">
+        <div class="mini-head"><span>Ignition &amp; firing</span><b>2 rotors · 4 plugs</b></div>
+        <svg viewBox="0 0 420 250" role="img" aria-label="13B leading and trailing spark plug layout for two rotors" style="display:block;width:100%;height:auto">
+          <text x="210" y="14" text-anchor="middle" fill="#927b65" font-family="'JetBrains Mono',monospace" font-size="8" letter-spacing="1.5">TRAILING (TOP) · LEADING (BOTTOM)</text>
+          <g stroke="#5c3a23" stroke-width="1.2" stroke-dasharray="4 4">
+            <line x1="110" y1="48" x2="110" y2="70"/><line x1="110" y1="180" x2="110" y2="202"/>
+            <line x1="310" y1="48" x2="310" y2="70"/><line x1="310" y1="180" x2="310" y2="202"/>
+          </g>
+          <circle cx="110" cy="125" r="60" fill="#17100b" stroke="#5c3a23" stroke-width="1.5"/>
+          <polygon points="110,85 145,145 75,145" fill="none" stroke="#f7b955" stroke-width="2" stroke-linejoin="round"/>
+          <text x="110" y="130" text-anchor="middle" fill="#bda994" font-family="'JetBrains Mono',monospace" font-size="10">R1</text>
+          <circle cx="310" cy="125" r="60" fill="#17100b" stroke="#5c3a23" stroke-width="1.5"/>
+          <polygon points="310,85 345,145 275,145" fill="none" stroke="#f7b955" stroke-width="2" stroke-linejoin="round"/>
+          <text x="310" y="130" text-anchor="middle" fill="#bda994" font-family="'JetBrains Mono',monospace" font-size="10">R2</text>
+          <g font-family="'JetBrains Mono',monospace" font-size="9" text-anchor="middle">
+            <circle cx="110" cy="40" r="9" fill="#2c1c12" stroke="#ffd166" stroke-width="1.5"/><text x="110" y="43" fill="#ffd166">T</text>
+            <circle cx="110" cy="210" r="9" fill="#2c1c12" stroke="#f7b955" stroke-width="1.5"/><text x="110" y="213" fill="#f7b955">L</text>
+            <circle cx="310" cy="40" r="9" fill="#2c1c12" stroke="#ffd166" stroke-width="1.5"/><text x="310" y="43" fill="#ffd166">T</text>
+            <circle cx="310" cy="210" r="9" fill="#2c1c12" stroke="#f7b955" stroke-width="1.5"/><text x="310" y="213" fill="#f7b955">L</text>
+          </g>
+          <g stroke="#f7b955" stroke-width="1.4" fill="none">
+            <path d="M180 125h45" marker-end="url(#arrowGold)"/>
+          </g>
+          <defs><marker id="arrowGold" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0 0l7 3.5L0 7z" fill="#f7b955"/></marker></defs>
+          <text x="202" y="118" text-anchor="middle" fill="#f7b955" font-family="'JetBrains Mono',monospace" font-size="8">1 → 2</text>
+          <text x="110" y="238" text-anchor="middle" fill="#927b65" font-family="'JetBrains Mono',monospace" font-size="8">FRONT</text>
+          <text x="310" y="238" text-anchor="middle" fill="#927b65" font-family="'JetBrains Mono',monospace" font-size="8">REAR</text>
+        </svg>
+        <table class="quick-table">
+          <caption>13B turbo ignition reference</caption>
+          <tbody>
+            <tr><th scope="row">Firing order</th><td>1-2 (front → rear)</td></tr>
+            <tr><th scope="row">Rotor phasing</th><td>3:1 eccentric : rotor</td></tr>
+            <tr><th scope="row">Leading plug</th><td>NGK BUR7EQ</td></tr>
+            <tr><th scope="row">Trailing plug</th><td>NGK BUR9EQ</td></tr>
+            <tr><th scope="row">Plug type</th><td>Surface-gap · do not adjust</td></tr>
+            <tr><th scope="row">Base leading timing</th><td>5° ATDC · check connector grounded</td></tr>
+            <tr><th scope="row">Idle</th><td>750–850 rpm</td></tr>
+            <tr><th scope="row">Fuel cut</th><td>~7,200 rpm</td></tr>
+          </tbody>
+        </table>
+        <p class="inline-note"><b>Waste spark:</b> the FC ignition fires paired plugs on the exhaust stroke to simplify the coil architecture. The trailing plug is deliberately retarded relative to the leading plug — do not "fix" that by matching them.</p>
+      </div>
+      <div class="panel fo-card">
+        <div class="mini-head"><span>Quick specs</span><b>Stock 13B-T</b></div>
+        <table class="quick-table">
+          <caption>13B turbo quick specifications</caption>
+          <tbody>
+            <tr><th scope="row">Compression</th><td>90–110 psi / face</td></tr>
+            <tr><th scope="row">Oil pressure</th><td>≥ 30 psi hot @ 3,000</td></tr>
+            <tr><th scope="row">Coolant temp</th><td>180–200°F normal</td></tr>
+            <tr><th scope="row">Boost</th><td>5.5 psi S4 / 7.5 psi S5</td></tr>
+            <tr><th scope="row">Redline</th><td>7,000 rpm</td></tr>
+            <tr><th scope="row">Octane</th><td>91+ (US pump)</td></tr>
+            <tr><th scope="row">Oil</th><td>10W-30 · 20W-50 in heat</td></tr>
+            <tr><th scope="row">Premix</th><td>1 oz / US gal if OMP deleted</td></tr>
+          </tbody>
+        </table>
+        <div class="mini-head" style="margin-top:16px"><span>Fluid capacities</span><b>FC3S</b></div>
+        <table class="quick-table">
+          <caption>Mazda RX-7 FC fluid capacities</caption>
+          <tbody>
+            <tr><th scope="row">Engine oil (dry)</th><td>5.8 L / 6.1 qt</td></tr>
+            <tr><th scope="row">Coolant (with heater)</th><td>8.7 L / 9.2 qt</td></tr>
+            <tr><th scope="row">Transmission (5-speed)</th><td>2.5 L / 2.6 qt</td></tr>
+            <tr><th scope="row">Differential</th><td>1.3 L / 1.4 qt</td></tr>
+            <tr><th scope="row">Fuel tank</th><td>70 L / 18.5 gal</td></tr>
+            <tr><th scope="row">Brake fluid</th><td>DOT 3 or DOT 4</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="panel" style="margin-top:14px;padding:16px">
+      <div class="mini-head"><span>Troubleshooting</span><b>Rotary-specific tells</b></div>
+      <div class="table-wrap" style="border:0;box-shadow:none;background:transparent">
+        <table class="trouble-table">
+          <caption>13B turbo troubleshooting guide</caption>
+          <thead><tr><th scope="col">Symptom</th><th scope="col">Likely cause</th><th scope="col">Check first</th></tr></thead>
+          <tbody>
+            <tr><td>Hot start / slow crank</td><td>Low compression, worn seals, heat soak</td><td>Compression-test all faces; check battery and starter draw.</td></tr>
+            <tr><td>Boost falls off</td><td>Wastegate, boost leak, fuel cut</td><td>Smoke-test the intake; check the actuator and ECU codes.</td></tr>
+            <tr><td>Detonation / power loss</td><td>Lean mixture, low octane, heat, too much boost</td><td>Fuel pressure, knock sensor, base timing, intercooler airflow.</td></tr>
+            <tr><td>White smoke / coolant loss</td><td>Coolant seal, housing erosion</td><td>Pressure-test the cooling system; inspect the housings.</td></tr>
+            <tr><td>Oil consumption</td><td>OMP rate, turbo seal, oil rings</td><td>Check OMP linkage or stepper; inspect the turbo; leakdown.</td></tr>
+            <tr><td>No trailing spark</td><td>Igniter, coil, plug, wiring</td><td>Pull codes; swap the coil; inspect the trailing plugs.</td></tr>
+            <tr><td>High or rolling idle</td><td>Vacuum leak, TPS, idle screw</td><td>Smoke-test; set the TPS; check the BAC valve.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <p class="table-note"><b>Compression numbers</b> are corrected to a nominal 250 rpm cranking speed; altitude and starter condition move the raw value. <b>Base timing</b> must be set with the check connector grounded and the engine at operating temperature. <b>Oil:</b> a rotary consumes oil by design through the OMP — check the level at every fuel stop, not every oil change.</p>
+  </section>
+
+  <section class="wrap sec" id="sources">
+    <div class="sec-head">
+      <div>
+        <div class="kicker">08 / Sources</div>
+        <h2>Reference shelf</h2>
+        <p class="sec-sub">Factory manuals first, then the reference sheets and community measurements that fill in the gaps. Forum threads are corroboration, not specification.</p>
+      </div>
+      <div class="aside">Primary + secondary<br>links open off-site</div>
+    </div>
+    <div class="panel">
+      <div class="sources">
+        <a href="https://www.atkinsrotary.com/files/attachments/21370/Specs-93.pdf" target="_blank" rel="noopener"><b>Atkins Rotary — 13B spec sheet</b>Torque values, clearances, and seal dimensions; FD-era sheet, cross-check FC values.</a>
+        <a href="https://support.haltech.com/portal/en/kb/articles/tuning-rotary-engines" target="_blank" rel="noopener"><b>Haltech — Tuning rotary engines</b>Series 4 vs Series 5 hardware differences, firing order, ignition wiring.</a>
+        <a href="https://www.rx7.org/public/rx7specs.html" target="_blank" rel="noopener"><b>RX7.org — Specifications compared</b>Model-year compression, power, and chassis data.</a>
+        <a href="https://www.rx7club.com/2nd-gen-archive-72/tune-up-fluid-guide-440412/" target="_blank" rel="noopener"><b>RX7Club — Tune-up fluid guide</b>FC oil, coolant, transmission, and differential capacities from the FSM.</a>
+        <a href="https://projectjdm.org/wiki/specs/rx7-fc" target="_blank" rel="noopener"><b>Project JDM — FC3S specification</b>Series 4 / Series 5 power and turbo summary.</a>
+        <a href="https://en.wikipedia.org/wiki/Mazda_RX-7" target="_blank" rel="noopener"><b>Wikipedia — Mazda RX-7</b>Model history and FC/FD context.</a>
+        <a href="http://www.ausrotary.com/viewtopic.php?t=77787" target="_blank" rel="noopener"><b>AusRotary — Stock S5 boost discussion</b>Community corroboration for 7.5 psi stock boost.</a>
+        <a href="https://www.mazda.com/content/dam/mazda/corporate/mazda-com/ja/pdf/innovation/monozukuri/technology/tech-review/2023/2023_no010.pdf" target="_blank" rel="noopener"><b>Mazda — 13B / 8C technical review (PDF)</b>13B geometry, displacement, and compression reference.</a>
+      </div>
+    </div>
+    <div class="disclaimer">
+      <p><b>Not a substitute for the factory service manual.</b> This page is a study aid for the 1986–1991 FC RX-7 13B turbo. Torque values, clearances, and part numbers vary by model year and market. Verify every critical value against the Mazda FSM for your car before assembly. Rotary engines are sensitive to detonation, fuel quality, and oil metering; a mistake here is expensive.</p>
+    </div>
+  </section>
+</main>
+
+<section class="print-card" aria-hidden="true">
+  <header class="pc-head">
+    <div>
+      <div class="pc-kicker">13B // Tech · Pit Card</div>
+      <h1>Mazda 13B Turbo — FC quick reference</h1>
+      <p>US SAE net unless noted. Verify against the factory service manual before use.</p>
+    </div>
+    <div class="pc-fo">
+      <span>Firing order</span>
+      <b>1-2</b>
+      <small>Leading / trailing · waste spark</small>
+    </div>
+  </header>
+  <div class="pc-grid">
+    <div class="pc-block">
+      <h2>Series 4 / Series 5</h2>
+      <table>
+        <tbody>
+          <tr><th>Displacement</th><td>1,308 cc</td><th>Rotor width</th><td>80 mm</td></tr>
+          <tr><th>Compression</th><td>8.5 / 9.0:1</td><th>Boost</th><td>5.5 / 7.5 psi</td></tr>
+          <tr><th>Power</th><td>182 / 200 hp</td><th>Torque</th><td>183 / 196 lb-ft</td></tr>
+          <tr><th>Redline</th><td>7,000 rpm</td><th>Fuel cut</th><td>~7,200 rpm</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="pc-block">
+      <h2>Critical torque — ft-lb</h2>
+      <table>
+        <tbody>
+          <tr><th>Tension bolts</th><td>24–28</td><th>Stationary gear</th><td>12–16</td></tr>
+          <tr><th>Flywheel nut</th><td>290–360</td><th>Front pulley</th><td>87–116</td></tr>
+          <tr><th>Pressure plate</th><td>14–19</td><th>Spark plugs</th><td>11–18</td></tr>
+          <tr><th>Exhaust manifold</th><td>51–57</td><th>Turbo to manifold</th><td>26–34</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="pc-grid" style="margin-top:10px">
+    <div class="pc-block">
+      <h2>Fluids</h2>
+      <table>
+        <tbody>
+          <tr><th>Engine oil (dry)</th><td>5.8 L / 6.1 qt</td></tr>
+          <tr><th>Coolant (heater)</th><td>8.7 L / 9.2 qt</td></tr>
+          <tr><th>Transmission</th><td>2.5 L / 2.6 qt</td></tr>
+          <tr><th>Differential</th><td>1.3 L / 1.4 qt</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="pc-block">
+      <h2>Ignition &amp; compression</h2>
+      <table>
+        <tbody>
+          <tr><th>Leading plug</th><td>BUR7EQ</td></tr>
+          <tr><th>Trailing plug</th><td>BUR9EQ</td></tr>
+          <tr><th>Compression</th><td>90–110 psi/face</td></tr>
+          <tr><th>Oil pressure</th><td>≥30 psi hot</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <footer class="pc-foot">
+    <span>OMP: mechanical rod (S4) / stepper motor (S5) · Premix 1 oz per US gal if OMP deleted · 91+ octane</span>
+    <span>rx7-13bt-tech.html</span>
+  </footer>
+</section>
+
+<footer>
+  <div class="wrap foot-inner">
+    <span><b>13B // Tech</b> — a static reference page. No tracking, no build step.</span>
+    <span>Nominal stock dimensions · verify against your model year and factory manual</span>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+'use strict';
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+
+/* ---------- engine data ---------- */
+const ENGINES = {
+  s4: {
+    name: 'Series 4', years: '1986–1988', hp: 182, kw: 135, tq: 183, tqNm: 248,
+    rpm: 6500, tqRpm: 3500, boost: 5.5, boostBar: 0.38, comp: 8.5,
+    compNote: 'Series 4 rotors', badge: 'SAE NET'
+  },
+  s5: {
+    name: 'Series 5', years: '1989–1991', hp: 200, kw: 149, tq: 196, tqNm: 266,
+    rpm: 6500, tqRpm: 3500, boost: 7.5, boostBar: 0.52, comp: 9.0,
+    compNote: 'Series 5 rotors', badge: 'SAE NET'
+  }
+};
+const GAUGE_MAX_HP = 240;
+const GAUGE_MAX_KW = 180;
+let currentEngine = 's4';
+let currentUnits = 'sae';
+
+/* ---------- blueprint parts ---------- */
+const PARTS = {
+  housing: {
+    k: 'Component 01', n: 'Rotor housing',
+    t: 'The trochoid surface that the apex seals sweep. The chrome-carbide face is not bored or honed; if it is flaking, chattered, or worn past spec, the housing is scrap. Check the apex-seal track and the water-jacket sealing surface.',
+    s: 'R 105 mm · e 15 mm · b 80 mm'
+  },
+  apex: {
+    k: 'Component 02', n: 'Apex seal',
+    t: 'Three per rotor, one at each tip. The apex seal is the primary compression seal and the part that takes the most heat. Check groove clearance, spring free height, and the housing track it runs on.',
+    s: '3 per rotor · 2.0 mm thick'
+  },
+  side: {
+    k: 'Component 03', n: 'Side seal',
+    t: 'Six per rotor, two per flank. Side seals seal the rotor face against the side housing and control the oil film. End gap and side clearance matter more than the seal brand.',
+    s: '6 per rotor · max clearance 0.016 in'
+  },
+  corner: {
+    k: 'Component 04', n: 'Corner seal',
+    t: 'Six per rotor, bridging the apex and side seals at each corner. The small rubber plug underneath is the corner-seal plug. A missing or hardened plug is a common cause of low compression and oil migration.',
+    s: '6 per rotor · projection ≥ 0.02 in'
+  },
+  eccentric: {
+    k: 'Component 05', n: 'Eccentric shaft',
+    t: 'The rotary equivalent of a crankshaft. The main journals ride in the stationary gears; the eccentric lobe carries the rotor bearing. Inspect for scoring, taper, and brinelling before reusing.',
+    s: 'End play 0.0016–0.0059 in'
+  },
+  stationary: {
+    k: 'Component 06', n: 'Stationary gear',
+    t: 'One front, one rear. The rotor phasing gear rolls around the stationary gear at a 3:1 ratio, which is why the rotor turns once for every three turns of the eccentric shaft. Check the teeth for pitting and the bearing bore for wear.',
+    s: '2 per engine · 3:1 phasing'
+  },
+  tension: {
+    k: 'Component 07', n: 'Tension bolt',
+    t: 'Six bolts clamp the entire housing stack. They set rotor side clearance, so they must be torqued evenly in stages. Clean the threads, inspect for stretch, and confirm the factory sequence before the final pass.',
+    s: '6 per engine · 24–28 ft-lb'
+  },
+  bearing: {
+    k: 'Component 08', n: 'Rotor bearing',
+    t: 'A caged needle bearing in the rotor hub. It is the highest-load bearing in the engine and is sensitive to detonation and low oil pressure. Brinelling shows up as a rough spot or a faint ticking under load.',
+    s: '1 per rotor · replace if brinelled'
+  }
+};
+
+/* ---------- gauge ---------- */
+function gaugeMax() {
+  return currentUnits === 'sae' ? GAUGE_MAX_HP : GAUGE_MAX_KW;
+}
+
+function buildGaugeTicks() {
+  const g = $('#gaugeTicks');
+  if (!g) return;
+  const max = gaugeMax();
+  let out = '';
+  for (let i = 0; i <= 6; i++) {
+    const deg = -120 + (240 * i) / 6;
+    const rad = (deg * Math.PI) / 180;
+    const x1 = 190 + Math.sin(rad) * 118;
+    const y1 = 190 - Math.cos(rad) * 118;
+    const x2 = 190 + Math.sin(rad) * 130;
+    const y2 = 190 - Math.cos(rad) * 130;
+    const tx = 190 + Math.sin(rad) * 104;
+    const ty = 190 - Math.cos(rad) * 104 + 3;
+    const val = Math.round((max / 6) * i);
+    out += '<line x1="' + x1.toFixed(1) + '" y1="' + y1.toFixed(1) + '" x2="' + x2.toFixed(1) + '" y2="' + y2.toFixed(1) + '" stroke="#5c3a23" stroke-width="1.4"/>';
+    out += '<text x="' + tx.toFixed(1) + '" y="' + ty.toFixed(1) + '" text-anchor="middle" fill="#927b65" font-family="\'JetBrains Mono\',monospace" font-size="8">' + val + '</text>';
+  }
+  g.innerHTML = out;
+}
+
+/* ---------- render selected series ---------- */
+function render() {
+  const e = ENGINES[currentEngine];
+  const max = gaugeMax();
+  const val = currentUnits === 'sae' ? e.hp : e.kw;
+  const pct = Math.min(val / max, 1);
+  const needle = $('#needle');
+  const arc = $('#gaugeArc');
+  if (needle) needle.style.transform = 'rotate(' + (-120 + pct * 240) + 'deg)';
+  if (arc) arc.setAttribute('stroke-dasharray', (pct * 100).toFixed(2) + ' 100');
+  $('#gaugeHp').textContent = val;
+  $('#gaugeUnit').textContent = currentUnits === 'sae' ? 'BHP' : 'KW';
+  $('#gaugeRpm').textContent = '@ ' + e.rpm.toLocaleString('en-US') + ' RPM';
+  $('#gaugeTq').textContent = currentUnits === 'sae' ? e.tq + ' lb-ft' : e.tqNm + ' Nm';
+  $('#gaugeBoost').textContent = currentUnits === 'sae' ? e.boost + ' psi' : e.boostBar.toFixed(2) + ' bar';
+  $('#gaugeComp').textContent = e.comp.toFixed(1) + ':1';
+  $('#ratingBadge').textContent = e.badge;
+  const desc = $('#gaugeDesc');
+  if (desc) desc.textContent = 'Needle shows the selected 13B turbo factory rating against a ' + max + (currentUnits === 'sae' ? ' horsepower' : ' kilowatt') + ' scale.';
+
+  $('#kpiDisp').textContent = '1,308 cc';
+  $('#kpiDispSub').textContent = currentUnits === 'sae' ? '79.8 cu in · 654 × 2' : '654 cc × 2 rotors';
+  $('#kpiWidth').textContent = currentUnits === 'sae' ? '3.15 in' : '80 mm';
+  $('#kpiWidthSub').textContent = currentUnits === 'sae' ? '80 mm' : '3.15 in';
+  $('#kpiComp').textContent = e.comp.toFixed(1) + ':1';
+  $('#kpiCompSub').textContent = e.compNote;
+  $('#kpiBoost').textContent = currentUnits === 'sae' ? e.boost + ' psi' : e.boostBar.toFixed(2) + ' bar';
+  $('#kpiBoostSub').textContent = currentUnits === 'sae' ? e.boostBar.toFixed(2) + ' bar · wastegate' : e.boost + ' psi · wastegate';
+
+  $$('.spec-table thead th[data-col]').forEach((th) => {
+    th.classList.toggle('is-active', th.dataset.col === currentEngine);
+  });
+  $$('.spec-table tbody tr').forEach((tr) => {
+    const tds = tr.querySelectorAll('td');
+    tds.forEach((td, i) => {
+      td.classList.toggle('is-active', (currentEngine === 's4' && i === 0) || (currentEngine === 's5' && i === 1));
+    });
+  });
+
+  buildGaugeTicks();
+}
+
+/* ---------- series chips ---------- */
+$$('.chip').forEach((chip) => {
+  chip.addEventListener('click', () => {
+    currentEngine = chip.dataset.engine;
+    $$('.chip').forEach((c) => {
+      const on = c === chip;
+      c.classList.toggle('on', on);
+      c.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    render();
+    const e = ENGINES[currentEngine];
+    $('#engineStatus').textContent = e.name + ' selected, ' + e.hp + ' horsepower, ' + e.boost + ' psi stock boost';
+  });
+});
+
+/* ---------- units ---------- */
+function updateTorqueUnits() {
+  const metric = currentUnits === 'metric';
+  $('#tqHead1').textContent = metric ? 'Nm' : 'ft-lb';
+  $('#tqHead2').textContent = metric ? 'ft-lb' : 'Nm';
+  $$('#tqBody tr').forEach((tr) => {
+    const btn = tr.querySelector('.tq-btn');
+    const cells = tr.querySelectorAll('td');
+    if (!btn || cells.length < 3) return;
+    btn.textContent = metric ? btn.dataset.nm : btn.dataset.ft;
+    cells[2].textContent = metric ? btn.dataset.ft : btn.dataset.nm;
+  });
+}
+
+$$('.unit-btn').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    currentUnits = btn.dataset.units;
+    $$('.unit-btn').forEach((b) => {
+      const on = b === btn;
+      b.classList.toggle('on', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    render();
+    updateTorqueUnits();
+  });
+});
+
+/* ---------- blueprint hotspots ---------- */
+function showPart(key) {
+  const p = PARTS[key];
+  if (!p) return;
+  $('#bpKicker').textContent = p.k;
+  $('#bpName').textContent = p.n;
+  $('#bpText').textContent = p.t;
+  $('#bpSpec').textContent = p.s;
+  $$('.hotspot').forEach((h) => h.classList.toggle('active', h.dataset.part === key));
+}
+
+$$('.hotspot').forEach((h) => {
+  h.addEventListener('click', () => showPart(h.dataset.part));
+  h.addEventListener('keydown', (ev) => {
+    if (ev.key === 'Enter' || ev.key === ' ') {
+      ev.preventDefault();
+      showPart(h.dataset.part);
+    }
+  });
+});
+
+function trochoidPath(cx, cy, R, e, scale, steps) {
+  const n = steps || 240;
+  const pts = [];
+  for (let i = 0; i <= n; i++) {
+    const t = (i / n) * Math.PI * 2;
+    const x = cx + scale * (R * Math.cos(t) + e * Math.cos(3 * t));
+    const y = cy + scale * (R * Math.sin(t) + e * Math.sin(3 * t));
+    pts.push(x.toFixed(1) + ' ' + y.toFixed(1));
+  }
+  return 'M' + pts.join(' L') + ' Z';
+}
+
+const housingD = trochoidPath(260, 210, 105, 15, 1.35, 240);
+$('#housingPath').setAttribute('d', housingD);
+$('#housingSeal').setAttribute('d', housingD);
+
+/* ---------- power chart ---------- */
+const CURVES = {
+  s4: {
+    hp: [[2000,55],[2500,75],[3000,95],[3500,115],[4000,135],[4500,152],[5000,166],[5500,176],[6000,182],[6500,182],[7000,170]],
+    tq: [[2000,150],[2500,168],[3000,178],[3500,183],[4000,180],[4500,172],[5000,160],[5500,148],[6000,135],[6500,120],[7000,105]]
+  },
+  s5: {
+    hp: [[2000,62],[2500,84],[3000,106],[3500,128],[4000,148],[4500,165],[5000,180],[5500,192],[6000,199],[6500,200],[7000,186]],
+    tq: [[2000,160],[2500,178],[3000,190],[3500,196],[4000,193],[4500,185],[5000,173],[5500,160],[6000,145],[6500,128],[7000,112]]
+  }
+};
+
+function buildChart() {
+  const svg = $('#powerChart');
+  if (!svg) return;
+  const L = 54, R = 730, T = 20, B = 250;
+  const x = (rpm) => L + ((rpm - 2000) / 5000) * (R - L);
+  const y = (v) => B - (v / 220) * (B - T);
+  let out = '';
+  for (let v = 0; v <= 200; v += 50) {
+    out += '<line x1="' + L + '" y1="' + y(v) + '" x2="' + R + '" y2="' + y(v) + '" stroke="#2e2118" stroke-width="1"/>';
+    out += '<text x="' + (L - 10) + '" y="' + (y(v) + 3) + '" text-anchor="end" fill="#927b65" font-family="\'JetBrains Mono\',monospace" font-size="8">' + v + '</text>';
+  }
+  for (let rpm = 2000; rpm <= 7000; rpm += 1000) {
+    out += '<line x1="' + x(rpm) + '" y1="' + T + '" x2="' + x(rpm) + '" y2="' + B + '" stroke="#2e2118" stroke-width="1"/>';
+    out += '<text x="' + x(rpm) + '" y="' + (B + 16) + '" text-anchor="middle" fill="#927b65" font-family="\'JetBrains Mono\',monospace" font-size="8">' + (rpm / 1000) + 'k</text>';
+  }
+  out += '<text x="' + L + '" y="' + (B + 30) + '" fill="#927b65" font-family="\'JetBrains Mono\',monospace" font-size="8" letter-spacing="1.5">RPM</text>';
+  out += '<text x="14" y="' + (T + 10) + '" fill="#927b65" font-family="\'JetBrains Mono\',monospace" font-size="8" letter-spacing="1.5" transform="rotate(-90 14 ' + (T + 10) + ')">HP / LB-FT</text>';
+  function poly(data, color, w, dash) {
+    const pts = data.map(([rpm, v]) => x(rpm).toFixed(1) + ',' + y(v).toFixed(1)).join(' ');
+    return '<polyline points="' + pts + '" fill="none" stroke="' + color + '" stroke-width="' + w + '" stroke-linejoin="round" stroke-linecap="round"' + (dash ? ' stroke-dasharray="' + dash + '"' : '') + '/>';
+  }
+  out += poly(CURVES.s4.hp, '#f7b955', 2.4);
+  out += poly(CURVES.s5.hp, '#e2582a', 2.4);
+  out += poly(CURVES.s4.tq, '#ffd166', 1.7, '6 4');
+  out += poly(CURVES.s5.tq, '#b33a1e', 1.7, '6 4');
+  out += '<circle cx="' + x(6500) + '" cy="' + y(200) + '" r="3.5" fill="#e2582a"/>';
+  out += '<circle cx="' + x(6500) + '" cy="' + y(182) + '" r="3.5" fill="#f7b955"/>';
+  svg.innerHTML = out;
+}
+
+/* ---------- torque filter + copy ---------- */
+let tqCat = 'all';
+function filterTorque() {
+  const q = ($('#tqSearch').value || '').trim().toLowerCase();
+  $$('#tqBody tr').forEach((tr) => {
+    const okCat = tqCat === 'all' || tr.dataset.cat === tqCat;
+    const okText = !q || tr.textContent.toLowerCase().includes(q);
+    tr.classList.toggle('hide', !(okCat && okText));
+  });
+}
+
+$$('.fbtn').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    tqCat = btn.dataset.cat;
+    $$('.fbtn').forEach((b) => b.classList.toggle('on', b === btn));
+    filterTorque();
+  });
+});
+$('#tqSearch').addEventListener('input', filterTorque);
+
+$$('.tq-btn').forEach((btn) => {
+  btn.addEventListener('click', async () => {
+    const metric = currentUnits === 'metric';
+    const value = metric ? btn.dataset.nm : btn.dataset.ft;
+    const unit = metric ? 'Nm' : 'ft-lb';
+    const text = value + ' ' + unit;
+    try {
+      await navigator.clipboard.writeText(text);
+      toast('Copied ' + text);
+    } catch (err) {
+      toast(text);
+    }
+  });
+});
+
+/* ---------- rebuild checklist ---------- */
+const BUILD_KEY = 'rx7-13bt-build-v1';
+const checks = $$('.stage .check');
+
+function saveBuild() {
+  const done = checks.filter((c) => c.checked).map((c) => c.dataset.step);
+  try { localStorage.setItem(BUILD_KEY, JSON.stringify(done)); } catch (err) { /* ignore */ }
+  const pct = (done.length / checks.length) * 100;
+  $('#progressFill').style.width = pct + '%';
+  $('#progressCount').textContent = done.length + ' / ' + checks.length;
+}
+
+function loadBuild() {
+  let saved = [];
+  try { saved = JSON.parse(localStorage.getItem(BUILD_KEY) || '[]'); } catch (err) { saved = []; }
+  checks.forEach((c) => { c.checked = saved.includes(c.dataset.step); });
+  saveBuild();
+}
+
+checks.forEach((c) => {
+  c.addEventListener('click', (ev) => ev.stopPropagation());
+  c.addEventListener('change', saveBuild);
+});
+
+$('#resetBuild').addEventListener('click', () => {
+  checks.forEach((c) => { c.checked = false; });
+  saveBuild();
+  toast('Rebuild checklist reset');
+});
+
+/* ---------- scrollbar + nav ---------- */
+function onScroll() {
+  const h = document.documentElement;
+  const max = h.scrollHeight - h.clientHeight;
+  const pct = max > 0 ? (h.scrollTop / max) * 100 : 0;
+  $('#scrollbar').style.width = pct + '%';
+}
+document.addEventListener('scroll', onScroll, { passive: true });
+
+const sections = $$('main section[id]');
+const navLinks = $$('.nav-link');
+if ('IntersectionObserver' in window) {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((en) => {
+      if (!en.isIntersecting) return;
+      navLinks.forEach((a) => a.classList.toggle('active', a.getAttribute('href') === '#' + en.target.id));
+    });
+  }, { rootMargin: '-30% 0px -60% 0px' });
+  sections.forEach((s) => io.observe(s));
+}
+
+$('#jump').addEventListener('change', (ev) => {
+  if (ev.target.value) location.hash = ev.target.value;
+});
+$('#printBtn').addEventListener('click', () => window.print());
+
+/* ---------- toast ---------- */
+let toastTimer;
+function toast(msg) {
+  const t = $('#toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 1800);
+}
+
+/* ---------- init ---------- */
+render();
+updateTorqueUnits();
+buildChart();
+loadBuild();
+showPart('housing');
+filterTorque();
+onScroll();
+</script>
+</body>
+</html>
