@@ -18,6 +18,7 @@ A single-page technical reference for the 13B turbo twin-rotor used in the 1986â
 - Power and torque figures are US SAE net unless noted. JDM ratings were 185 PS (Series 4), 205 PS (Series 5), and 215 PS for the Infini IV.
 - Boost figures are factory wastegate settings and vary with altitude, intake temperature, and ECU calibration.
 - Torque values and clearances are nominal 13B ranges collected from factory and Atkins Rotary reference material. Always verify against the Mazda factory service manual for your model year before assembly.
+- Compression testing follows the factory procedure: 85 psi minimum per face at ~250 rpm, with no more than 21 psi spread between chambers. A healthy engine typically reads 100â€“120 psi.
 - The blueprint is a schematic, not a dimensioned drawing.
 
 ## Local preview
