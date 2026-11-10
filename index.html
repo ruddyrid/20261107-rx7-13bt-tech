@@ -644,7 +644,7 @@
         </tbody>
       </table>
     </div>
-    <p class="table-note"><b>JDM:</b> Series 4 185 PS, Series 5 205 PS, Infini IV 215 PS. <b>S5 torque:</b> 195–196 lb-ft (264–266 Nm) appears in published sources; treat the 1 lb-ft difference as rounding. <b>Boost:</b> the FSM lists 45.2 kPa (S4) and 57.0 kPa (S5); the procedures do not establish that these are directly comparable to commonly reported manifold-gauge readings. The exact rpm fuel-cut threshold is not established by the cited technical-data pages and is omitted.</p>
+    <p class="table-note"><b>JDM:</b> Series 4 185 PS, Series 5 205 PS, Infini IV 215 PS. <b>S5 torque:</b> 195–196 lb-ft (264–266 Nm) appears in published sources; the underlying figure is 265 Nm (195.5 lb-ft), so the 195/196 split is rounding. <b>Boost:</b> the FSM lists 45.2 kPa (S4) and 57.0 kPa (S5); the procedures do not establish that these are directly comparable to commonly reported manifold-gauge readings. The exact rpm fuel-cut threshold is not established by the cited technical-data pages and is omitted.</p>
   </section>
 
   <section class="wrap sec" id="power">
@@ -671,7 +671,6 @@
       <div class="panel panel-pad">
         <div class="bars-head">
           <h3>Series comparison</h3>
-          <div class="rating-tabs" aria-label="Rating source"><button type="button" class="on">US SAE</button></div>
         </div>
         <div class="bar-row">
           <div class="bar-label">Peak power<small>hp @ 6,500 rpm</small></div>
@@ -871,7 +870,7 @@
         <tbody id="tqBody">
           <tr data-cat="rotor" data-diff="1"><td>Tension bolts (18)</td><td><button type="button" class="tq-btn" data-ft="23–29" data-nm="31–39">23–29</button></td><td>31–39</td><td>New seal washers; oil threads and washers; tighten gradually in numbered order.</td></tr>
           <tr data-cat="rotor"><td>Stationary gear bolts</td><td><button type="button" class="tq-btn" data-ft="12–17" data-nm="16–23">12–17</button></td><td>16–23</td><td>Front and rear; check gear end play after torque.</td></tr>
-          <tr data-cat="rotor"><td>Flywheel / counterweight nut</td><td><button type="button" class="tq-btn wide" data-ft="290–360" data-nm="390–490">290–360</button></td><td>390–490</td><td>Factory holding tool; thread-locking compound on shaft threads, sealant on nut face. New nut is builder practice.</td></tr>
+          <tr data-cat="rotor"><td>Flywheel / counterweight nut</td><td><button type="button" class="tq-btn wide" data-ft="290–360" data-nm="390–490">290–360</button></td><td>390–490</td><td>Factory holding tool; thread-locking compound on shaft threads, sealant on nut face. FSM §6 clutch section also lists 289–362 ft-lb; §30 lists 290–360. New nut is builder practice.</td></tr>
           <tr data-cat="rotor"><td>Eccentric-shaft lock bolt (pulley boss)</td><td><button type="button" class="tq-btn wide" data-ft="80–98" data-nm="108–132">80–98</button></td><td>108–132</td><td>FSM value for the pulley-boss lock bolt; distinct from the front hub bolt.</td></tr>
           <tr data-cat="rotor"><td>Front eccentric-shaft hub bolt</td><td><button type="button" class="tq-btn wide" data-ft="80–90" data-nm="108–122">80–90</button></td><td>108–122</td><td>Builder-reported only; not an FC FSM specification. Do not confuse with the pulley-boss lock bolt.</td></tr>
           <tr data-cat="rotor"><td>Front eccentric-shaft pulley bolts (M6)</td><td><button type="button" class="tq-btn" data-ft="5.8–8.0" data-nm="8–11">5.8–8.0</button></td><td>8–11</td><td>1988 FSM Technical Data p. 30-3 lists the eccentric-shaft pulley at 5.8–8.0 ft-lb; water-pump bolts are a separate 13–20 ft-lb row.</td></tr>
@@ -885,8 +884,8 @@
           <tr data-cat="engine"><td>Water pump bolts</td><td><button type="button" class="tq-btn" data-ft="13–20" data-nm="18–26">13–20</button></td><td>18–26</td><td>New gasket; do not lever on the housing.</td></tr>
           <tr data-cat="engine"><td>Water pump housing nuts</td><td><button type="button" class="tq-btn" data-ft="14–17" data-nm="20–23">14–17</button></td><td>20–23</td><td>Even pattern, two passes.</td></tr>
           <tr data-cat="engine"><td>Thermostat housing bolts</td><td><button type="button" class="tq-btn" data-ft="14–17" data-nm="19–23">14–17</button></td><td>19–23</td><td>New O-ring or gasket.</td></tr>
-          <tr data-cat="engine"><td>Intake manifold bolts</td><td><button type="button" class="tq-btn" data-ft="14–19" data-nm="19–25">14–19</button></td><td>19–25</td><td>Check for vacuum leaks after.</td></tr>
-          <tr data-cat="engine"><td>Exhaust manifold bolts</td><td><button type="button" class="tq-btn" data-ft="24–33" data-nm="31–46">24–33</button></td><td>31–46</td><td>Turbo-specific range; 1988 FSM Turbo Fuel &amp; Emission Control §4B, p. 4B-57. Recheck exhaust fasteners after heat cycles.</td></tr>
+          <tr data-cat="engine"><td>Intake manifold bolts</td><td><button type="button" class="tq-btn" data-ft="14–19" data-nm="19–26">14–19</button></td><td>19–26</td><td>Check for vacuum leaks after.</td></tr>
+          <tr data-cat="engine"><td>Exhaust manifold bolts</td><td><button type="button" class="tq-btn" data-ft="23–34" data-nm="31–46">23–34</button></td><td>31–46</td><td>Turbo-specific range; 1988 FSM Turbo Fuel &amp; Emission Control §4B, p. 4B-57. Recheck exhaust fasteners after heat cycles.</td></tr>
           <tr data-cat="turbo"><td>Turbo to manifold nuts</td><td><button type="button" class="tq-btn" data-ft="32–40" data-nm="44–54">32–40</button></td><td>44–54</td><td>1988 FSM Technical Data p. 30-4; support the turbo while torquing.</td></tr>
           <tr data-cat="turbo"><td>Turbo outlet to front converter nuts</td><td><button type="button" class="tq-btn" data-ft="33–39" data-nm="44.1–53.9">33–39</button></td><td>44.1–53.9</td><td>1988 FSM Turbo Fuel &amp; Emission Control §4B, p. 4B-57; applies to the front-converter joint.</td></tr>
           <tr data-cat="turbo"><td>Intercooler pipe clamps (shop practice)</td><td>Snug only</td><td>No FSM torque specification</td><td>Do not apply a numeric torque; check hose seating and boost leaks.</td></tr>
@@ -918,6 +917,7 @@
       <span class="progress-count" id="progressCount">0 / 8</span>
       <button type="button" class="reset" id="resetBuild">Reset</button>
     </div>
+    <small style="display:block;margin:-6px 0 14px 2px;color:var(--dim);font-size:11px">Checklist is saved in this browser only.</small>
 
     <details class="stage" open>
       <summary>
@@ -1149,7 +1149,7 @@
             <tr><th scope="row">Rotor phasing</th><td>3:1 eccentric : rotor</td></tr>
             <tr><th scope="row">S4 plugs (1988 FSM)</th><td>SD10A / SD11A · 2.0 mm gap</td></tr>
             <tr><th scope="row">S5 plugs (1989 FSM)</th><td>BUR7EQ / BUR9EQ · 1.4 mm gap</td></tr>
-            <tr><th scope="row">Base leading timing</th><td>5° ATDC · check connector grounded</td></tr>
+            <tr><th scope="row">Ignition timing</th><td>Leading 5° ATDC (±1°) · Trailing 20° ATDC · check connector grounded</td></tr>
             <tr><th scope="row">Idle</th><td>S4: 725–775 rpm, BAC; S5: 750 ±25 rpm, test connector grounded</td></tr>
           </tbody>
         </table>
@@ -1270,7 +1270,7 @@
           <tr><th>Tension bolts (18)</th><td>23–29</td><th>Stationary gear</th><td>12–17</td></tr>
           <tr><th>Flywheel nut</th><td>290–360</td><th>Pulley-boss lock bolt</th><td>80–98</td></tr>
           <tr><th>Front hub bolt†</th><td>80–90</td><th>Spark plugs</th><td>9.4–13</td></tr>
-          <tr><th>Exhaust manifold</th><td>24–33</td><th>Water pump bolts</th><td>13–20</td></tr>
+          <tr><th>Exhaust manifold</th><td>23–34</td><th>Water pump bolts</th><td>13–20</td></tr>
         </tbody>
       </table>
       <p class="pc-seq">† Front eccentric-shaft hub bolt: builder-reported only, not an FC FSM value; distinct from the pulley-boss lock bolt.</p>
@@ -1302,7 +1302,7 @@
   </div>
   <footer class="pc-foot">
     <span>OMP: mechanical rod (S4) / stepper motor (S5) · Premix 1 oz/US gal if OMP deleted (community practice; not FSM)</span>
-    <span>rx7-13bt-tech.html</span>
+    <span>index.html</span>
   </footer>
 </section>
 
@@ -1429,7 +1429,7 @@ function render() {
   if (desc) desc.textContent = 'Needle shows the selected 13B turbo factory rating against a ' + max + (currentUnits === 'sae' ? ' horsepower' : ' kilowatt') + ' scale.';
 
   $('#kpiDisp').textContent = '1,308 cc';
-  $('#kpiDispSub').textContent = currentUnits === 'sae' ? '79.8 cu in · 654 × 2' : '654 cc × 2 rotors';
+  $('#kpiDispSub').textContent = currentUnits === 'sae' ? '80 cu in (40.0 × 2) · 654 × 2' : '654 cc × 2 rotors';
   $('#kpiWidth').textContent = currentUnits === 'sae' ? '3.15 in' : '80 mm';
   $('#kpiWidthSub').textContent = currentUnits === 'sae' ? '80 mm' : '3.15 in';
   $('#kpiComp').textContent = e.comp.toFixed(1) + ':1';

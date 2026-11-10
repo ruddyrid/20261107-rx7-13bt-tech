@@ -4,8 +4,6 @@ A single-page technical reference for the 13B turbo twin-rotor used in the 1986�
 
 **Live site:** https://ruddyrid.github.io/20261107-rx7-13bt-tech/
 
-**Temporary public preview:** https://ruddyrid.github.io/20261107-rx7-13bt-tech/
-
 **Planned Teals Unltd. URL:** https://tech.tealsunltd.com/ (after DNS setup)
 
 ## What it covers
@@ -20,7 +18,7 @@ A single-page technical reference for the 13B turbo twin-rotor used in the 1986�
 ## Data notes
 
 - Power and torque figures are US SAE net unless noted. JDM ratings were 185 PS (Series 4), 205 PS (Series 5), and 215 PS for the Infini IV.
-- Boost figures are the commonly quoted factory wastegate settings and vary with altitude, intake temperature, and ECU calibration. The 1989 FSM lists a 57 kPa (8.25 psi) boost-pressure spec.
+- Boost figures are the commonly quoted factory wastegate settings and vary with altitude, intake temperature, and ECU calibration. The 1989 FSM lists a 57 kPa (8.27 psi) boost-pressure spec.
 - **Series 4 turbo:** dual-scroll Hitachi with a vacuum-operated quick-spool (switching) valve and actuator. The FSM checks that the actuator rod starts moving above about 2,700 rpm.
 - **Series 5 turbo:** twin-scroll Hitachi fed by a divided exhaust manifold that biases each rotor's pulses into its own scroll. Boost is trimmed by a wastegate and a duty-cycle solenoid; there is no switching valve.
 - Torque values, clearances, idle speed, and fluid capacities are taken from the Mazda 1988 FSM (covers 1986–88) and 1989 FSM (covers 1989–91). Where the two manuals differ, the page shows a range spanning both. Always verify against the FSM for your model year before assembly.
@@ -46,8 +44,10 @@ To activate the custom domain:
 
 1. In the DNS provider for `tealsunltd.com`, add a `CNAME` record for `tech` pointing to `ruddyrid.github.io`.
 2. Add a root-level `CNAME` file containing `tech.tealsunltd.com`.
-3. In the repository's **Settings → Pages**, set the custom domain to `tech.tealsunltd.com` and enable HTTPS after DNS verification.
-4. Update the canonical URL and sitemap to the custom domain, then add a Big Cartel navigation link to `https://tech.tealsunltd.com/`.
+3. In the repository's **Settings → Pages**, set the custom domain to `tech.tealsunltd.com`.
+4. **Verify the domain:** in GitHub Settings, add a TXT record to your DNS for `_github-pages-challenge-ruddyrid` to prevent domain takeovers.
+5. Enable HTTPS after DNS propagation (this can take up to 24 hours).
+6. Update the canonical URL and sitemap to the custom domain, then add a Big Cartel navigation link to `https://tech.tealsunltd.com/`.
 
 Until then, the canonical URL and sitemap point to the public GitHub Pages preview.
 
@@ -60,4 +60,4 @@ Primary references are the Mazda factory service manuals:
 - [1989 RX-7 FSM — Technical Data](https://foxed.ca/rx7manual/manuals/1989FSM/30_Technical_Data.pdf) (Series 5)
 - [1989 RX-7 FSM — Turbo fuel and emission control](https://foxed.ca/rx7manual/manuals/1989FSM/04B_Fuel_and_emission_control_systems_turbo.pdf)
 
-Secondary references include the Atkins Rotary 13B spec sheet, Haltech's rotary tuning reference, RX7.org specifications, the RX7Club fluid guide, and Mazda's rotary technology background.
+Secondary references include the Atkins Rotary 13B spec sheet, Haltech's rotary tuning reference, RX7.org specifications, the RX7Club fluid guide, Wikipedia's Mazda RX-7 entry, Project JDM, and community discussions on AusRotary.
